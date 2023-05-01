@@ -76,11 +76,13 @@
                                 Team
                             </a>
                         </li>
+                        {%- if 'schedule' in cookiecutter %}
                         <li class="nav-item">
                             <a class="nav-link scrollto" href="#schedule">
                                 Schedule
                             </a>
                         </li>
+                        {%- endif %}
                         <li class="nav-item">
                             <a class="nav-link scrollto" href="#sponsors-section">
                                 Sponsors
@@ -181,7 +183,7 @@
 </section>
 <!--//about-section-->
 
-{%- if cookiecutter.schedule %}
+{%- if 'schedule' in cookiecutter %}
 <section id="schedule" class="schedule-section section">
     <div class="container">
         <h3 class="section-heading text-center mb-1">Schedule</h3>
