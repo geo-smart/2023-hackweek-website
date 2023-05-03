@@ -112,7 +112,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Welcome to uwhackweek!
+                    Welcome to GeoSmart Hackweek!
                 </a>
             </li>
         </ul>
@@ -567,8 +567,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#add-the-uwhackweek-organization-repository-as-a-remote">
-     Add the uwhackweek organization repository as a remote
+    <a class="reference internal nav-link" href="#add-the-geosmart-hackweek-organization-repository-as-a-remote">
+     Add the GeoSmart Hackweek organization repository as a remote
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -645,8 +645,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#add-the-uwhackweek-organization-repository-as-a-remote">
-     Add the uwhackweek organization repository as a remote
+    <a class="reference internal nav-link" href="#add-the-geosmart-hackweek-organization-repository-as-a-remote">
+     Add the GeoSmart Hackweek organization repository as a remote
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -743,9 +743,9 @@ during this event. A good summary is
 can save and keep for later reference, you first need to make a
 <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/github-glossary#clone">fork</a>
 of the website. A fork is your personalized copy of the website that will be
-stored under your GitHub user account instead of the uwhackweek organization account.
+stored under your GitHub user account instead of the GeoSmart Hackweek organization account.
 This also enables you to write to that repository, which in contrast you can not
-do with the uwhackweek organization repository. A fork is also a first common step
+do with the GeoSmart Hackweek organization repository. A fork is also a first common step
 to contribute to open-source projects and further described in the
 <a class="reference external" href="http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project">Pro Git book</a>.</p>
 <p>To make a fork of the website, go to
@@ -867,14 +867,14 @@ describes more behind this principle.</p>
 of the date you clicked the ‘Fork’ button. This also means that your version
 will not get any updates automatically if the website repository is changed after
 your fork was created.</p>
-<p>To update your forked version with changes from the uwhackweek version, you
+<p>To update your forked version with changes from the GeoSmart Hackweek version, you
 need to do a one time setup. This process is also called
 <a class="reference external" href="http://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">‘working with a remote’</a>
 for a git repository.</p>
-<section id="add-the-uwhackweek-organization-repository-as-a-remote">
-<h3>Add the uwhackweek organization repository as a remote<a class="headerlink" href="#add-the-uwhackweek-organization-repository-as-a-remote" title="Permalink to this headline">#</a></h3>
+<section id="add-the-geosmart-hackweek-organization-repository-as-a-remote">
+<h3>Add the GeoSmart Hackweek organization repository as a remote<a class="headerlink" href="#add-the-geosmart-hackweek-organization-repository-as-a-remote" title="Permalink to this headline">#</a></h3>
 <p>A remote is defined with a label and a URL. In our case and command below,
-we are using Hackweek as the label and <code class="docutils literal notranslate"><span class="pre">https://uwhackweek.github.io/jupyterbook-template.git</span></code>
+we are using Hackweek as the label and <code class="docutils literal notranslate"><span class="pre">https://geosmart.hackweek.io.git</span></code>
 as the URL.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -910,7 +910,7 @@ fetch from the website.</p>
 the changes. A fetch is a pre-step that reads all the changes that need to
 be applied to your fork. The <code class="docutils literal notranslate"><span class="pre">{{hackweek}}</span></code> command options indicates from
 which source the changes will be queried from.</p>
-<p>Reading changes from the remote ‘uwhackweek’:</p>
+<p>Reading changes from the remote ‘GeoSmart Hackweek’:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git fetch Hackweek
 </pre></div>
 </div>
@@ -925,7 +925,7 @@ repository before pulling changes from a remote. To verify this, a <code class="
 command should return <code class="docutils literal notranslate"><span class="pre">nothing</span> <span class="pre">to</span> <span class="pre">commit,</span> <span class="pre">working</span> <span class="pre">tree</span> <span class="pre">clean</span></code> at the end of the
 output.</p>
 </div>
-<p>Applying changes from the remote ‘uwhackweek’:</p>
+<p>Applying changes from the remote ‘GeoSmart Hackweek’:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git pull Hackweek main
 </pre></div>
 </div>
@@ -952,7 +952,7 @@ output.</p>
 <p>Your files are persisted across server shutdowns and startups and you don’t have
 to upload them again when you log out at the end of the day and restart anew the
 next day.</p>
-<p>The user space has a total limit of 10 GB, which is a uwhackweek JupyterHub set limit.
+<p>The user space has a total limit of 10 GB, which is a GeoSmart Hackweek JupyterHub set limit.
 You can use <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> for temporary large files and they <strong>are not</strong> persistet after
 logout.</p>
 <p>We also have an Amazon S3 bucket for larger files you need for your projects.
