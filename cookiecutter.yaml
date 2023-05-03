@@ -1,5 +1,5 @@
 repo_directory: html
-name: UW Hackweek
+name: GeoSmart Hackweek
 about: Hackweeks are participant-driven events that strive to create welcoming spaces
   for participants to learn new things, build community and gain hands-on experience
   with collaboration and team science
@@ -8,23 +8,23 @@ apply:
   title: Application coming soon
 hackweek_mission: https://uwhackweek.github.io/hackweeks-as-a-service/mission.html
 banner:
-  title: UW Hackweek
+  title: GeoSmart Hackweek
   description: An awesome learning event.
-  start_date: XX Month
-  end_date: XX Month
-  year: 2022
+  start_date: 23 October
+  end_date: 27 October
+  year: 2023
   location: Seattle, WA
   links:
   - url: intro.html
     title: Event Jupyter Book
-    new_window: false
+    new_window: true
   image: https://geohackweek.github.io/assets/images/banner.jpg
-applicant_info: UW Hackweek 2022 will take place in October 2022 (virtual or in-person
-  TBD). Applications have not yet opened, but should be anticipated in September 2022.
+applicant_info: GeoSmart Hackweek 2023 will take place in October 2023 (in-person).
+  Applications have not yet opened, but are anticipated soon!
 team:
   !include book/team.yaml
-schedule:
-  !include book/schedule.yaml
+#schedule:
+#  !include book/schedule.yaml
 sponsors:
   description: ''
   organizations:
