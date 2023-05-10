@@ -9,7 +9,7 @@ apply:
 hackweek_mission: https://uwhackweek.github.io/hackweeks-as-a-service/mission.html
 banner:
   title: GeoSmart Hackweek
-  description: An awesome learning event.
+  description: Application of Machine Learning in the Geosciences.
   start_date: 23 October
   end_date: 27 October
   year: 2023
