@@ -33,7 +33,6 @@ people:
         icon_pack: fab
         link: https://github.com/icesat2py
     user_groups:
-      - Lead Hackweek Organizer
       - Tutorial Lead
       - Project Team Lead
   # =============
@@ -153,7 +152,7 @@ people:
   # =============
   - title: Joachim Meyer
     avatar: https://avatars.githubusercontent.com/u/178649?v=4
-    role: Graduate Student
+    role: Research Scientist
     organizations:
       - name: University of Utah
     bio: >
