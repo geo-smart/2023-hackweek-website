@@ -25,8 +25,8 @@ applicant_info: GeoSmart Hackweek 2023 will take place in October 2023 (in-perso
   Applications have not yet opened, but are anticipated soon!
 team:
   !include book/team.yaml
-#schedule:
-#  !include book/schedule.yaml
+schedule:
+  !include book/schedule.yaml
 sponsors:
   description: ''
   organizations:
