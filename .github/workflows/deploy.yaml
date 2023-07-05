@@ -36,4 +36,3 @@ jobs:
         publish-to-gh: true
         jb-save: true
         token:  ${{ secrets.GH_PAT }}
-

@@ -1,8 +1,5 @@
 repo_directory: html
 name: GeoSmart Hackweek
-about: Hackweeks are participant-driven events that strive to create welcoming spaces
-  for participants to learn new things, build community and gain hands-on experience
-  with collaboration and team science
 apply:
   url: '#'
   title: Application coming soon
@@ -19,6 +16,11 @@ banner:
     title: Event Jupyter Book
     new_window: true
   image: https://geohackweek.github.io/assets/images/banner.jpg
+about:
+  description: Hackweeks are participant-driven events that strive to create
+    welcoming spaces for participants to learn new things, build community and
+    gain hands-on experience with collaboration and team science
+  learn_more: https://escience.washington.edu/using-data-science/hackweeks
 applicant_info: GeoSmart Hackweek 2023 will take place in October 2023 (in-person).
   Applications have not yet opened, but are anticipated soon!
 team:
