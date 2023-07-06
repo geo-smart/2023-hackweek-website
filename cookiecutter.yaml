@@ -1,8 +1,5 @@
 repo_directory: html
 name: GeoSmart Hackweek
-about: Hackweeks are participant-driven events that strive to create welcoming spaces
-  for participants to learn new things, build community and gain hands-on experience
-  with collaboration and team science
 apply:
   url: '#'
   title: Application coming soon
@@ -15,28 +12,33 @@ banner:
   year: 2023
   location: Seattle, WA
   links:
-  - url: intro.html
-    title: Event Jupyter Book
-    new_window: true
+    - url: intro.html
+      title: Event Jupyter Book
+      new_window: true
   image: https://geohackweek.github.io/assets/images/banner.jpg
+about:
+  description: Hackweeks are participant-driven events that strive to create
+    welcoming spaces for participants to learn new things, build community and
+    gain hands-on experience with collaboration and team science
+  learn_more: https://escience.washington.edu/using-data-science/hackweeks
 applicant_info: GeoSmart Hackweek 2023 will take place in October 2023 (in-person).
   Applications have not yet opened, but are anticipated soon!
 team:
   !include book/team.yaml
-#schedule:
-#  !include book/schedule.yaml
+schedule:
+  !include book/schedule.yaml
 sponsors:
   description: ''
   organizations:
-  - name: eScience Institute
-    website: ''
-    logo_url: https://escience.washington.edu/wp-content/uploads/2015/10/Logo_eScience-stacked.png
+    - name: eScience Institute
+      website: ''
+      logo_url: https://escience.washington.edu/wp-content/uploads/2015/10/Logo_eScience-stacked.png
 footer:
   social:
-  - icon: github
-    icon_pack: fab
-    link: https://github.com/uwhackweek/
+    - icon: github
+      icon_pack: fab
+      link: https://github.com/uwhackweek/
 _copy_without_render:
-- assets
+  - assets
 _extensions:
-- jinja_markdown.MarkdownExtension
+  - jinja_markdown.MarkdownExtension
