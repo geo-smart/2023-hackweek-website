@@ -12,9 +12,9 @@ banner:
   year: 2023
   location: Seattle, WA
   links:
-  - url: intro.html
-    title: Event Jupyter Book
-    new_window: true
+    - url: intro.html
+      title: Event Jupyter Book
+      new_window: true
   image: https://geohackweek.github.io/assets/images/banner.jpg
 about:
   description: Hackweeks are participant-driven events that strive to create
@@ -30,15 +30,15 @@ schedule:
 sponsors:
   description: ''
   organizations:
-  - name: eScience Institute
-    website: ''
-    logo_url: https://escience.washington.edu/wp-content/uploads/2015/10/Logo_eScience-stacked.png
+    - name: eScience Institute
+      website: ''
+      logo_url: https://escience.washington.edu/wp-content/uploads/2015/10/Logo_eScience-stacked.png
 footer:
   social:
-  - icon: github
-    icon_pack: fab
-    link: https://github.com/uwhackweek/
+    - icon: github
+      icon_pack: fab
+      link: https://github.com/uwhackweek/
 _copy_without_render:
-- assets
+  - assets
 _extensions:
-- jinja_markdown.MarkdownExtension
+  - jinja_markdown.MarkdownExtension
