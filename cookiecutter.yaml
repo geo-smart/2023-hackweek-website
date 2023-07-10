@@ -17,10 +17,48 @@ banner:
       new_window: true
   image: https://geohackweek.github.io/assets/images/banner.jpg
 about:
-  description: Hackweeks are participant-driven events that strive to create
+  description:
+    Hackweeks are participant-driven events that strive to create
     welcoming spaces for participants to learn new things, build community and
     gain hands-on experience with collaboration and team science
-  learn_more: https://escience.washington.edu/using-data-science/hackweeks
+    </br></br>
+    During the week, participants will have the opportunity to collaborate with
+    their peers, share ideas, and work on projects leading to exciting results and
+    discoveries. This event is open to all experience levels in machine learning
+    knowledge, so whether you're a seasoned pro or just starting out, you're
+    welcome to join. However, to fully experience the event, prior knowledge of
+    Python programming and data handling using common Python packages (pandas,
+    xarray, etc.) is desired.
+  expanded_description:
+    header: "Hackweek activities will include:"
+    list:
+      - header: Brainstorming sessions
+        description: participants can join an existing project or come
+          up with ideas for projects that can be implemented using machine learning.
+      - header: Tutorials
+        description: participants will learn about common machine learning workflows,
+          computational environments, reproducibility, and workflow management.
+      - header: Data preparation
+        description: participants will explore datasets to identify and
+          engineer relevant variables that can be used to build machine learning models.
+      - header: Models
+        description: participants will work on building machine learning models using
+          popular libraries such as TensorFlow, PyTorch, or scikit-learn.
+      - header: Model validation
+        description: participants can validate their models using
+          cross-validation and other techniques to ensure that their models are
+          robust and accurate.
+      - header: Optimization
+        description: participants can work on optimizing their models by
+          fine-tuning hyperparameters, using feature engineering techniques, or
+          other methods.
+      - header: Presentations
+        description: participants can share the results from projects to
+          receive feedback from their peers.
+      - header: Networking
+        description: facilitated opportunities for networking and community
+          building will be provided.
+#  learn_more: https://escience.washington.edu/using-data-science/hackweeks
 applicant_info: GeoSmart Hackweek 2023 will take place in October 2023 (in-person).
   Applications have not yet opened, but are anticipated soon!
 team:

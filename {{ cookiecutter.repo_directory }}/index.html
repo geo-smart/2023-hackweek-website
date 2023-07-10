@@ -144,9 +144,44 @@
         <h3 class="section-heading text-center mb-3">
             About {{ cookiecutter.name }}
         </h3>
-        <div class="section-intro single-col-max mx-auto mb-3">
+        <div class="section-intro single-col-max mx-auto mb-4">
             {{ cookiecutter.about.description }}
         </div>
+
+        {%- if 'expanded_description' in cookiecutter.about %}
+        <div class="section-intro single-col-max mx-auto mb-4">
+            <div class="accordion" id="expandDescription">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseList"
+                          aria-expanded="false"
+                          aria-controls="collapseList">
+                      {{ cookiecutter.about.expanded_description.header }}
+                  </button>
+                </h2>
+                <div id="collapseList"
+                     class="accordion-collapse collapse"
+                     aria-labelledby="headingOne"
+                     data-bs-parent="#headingOne">
+                  <div class="accordion-body">
+                    {%- for item in cookiecutter.about.expanded_description.list %}
+                        <ul>
+                            <i><strong>
+                                {{ item.header }}
+                            </strong></i>: {{ item.description }}
+                        </ul>
+                    {%- endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        {%- endif %}
+
+        {%- if 'learn more' in cookiecutter.about  %}
         <div class="about-cta text-center mb-4">
             <a class="btn btn-secondary btn-lg"
                href="{{ cookiecutter.about.learn_more }}"
@@ -155,6 +190,7 @@
                 <i class="fas fa-external-link-alt"></i>
             </a>
         </div>
+        {%- endif %}
 
         {%- if 'links' in cookiecutter.about %}
             <div class="hero-cta text-center mb-4">
