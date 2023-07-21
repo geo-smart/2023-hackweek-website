@@ -18,17 +18,19 @@ banner:
   image: https://geohackweek.github.io/assets/images/banner.jpg
 about:
   description:
-    Hackweeks are participant-driven events that strive to create
+    <a href="https://escience.washington.edu/using-data-science/hackweeks/">Hackweeks</a> are participant-driven events that strive to create
     welcoming spaces for participants to learn new things, build community and
-    gain hands-on experience with collaboration and team science
+    gain hands-on experience with collaboration and team science.
+    </br></br>
+    GeoSmart Hackweek will focus primarily on project work, with project ideas shared in advance. There will be space for new ideas to emerge based on participant engagement. There will be about 5 hours of tutorials spread over the week, including space for participant-led tutorials. 
     </br></br>
     During the week, participants will have the opportunity to collaborate with
     their peers, share ideas, and work on projects leading to exciting results and
     discoveries. This event is open to all experience levels in machine learning
     knowledge, so whether you're a seasoned pro or just starting out, you're
-    welcome to join. However, to fully experience the event, prior knowledge of
+    welcome to join. However, to benefit most from the event, prior knowledge of
     Python programming and data handling using common Python packages (pandas,
-    xarray, etc.) is desired.
+    xarray, etc.) is desired. 
   expanded_description:
     header: "Hackweek activities will include:"
     list:
@@ -59,8 +61,7 @@ about:
         description: facilitated opportunities for networking and community
           building will be provided.
 #  learn_more: https://escience.washington.edu/using-data-science/hackweeks
-applicant_info: GeoSmart Hackweek 2023 will take place in October 2023 (in-person).
-  Applications have not yet opened, but are anticipated soon!
+applicant_info: GeoSmart Hackweek will take place during October 23-27, 2023, at the University of Washington in Seattle, and remotely online. We anticipate about 70% of participants to be attending in person, with 30% joining online. Applications have not yet opened, but are anticipated soon!
 team:
   !include book/team.yaml
 schedule:
