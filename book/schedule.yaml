@@ -1,12 +1,187 @@
 timezone: UTC -7 (Pacific Daylight Time)
 tabs:
 - title: Day 1
-  date: Wed 23, Oct
+  date: Monday 23 October
+  contents:
+  - title: Intro and welcome
+    description: ''
+    time: 8:30 - 9:00
+    leads:
+    - Anthony
+  - title: ML Workflows
+    description: ''
+    time: 9:00 - 10:00
+    leads:
+    - ''
+  - title: BREAK
+    description: ''
+    time: 10:00 - 10:30
+    leads:
+    - ''
+  - title: Intro to Projects
+    description: ''
+    time: 10:30 - 11:00
+    leads:
+    - ''
+  - title: Project Team Formation
+    description: ''
+    time: 11:00 - 12:00
+    leads:
+    - ''
+  - title: LUNCH
+    description: ''
+    time: 12:00 - 13:00
+    leads:
+    - ''
+  - title: Project Work
+    description: ''
+    time: 13:00 - 16:00
+    leads:
+    - ''
 - title: Day 2
-  date: Wed 24, Oct
+  date: Tuesday 24 October
+  contents:
+  - title: Approaches to Working in Teams
+    description: ''
+    time: 8:30 - 9:00
+    leads:
+    - ''
+  - title: GeoWeaver
+    description: ''
+    time: 9:00 - 9:30
+    leads:
+    - ''
+  - title: Open time for tutorial Q&A
+    description: ''
+    time: 9:30 - 10:00
+    leads:
+    - ''
+  - title: BREAK
+    description: ''
+    time: 10:00 - 10:30
+    leads:
+    - ''
+  - title: Project Work
+    description: ''
+    time: 10:30 - 12:00
+    leads:
+    - ''
+  - title: LUNCH
+    description: ''
+    time: 12:00 - 13:00
+    leads:
+    - ''
+  - title: Project Work
+    description: ''
+    time: 13:00 - 16:00
+    leads:
+    - ''
 - title: Day 3
-  date: Wed 25, Oct
+  date: Wednesday 25 October
+  contents:
+  - title: Computational Resources for ML
+    description: ''
+    time: 8:30 - 9:00
+    leads:
+    - ''
+  - title: Open time for tutorial Q&A
+    description: ''
+    time: 9:00 - 9:30
+    leads:
+    - ''
+  - title: BREAK
+    description: ''
+    time: 9:30 - 10:00
+    leads:
+    - ''
+  - title: Project Work
+    description: ''
+    time: 10:00 - 12:00
+    leads:
+    - ''
+  - title: LUNCH
+    description: ''
+    time: 12:00 - 13:00
+    leads:
+    - ''
+  - title: Project Work
+    description: ''
+    time: 13:00 - 16:00
+    leads:
+    - ''
 - title: Day 4
-  date: Wed 26, Oct
+  date: Thursday 26 October
+  contents:
+  - title: AI Ethics
+    description: ''
+    time: 8:30 - 9:00
+    leads:
+    - ''
+  - title: Participant-led tutorials
+    description: ''
+    time: 9:00 - 9:30
+    leads:
+    - ''
+  - title: BREAK
+    description: ''
+    time: 10:00 - 10:30
+    leads:
+    - ''
+  - title: Project Work
+    description: ''
+    time: 10:30 - 12:00
+    leads:
+    - ''
+  - title: LUNCH
+    description: ''
+    time: 12:00 - 13:00
+    leads:
+    - ''
+  - title: Project Work
+    description: ''
+    time: 13:00 - 16:00
+    leads:
+    - ''
 - title: Day 5
-  date: Wed 27, Oct
+  date: Friday 27 October
+  contents:
+  - title: Ideas for Community Building
+    description: ''
+    time: 8:30 - 9:00
+    leads:
+    - ''
+  - title: Future Hackweeks
+    description: ''
+    time: 9:00 - 9:30
+    leads:
+    - ''
+  - title: Contributing to Open Source
+    description: ''
+    time: 9:30 - 10:00
+    leads:
+    - ''
+  - title: BREAK
+    description: ''
+    time: 10:00 - 10:30
+    leads:
+    - ''
+  - title: Project Work
+    description: ''
+    time: 10:30 - 12:00
+    leads:
+    - ''
+  - title: LUNCH
+    description: ''
+    time: 12:00 - 13:00
+    leads:
+    - ''
+  - title: Project Presentations
+    description: ''
+    time: 13:00 - 15:00
+    leads:
+    - ''
+  - title: Closing
+    description: ''
+    time: 15:00 - 15:30
+    leads:
+    - ''
