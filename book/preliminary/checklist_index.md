@@ -11,10 +11,6 @@ __Upon completion you__:
   <label for="a1">Joined the Slack workspace</label>
 </div>
 <div>
-  <input type="checkbox" name="a2">
-  <label for="a2">Created a EarthData Login</label>
-</div>
-<div>
   <input type="checkbox" name="a3">
   <label for="a3">Created a GitHub account</label>
 </div>
@@ -38,12 +34,6 @@ email to join the Slack workspace. Upon accepting the invite, please take a mome
 Having your name and picture with your Slack account helps us and your peers
 to identify you on Slack and builds a more personal community throughout
 the week.
-
-### EarthData Login
-
-We'll have you download some data from NSIDC for your tutorials and projects.
-Visit our [Earthdata](checklist/earthdata.md) page to learn how to access and Earthdata
-login account if you don't already have one!
 
 ### GitHub Account
 
