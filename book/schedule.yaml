@@ -4,101 +4,85 @@ tabs:
   date: Monday 23 October
   contents:
   - title: Intro and welcome
-    description: ''
-    time: 8:30 - 9:00
+    description: Getting to know each other setting the stage for our work together.
+    time: 8:30 - 9:30
     leads:
-    - Anthony
+    - Anthony Arendt
+    - Nicoleta Cristea
+    - Charley Haley
   - title: ML Workflows
-    description: ''
-    time: 9:00 - 10:00
+    description: An overview of the primary stages of typical Machine Learning workflows
+      including data preparation, model selection, training, and visualization.
+    time: 9:30 - 10:30
     leads:
-    - ''
+    - Andrew Bennett
   - title: BREAK
-    description: ''
-    time: 10:00 - 10:30
-    leads:
-    - ''
-  - title: Intro to Projects
-    description: ''
+    description: null
     time: 10:30 - 11:00
-    leads:
-    - ''
-  - title: Project Team Formation
-    description: ''
+  - title: Intro to Projects
+    description: Overview of projects for this hackweek and how we will gather in
+      small groups.
     time: 11:00 - 12:00
     leads:
-    - ''
+    - Charley Haley
   - title: LUNCH
-    description: ''
+    description: null
     time: 12:00 - 13:00
+  - title: Project Team Formation
+    description: Choosing our project team for the week.
+    time: 13:00 - 13:30
     leads:
-    - ''
+    - Charley Haley
   - title: Project Work
-    description: ''
-    time: 13:00 - 16:00
-    leads:
-    - ''
+    description: null
+    time: 14:00 - 17:00
 - title: Day 2
   date: Tuesday 24 October
   contents:
-  - title: Approaches to Working in Teams
-    description: ''
+  - title: GeoWeaver
+    description: Introduction to a management tool to streamline Machine Learning
+      workflows.
     time: 8:30 - 9:00
     leads:
-    - ''
-  - title: GeoWeaver
-    description: ''
+    - Ziheng Sun
+  - title: Approaches to Working in Teams
+    description: Reflecting on the opportunities and challenges of small group work.
     time: 9:00 - 9:30
     leads:
-    - ''
+    - Naomi Alterman
   - title: Open time for tutorial Q&A
-    description: ''
+    description: null
     time: 9:30 - 10:00
-    leads:
-    - ''
   - title: BREAK
-    description: ''
+    description: null
     time: 10:00 - 10:30
-    leads:
-    - ''
   - title: Project Work
-    description: ''
+    description: null
     time: 10:30 - 12:00
-    leads:
-    - ''
   - title: LUNCH
-    description: ''
+    description: null
     time: 12:00 - 13:00
-    leads:
-    - ''
   - title: Project Work
-    description: ''
+    description: null
     time: 13:00 - 16:00
-    leads:
-    - ''
 - title: Day 3
   date: Wednesday 25 October
   contents:
   - title: Computational Resources for ML
-    description: ''
+    description: Guidance on deploying Machine Learning workflows on cloud computing
+      infrastructure.
     time: 8:30 - 9:00
     leads:
-    - ''
+    - TBD
   - title: Open time for tutorial Q&A
-    description: ''
+    description: null
     time: 9:00 - 9:30
-    leads:
-    - ''
   - title: BREAK
-    description: ''
+    description: null
     time: 9:30 - 10:00
-    leads:
-    - ''
   - title: Project Work
-    description: ''
+    description: null
     time: 10:00 - 12:00
-    leads:
-    - ''
   - title: LUNCH
     description: ''
     time: 12:00 - 13:00
@@ -113,75 +97,68 @@ tabs:
   date: Thursday 26 October
   contents:
   - title: AI Ethics
-    description: ''
+    description: Group discussion on ethical considerations of AI development including
+      cultural considerations, awareness of bias, and other themes.
     time: 8:30 - 9:00
     leads:
-    - ''
-  - title: Participant-led tutorials
-    description: ''
-    time: 9:00 - 9:30
+    - TBD
+  - title: Contributing to Open Source
+    description: Best practices for contributing to community software; exploration
+      of community alignment around ML geoscience software.
+    time: 9:30 - 10:00
     leads:
-    - ''
+    - Joachim Meyer
   - title: BREAK
-    description: ''
+    description: null
     time: 10:00 - 10:30
-    leads:
-    - ''
   - title: Project Work
-    description: ''
+    description: null
     time: 10:30 - 12:00
-    leads:
-    - ''
   - title: LUNCH
-    description: ''
+    description: null
     time: 12:00 - 13:00
-    leads:
-    - ''
   - title: Project Work
-    description: ''
+    description: null
     time: 13:00 - 16:00
-    leads:
-    - ''
 - title: Day 5
   date: Friday 27 October
   contents:
   - title: Ideas for Community Building
-    description: ''
+    description: Setting a course for continued engagement with a ML geoscience community
+      of practice.
     time: 8:30 - 9:00
     leads:
-    - ''
+    - Anthony Arendt
   - title: Future Hackweeks
-    description: ''
+    description: Designing curriculum and project work for a 2024 GeoSMART hackweek.
     time: 9:00 - 9:30
     leads:
-    - ''
-  - title: Contributing to Open Source
-    description: ''
-    time: 9:30 - 10:00
-    leads:
-    - ''
+    - Nicoleta Cristea
   - title: BREAK
-    description: ''
+    description: null
     time: 10:00 - 10:30
-    leads:
-    - ''
-  - title: Project Work
-    description: ''
+  - title: Sharing Project Outcomes Part 1
+    description: An opportunity to show what we accomplished during the week.
     time: 10:30 - 12:00
     leads:
-    - ''
-  - title: LUNCH
-    description: ''
-    time: 12:00 - 13:00
+    - Nicoleta Cristea
+    - Anthony Arendt
+  - title: Hackweek Survey
+    description: Complete a survey providing us with feedback for improving our program.
+    time: 10:30 - 11:00
     leads:
-    - ''
-  - title: Project Presentations
-    description: ''
+    - Mark Welden-Smith
+  - title: LUNCH
+    description: null
+    time: 12:00 - 13:00
+  - title: Sharing Project Outcomes Part 2
+    description: An opportunity to show what we accomplished during the week.
     time: 13:00 - 15:00
     leads:
-    - ''
+    - Nicoleta Cristea
+    - Anthony Arendt
   - title: Closing
-    description: ''
+    description: null
     time: 15:00 - 15:30
     leads:
-    - ''
+    - Nicoleta Cristea
