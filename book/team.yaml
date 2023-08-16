@@ -7,35 +7,28 @@ description:
 # - user_groups correspond to hackweek roles defined here: https://uwhackweek.github.io/hackweeks-as-a-service/services/index.html
 # - For 'avatar' an easy option is to use the URL for your GitHub user image: https://api.github.com/users/YOUR_GITHUB_USERNAME
 people:
-  - title: Jessica Scheick
-    avatar: https://avatars.githubusercontent.com/u/11756442?v=4
-    role: Research Assistant Professor
+  - title: Nicoleta Cristea
+    avatar: https://avatars.githubusercontent.com/u/16614760?v=4
+    role: Research Scientist
     organizations:
-      - name: University of New Hampshire
-      - name: eScience
-    bio: Jessica is a glaciologist, remote sensing specialist, open science advocate and educator,
-      collaborative developer, open-source software contributor and maintainer, and community manager.
-      She enjoys weaving her many roles together to work with others to build software that makes it easier
-      for everyone to access and manipulate data, and she's especially fond of detecting icebergs.
+      - name: eScience Institute
+    bio: >
+      Nicoleta is a research hydrologist interested in using data science methods in
+      research and educational activities. Current projects focus on studying snowy
+      areas with machine learning and physics based models. She is also working on developing
+      GeoSMART, an educational framework for machine learning adoption in the geosciences.
     expertise:
-      - open science
-      - collaborative development
+      - hydrology, snow hydrology
+      - remote sensing
+      - geospatial data analysis
       - Python
-      - git
-      - GitHub
-      - glaciers
-      - ICESat-2/icepyx
     social:
       - icon: github
         icon_pack: fab
-        link: https://github.com/jessicas11
-      - icon: github
-        icon_pack: fab
-        link: https://github.com/icesat2py
+        link: https://github.com/NCristea
     user_groups:
-      - Tutorial Lead
-      - Project Team Lead
-  # =============
+      - Lead Hackweek Organizer
+    # =============
   - title: Anthony Arendt
     avatar: https://avatars.githubusercontent.com/u/4993098?v=4?s=100
     role: Senior Data Science Fellow
