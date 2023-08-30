@@ -67,11 +67,14 @@ team:
 schedule:
   !include book/schedule.yaml
 sponsors:
-  description: ''
+  description: 'This event was made possible by the National Science Foundation (Awards #1829585, #2117834) and the eScience Institute'
   organizations:
     - name: eScience Institute
-      website: ''
+      website: 'https://escience.washington.edu/'
       logo_url: https://escience.washington.edu/wp-content/uploads/2015/10/Logo_eScience-stacked.png
+    - name: National Science Foundation
+      website: 'https://www.nsf.gov/'
+      logo_url: https://new.nsf.gov/themes/custom/nsf_theme/components/images/logo/logo-desktop.svg
 footer:
   social:
     - icon: github
