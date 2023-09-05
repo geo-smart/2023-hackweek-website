@@ -12,8 +12,8 @@ parse:
   myst_substitutions:
     hackweek: "GeoSmart Hackweek"
     dates: "October 23 to 27, 2023"
-    github_org_url: "https://github.com/"
-    book_repo: "jupyterbook-template"
+    github_org_url: "https://github.com/geo-smart"
+    book_repo: "2023-hackweek-website"
     website_url: "https://geosmart.hackweek.io"
     jupyterhub_url: "https://INSERT_JUPYTERHUB_URL"
     slack_workspace_url: "https://INSERT_SLACK_URL"
@@ -54,7 +54,7 @@ launch_buttons:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/uwhackweek/jupyterbook-template # Online location of your book
+  url: https://github.com/geo-smart/2023-hackweek-website # Online location of your book
   path_to_book: book  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
