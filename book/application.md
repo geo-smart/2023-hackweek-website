@@ -2,9 +2,9 @@
 
 We are glad you are interested in applying to participate in {{hackweek}}! 
 
-```{warning} Applications not yet open
+<!---```{warning} Applications not yet open
 Come back soon to apply!
-```
+```-->
 
 ## Considerations
 
