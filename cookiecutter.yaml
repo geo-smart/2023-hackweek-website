@@ -30,7 +30,7 @@ about:
     knowledge, so whether you're a seasoned pro or just starting out, you're
     welcome to join. However, to benefit most from the event, prior knowledge of
     Python programming and data handling using common Python packages (pandas,
-    xarray, etc.) is desired.
+    xarray, etc.) is desired. See the event Jupyter book for more details. 
     </br></br>
     Preliminary project ideas include streamflow prediction from SAR-derived snowmelt timing or snow data, predicting snow water equivalent with machine learning, glacier dh/dt from DEMs using geospatial time series analysis, derivation of snow covered areas from satellite imagery, derivation of snow depth from SAR backscatter and lidar-derived snow data, predicting river discharge from seismic waves and others! Join one of these projects or pitch your own project idea at the event!
   expanded_description:
@@ -74,6 +74,12 @@ sponsors:
     - name: National Science Foundation
       website: 'https://www.nsf.gov/'
       logo_url: https://new.nsf.gov/themes/custom/nsf_theme/components/images/logo/logo-desktop.svg
+    - name: CUAHSI
+      website: 'https://www.cuahsi.org/'
+      logo_url: https://www.cuahsi.org/uploads/pages/img/Round_Logo_No_Text_-_Transparent.png
+    - name: ESIP
+      website: 'https://www.esipfed.org/'
+      logo_url: https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/thumbnails/image/esip-logo_0.png
 footer:
   social:
     - icon: github
