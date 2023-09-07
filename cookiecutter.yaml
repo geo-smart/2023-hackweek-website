@@ -66,7 +66,7 @@ team:
 schedule:
   !include book/schedule.yaml
 sponsors:
-  description: 'This event was made possible by the National Science Foundation (Awards #1829585, #2117834) and the eScience Institute'
+  description: 'This event was made possible by the National Science Foundation (Awards #1829585, #2117834) and the eScience Institute in collaboration with CUAHSI and ESIP'
   organizations:
     - name: eScience Institute
       website: 'https://escience.washington.edu/'
