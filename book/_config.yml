@@ -18,7 +18,7 @@ parse:
     jupyterhub_url: "https://INSERT_JUPYTERHUB_URL"
     slack_workspace_url: "https://INSERT_SLACK_URL"
     docker_image: "https://INSERT_DOCKER_IMAGE_URL"
-    contact_email: "uwhackweek@github.com"
+    contact_email: "geohack@uw.edu"
     dataset: "GeoSmart"
     anon_reporting_url: "https://INSERT_FORM_LINK"
     project_spreadsheet_url: "https://INSERT_GOOGLE_SHEET"
