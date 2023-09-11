@@ -3,6 +3,9 @@
 We are glad you are interested in applying to participate in {{hackweek}}! 
 
 [Applications](https://washington.co1.qualtrics.com/jfe/form/SV_4GjwMl2RgEpeIoC) are open until September 15, 2023.
+<!---```{warning} Applications not yet open
+Come back soon to apply!
+```-->
 
 ## Considerations
 
