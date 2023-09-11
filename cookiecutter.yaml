@@ -22,7 +22,10 @@ about:
     welcoming spaces for participants to learn new things, build community and
     gain hands-on experience with collaboration and team science.
     </br></br>
-    The 2023 GeoSmart Hackweek will focus primarily on project work, with an emphasis on applications in Hydrology and Cyrosphere science. Project ideas will be shared in advance. There will be space for new ideas to emerge during the Hackweek based on participant engagement. We will provide about 5 hours of data science tutorials spread over the week, including space for participant-led tutorials. 
+    The 2023 GeoSmart Hackweek will focus primarily on project work, with an emphasis on applications in Hydrology and Cyrosphere science. 
+    Project ideas will be shared in advance. 
+    There will be space for new ideas to emerge during the Hackweek based on participant engagement. 
+    We will provide about 5 hours of data science tutorials spread over the week, including space for participant-led tutorials. 
     </br></br>
     During the week, participants will have the opportunity to collaborate with
     their peers, share ideas, and work on projects leading to exciting results and
@@ -60,7 +63,9 @@ about:
         description: facilitated opportunities for networking and community
           building will be provided.
 #  learn_more: https://escience.washington.edu/using-data-science/hackweeks
-applicant_info: GeoSmart Hackweek will take place during October 23-27, 2023, at the University of Washington in Seattle, and remotely online. We anticipate about 70% of participants to be attending in person, with 30% joining online.
+applicant_info: GeoSmart Hackweek will take place during October 23-27, 2023, at the University of Washington in Seattle, and remotely online. 
+  We anticipate about 70% of participants to be attending in person, with 30% joining online. 
+  Applications (via the red button at the top right of this webpage) are open until September 15, 2023!
 team:
   !include book/team.yaml
 schedule:
@@ -84,7 +89,7 @@ footer:
   social:
     - icon: github
       icon_pack: fab
-      link: https://github.com/uwhackweek/
+      link: https://github.com/geo-smart/
 _copy_without_render:
   - assets
 _extensions:
