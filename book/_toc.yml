@@ -35,7 +35,7 @@ parts:
       sections:
         - file: projects/project_roadmap
         - file: projects/project_initialization
-    - file: projects/list_of_projects
+        - file: projects/list_of_projects
 - caption: Reference
   chapters:
     - file: reference/glossary
