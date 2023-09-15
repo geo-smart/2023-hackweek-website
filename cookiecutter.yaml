@@ -6,7 +6,7 @@ apply:
 hackweek_mission: https://uwhackweek.github.io/hackweeks-as-a-service/mission.html
 banner:
   title: GeoSmart Hackweek
-  description: Application of Machine Learning in Hydrology and Cyrosphere Science.
+  description: Application of Machine Learning in Hydrology and Cryosphere Science.
   start_date: 23 October
   end_date: 27 October
   year: 2023
@@ -22,7 +22,7 @@ about:
     welcoming spaces for participants to learn new things, build community and
     gain hands-on experience with collaboration and team science.
     </br></br>
-    The 2023 GeoSmart Hackweek will focus primarily on project work, with an emphasis on applications in Hydrology and Cyrosphere science. 
+    The 2023 GeoSmart Hackweek will focus primarily on project work, with an emphasis on applications in Hydrology and Cryosphere science. 
     Project ideas will be shared in advance. 
     There will be space for new ideas to emerge during the Hackweek based on participant engagement. 
     We will provide about 5 hours of data science tutorials spread over the week, including space for participant-led tutorials. 
