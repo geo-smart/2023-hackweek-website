@@ -14,6 +14,10 @@ We encourage you to use these shared cloud environments for all the tutorials, a
 
 Access to our shared cloud environment (JupyterHub) is under this URL: {{ jupyterhub_url }}!
 
+```{attention}
+If this is your first time connecting to the CryoCloud Jupyter Hub, please complete this short [application form](https://docs.google.com/forms/d/e/1FAIpQLScb2B5LRy7qU9qDfUp5a51n87sumOxivXbQhc02wFX_FxEbXg/viewform).
+```
+
 ### First time login
 
 ```{attention}

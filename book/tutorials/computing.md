@@ -1,23 +1,32 @@
 # Cloud computing
 
+```{note} Learning Goals
+* Know where to access free Cloud computing resources for ML research
+* Understand pros and cons of various free Cloud computing cyberinfrastructure options
+```
+
 Machine learning workflows often require significant computational resources. Toy problems and demos can be constructed to work on typical workstations and laptops. But many workflows such as model training quickly hit bottlenecks either with data management or GPU resources to obtain results in a reasonable amount of time.
 
 Here we provide and overview of several options for researchers to utilize cloud computing services for hackweek projects. We focus on pre-configured services that offer Jupyter servers to connect and run code on remote machines.
 
 We limit discussion to 3 major commercial cloud providers: Microsoft Azure, Amazon Web Services (AWS), and Google Cloud. You can consider "cloud computing" simply as renting computers from these 3 companies!
 
-```{note}
+```{warning}
 This is a fast-evolving space and services and tech specs change rapidly! To the best of our knowledge this information is correct as of September 2023
 ```
 
 ## Data-proximate computing
 
-ML workflows often require huge volumes of training data. Rather than having to download and store that data, Cloud providers often host large public archives. You will see better performance and have reduced costs if you make sure that your computation runs in the same Cloud as where your data is stored.
+ML workflows often require huge volumes of training data. Rather than having to download and store that data, Cloud providers often host large public archives.
+
+```{note}
+You will see better performance and have reduced costs if you make sure that your computation runs in the same Cloud as where your data is stored.
+```
 
 
 ## Geoscience community-supported cyberinfrastructure
 
-All participating of {{ hackweek }} have access to a computing environment provided by the [CryoCloud project](https://book.cryointhecloud.com/intro.html). CryoCloud operates a JupyterHub in the AWS us-west-2 data center (where NASA is storing many public remote sensing datasets). We encourage you to use CryoCloud but also list other options below:
+All participants of {{ hackweek }} have access to a computing environment provided by the [CryoCloud project](https://book.cryointhecloud.com/intro.html). CryoCloud operates a JupyterHub in the AWS us-west-2 data center (where NASA is storing many public remote sensing datasets). We encourage you to use CryoCloud but also list other options below:
 
 
 | Service | Max vCPU | Max RAM (GB) | Storage (GB) | Datacenter |
@@ -54,3 +63,10 @@ If your workflow requires resources or time limits exceeding what is offered by 
 * AWS: https://aws.amazon.com/earth/research-credits/
 * Azure: https://www.microsoft.com/en-us/azure-academic-research/
 * GCP: https://edu.google.com/intl/ALL_us/programs/credits/research/
+
+Also, the free Cloud platforms typically offer an "enhanced" service for a fee:
+
+* Google Colab Pro: https://colab.research.google.com/signup
+* AWS Sagemaker (not studio lab): https://aws.amazon.com/sagemaker
+* Azure ML: https://azure.microsoft.com/en-us/products/machine-learning
+* Google Vertex AI: https://cloud.google.com/vertex-ai/docs/workbench/introduction
