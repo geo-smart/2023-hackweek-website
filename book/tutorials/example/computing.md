@@ -49,7 +49,7 @@ If you don't need a GPU (maybe you are just visualizing results), you can access
 
 ## Guaranteed Access
 
-If your workflow requires resources or time limits exceding what is offered by the free services listed above you'll need your own Cloud account. Configuring Cloud resources and keeping track of costs is non-trivial. Fortunately for researchers, Cloud providers offer generous credit programs.
+If your workflow requires resources or time limits exceeding what is offered by the free services listed above you'll need your own Cloud account. Configuring Cloud resources and keeping track of costs is non-trivial. Fortunately for researchers, Cloud providers offer generous credit programs.
 
 * AWS: https://aws.amazon.com/earth/research-credits/
 * Azure: https://www.microsoft.com/en-us/azure-academic-research/

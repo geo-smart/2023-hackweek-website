@@ -29,6 +29,7 @@ parts:
     - file: tutorials/index
       sections:
         - file: tutorials/example/tutorial-notebook
+        - file: tutorials/computing
 - caption: Projects
   chapters:
     - file: projects/index
