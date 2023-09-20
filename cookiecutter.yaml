@@ -1,8 +1,5 @@
 repo_directory: html
 name: GeoSmart Hackweek
-apply:
-  url: 'https://washington.co1.qualtrics.com/jfe/form/SV_4GjwMl2RgEpeIoC'
-  title: Application Form
 hackweek_mission: https://uwhackweek.github.io/hackweeks-as-a-service/mission.html
 banner:
   title: GeoSmart Hackweek
