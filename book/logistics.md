@@ -10,11 +10,12 @@
 
 * Tutorials and courses will occur in [Alder Hall](https://goo.gl/maps/GebqB5Gk6hoA3rq1A), with entrance from the ground
   level on the south side.
+* Guests attending via Zoom will be sent a link at 8:00 a.m. (PDT) via the general Slack channel to join at 8:30 a.m. (PDT) each morning
 * Doors open at 8:30 am each morning (Monday-Friday). We will start the morning
   sessions at 9:00 am sharp.
 * Due to space limitations, only registered GeoSMART participants will be allowed
   to attend the tutorials and open working sessions.
-* Participants are expected to attend all scheduled activities. Contact {{ contact_email }}
+* Participants are expected to attend all scheduled activities. Contact [geohack@uw.edu](mailto:geohack@uw.edu)
   if any circumstances prevent you from attending.
 
 ## Accommodation
@@ -26,11 +27,13 @@
 * Guests traveling to Seattle should plan to arrive on October 22 to allow for the
   Monday morning start time of 8:30 am.
 
-## Meals
+## Meals and Beverages
 
 * Catered lunches, coffee, and snacks will be provided each day at the hackweek
-  training location.
+  training location. 
 * All participants are responsible for their own breakfasts and dinners.
+* We request participants bring their own refillable water bottle to the event.
+  A refilling station is available within Alder Hall.
 
 ## Travel
 
@@ -50,3 +53,14 @@
   uber/lyft you will meet the car in the 3rd floor parking lot for pick up.
 * Incurred travel costs for participants provided event support funds will be
   reconciled after the GeoSMART Hackweek event.
+
+## Health and Safety
+* While we will not require masking at this event some may feel more comfortable
+  bringing their own mask and wearing it. We will have some masks on hand for
+  anyone who needs one.
+* During the event, if you are feeling unwell or experiencing cold-like symptoms,
+  COVID tests will be available at the registration table. If you test positive,
+  we ask that you self-isolate the hotel where you will be able to join hackweek
+  activities virtually.
+* In the event of some unforeseen emergency, directions will be given via the
+  Slack #general channel and in person by the event support lead.
