@@ -25,7 +25,6 @@ __Upon completion you__:
 ```
 
 ### Slack Account
-
 All of our communication throughout the hackweek will be done using the
 {{ '[`{hackweek}` Slack workspace]({url})'.format(hackweek=hackweek, url=slack_workspace_url)}}.
 With your invite to the hackweek, you should also have received a separate
@@ -34,6 +33,16 @@ email to join the Slack workspace. Upon accepting the invite, please take a mome
 Having your name and picture with your Slack account helps us and your peers
 to identify you on Slack and builds a more personal community throughout
 the week.
+
+Once in the Slack workspace, please add the following channels to your profile:
+#2023-hackweek
+#2023-hackweek-projects
+#2023-hackweek-tech-help
+#2023-hackweek-social
+
+To find these channels, navigate to the home button icon in the left-hand menu > '+ Add channels' >
+'Browse channels' > select the 'join' icon on the far right as you hover over the channel name.
+
 
 ### GitHub Account
 
