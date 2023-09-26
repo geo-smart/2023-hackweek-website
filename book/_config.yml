@@ -16,7 +16,7 @@ parse:
     book_repo: "2023-hackweek-website"
     website_url: "https://geosmart.hackweek.io"
     jupyterhub_url: "https://hub.cryointhecloud.com"
-    slack_workspace_url: "https://INSERT_SLACK_URL"
+    slack_workspace_url: "https://geosmartworkspace.slack.com/archives/C05TRB3E2LV"
     docker_image: "https://INSERT_DOCKER_IMAGE_URL"
     contact_email: "geohack@uw.edu"
     dataset: "GeoSmart"
