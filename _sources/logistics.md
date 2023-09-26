@@ -62,5 +62,6 @@
   COVID tests will be available at the registration table. If you test positive,
   we ask that you self-isolate the hotel where you will be able to join hackweek
   activities virtually.
+* University of Washington guidelines relating to COVID are [available to review online](https://www.washington.edu/coronavirus/).
 * In the event of some unforeseen emergency, directions will be given via the
   Slack #general channel and in person by the event support lead.
