@@ -166,3 +166,27 @@ people:
     user_groups:
       - Technology Specialist
   # =============
+  - title: Irene Garousi-Nejad
+    avatar: https://avatars.githubusercontent.com/u/21225656?v=4
+    role: Research Scientist
+    organizations:  
+      - name: Consortium of Universities for the Advancement of Hydrologic Science, Inc. (CUAHSI)
+    bio: >
+    Irene supports CUAHSI's water science research and education activities and extends CUAHSI's 
+    capabilities in hydrologic modeling, geospatial climate and water data analysis, and cloud computing.  
+    She values open science and open data, recognizing their pivotal role in fostering transparency,
+    collaboration, and inclusivity within the scientific community. 
+    expertise:
+      - Physical Hydrology
+      - Hydroinformatics
+      - Snow Hydrology
+      - Cloud Computing
+      - Python, git
+    social:
+      - icon: github
+        icon_pack: fab
+        link: https://github.com/igarousi 
+    user_groups:
+      - Hackweek Helper
+      - Project Consultant
+  # =============
