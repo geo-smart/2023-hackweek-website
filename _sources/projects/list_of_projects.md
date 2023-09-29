@@ -1,7 +1,12 @@
 # List of Projects
 
-Here is where we will be listing the projects during the {{dates}} {{ hackweek }} hackweek:
+Here is our current list of project for our {{dates}} {{ hackweek }} hackweek:
 
-| Project Name (with link to GitHub repo) | slack channel | final presentation | 
+| Project Name (with link to GitHub repo) | Short Description | Project Lead(s) | 
 |:--------|:--------|:-----|
-|  |  |   |
+| [snowcover](https://github.com/geo-smart/snowcover) | The Normalized snow difference index has traditionally been used to identify snow in satellite imagery. In this project we will explore ML models to derive snow covered areas from satellite imagery and will validate them against ASO imagery. | Aji John |
+| [Snow-Extrapolation](https://github.com/geo-smart/Snow-Extrapolation) | Goal: Improve National Snow Model (NSM) prediction performance in the Sierra Nevada mountains through domain constraints and the exploration of different ML algorithms. | Ryan Johnson | 
+| [crunchy-snow](https://github.com/geo-smart/crunchy-snow) | Seasonal snow provides drinking water for billions, but current global measurements of snow depth lack adequate spatial and temporal resolution for effective resource management–especially in mountainous terrain. Recent work has demonstrated the potential to retrieve snow-depth measurements from Sentinel-1 synthetic aperture radar (SAR) backscatter data. However, comparisons with airborne lidar data suggest that existing algorithms fail to capture the full complexity of relationships between snow depth, terrain, vegetation, and SAR backscatter, the physics of which are poorly understood. We suggest that a neural network may be able to effectively learn these relationships and retrieve snow depth from SAR backscatter with improved accuracy. | Quinn Brencher, Eric Gagliano |
+| [spacetime-elevation](https://github.com/geo-smart/spacetime-elevation) | Using Gaussian Process regression to compute continuous surface change from spatially and temporally sparse elevation measurements (applications: glacier elevation changes, snow depth).  | Romain Hugonnet |
+| [swe_forecasting_prod](https://github.com/geo-smart/swe_forecasting_prod) | This project aims to develop a robust and scalable workflow for predicting snow water equivalent in the context of the western United States. This project leverages machine learning and geospatial analysis techniques to address the changing patterns of snowpacks in this region. | Ziheng Sun |
+| [ocean](https://github.com/geo-smart/ocean) | The Oceans Observatories Initiative has operated since 2014 generating a profoundly rich dataset, and at the same time a challenge in analysis and interpretation. This project explores how we get data in a usable form, how we assess the data and how we might apply it | Rob Fatland |
