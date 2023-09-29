@@ -68,7 +68,7 @@ team:
 schedule:
   !include book/schedule.yaml
 sponsors:
-  description: 'This event was made possible by the National Science Foundation (Awards #1829585, #2117834) and the eScience Institute in collaboration with CUAHSI and ESIP'
+  description: 'This event was made possible by the National Science Foundation (Awards #1829585, #2117834) and the eScience Institute in collaboration with CUAHSI and ESIP. Cloud computing infrastructure provided by CryoCloud.'
   organizations:
     - name: eScience Institute
       website: 'https://escience.washington.edu/'
@@ -82,6 +82,9 @@ sponsors:
     - name: ESIP
       website: 'https://www.esipfed.org/'
       logo_url: https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/thumbnails/image/esip-logo_0.png
+    - name: CryoCloud
+      website: 'https://cryointhecloud.com/'
+      logo_url: https://book.cryointhecloud.com/_static/logo.png
 footer:
   social:
     - icon: github
