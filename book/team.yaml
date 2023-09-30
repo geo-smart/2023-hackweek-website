@@ -166,3 +166,24 @@ people:
     user_groups:
       - Technology Specialist
   # =============
+  - title: Aji John
+    avatar: https://avatars.githubusercontent.com/u/602875?v=4
+    role: Postdoc
+    organizations:
+      - name: University of Washington
+    bio: >
+      Aji is a Postdoc in SEFS/CEE at University of Washington. Aji explores microclimatic patterns in forest understories,
+      studies phenology of wildflower meadows using high-resolution satellite imagery and mapping of snowcover (driver of flowering).
+      He also interested in developing workflow solutions to analyze large datasets in Cloud.
+    expertise:
+      - Software Engineering
+      - Python/R
+      - Cloud 
+      - Modeling
+    social:
+      - icon: github
+        icon_pack: fab
+        link: https://github.com/ajijohn
+    user_groups:
+      - Tutorial Lead
+  # =============
