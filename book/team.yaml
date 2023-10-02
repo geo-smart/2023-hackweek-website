@@ -166,3 +166,23 @@ people:
     user_groups:
       - Technology Specialist
   # =============
+  - title: Friedrich Knuth
+    avatar: https://staff.washington.edu/knuth/knuth.jpg
+    role: PhD Student
+    organizations:
+      - name: University of Washington
+    bio: >
+      Friedrich Knuth is a PhD student in the UW Hydrology and Hydrodynamics Program. 
+      His current research focuses on reconstructing the 3D evolution of mountain glaciers in response to climate forcing, 
+      using historical aerial photography and satellite imagery collected over the past century.
+    expertise:
+      - Software Development, Python
+      - GDAL, xarray, git
+      - Photogrammetry, Gaussian Processes
+    social:
+      - icon: github
+        icon_pack: fab
+        link: https://github.com/friedrichknuth
+    user_groups:
+      - Hackweek Organizer
+  # =============
