@@ -165,7 +165,6 @@ people:
         link: https://github.com/jomey
     user_groups:
       - Technology Specialist
-  # =============
   - title: Aji John
     avatar: https://avatars.githubusercontent.com/u/602875?v=4
     role: Postdoc
@@ -186,4 +185,22 @@ people:
         link: https://github.com/ajijohn
     user_groups:
       - Tutorial Lead
-  # =============
+  - title: Friedrich Knuth
+    avatar: https://staff.washington.edu/knuth/knuth_460x460.jpg
+    role: PhD Student
+    organizations:
+      - name: University of Washington
+    bio: >
+      Friedrich Knuth is a PhD student in the UW Hydrology and Hydrodynamics Program. 
+      His current research focuses on reconstructing the 3D evolution of mountain glaciers in response to climate forcing, 
+      using historical aerial photography and satellite imagery collected over the past century.
+    expertise:
+      - Software Development, Python
+      - GDAL, xarray, git
+      - Photogrammetry, Gaussian Processes
+    social:
+      - icon: github
+        icon_pack: fab
+        link: https://github.com/friedrichknuth
+    user_groups:
+      - Hackweek Organizer
