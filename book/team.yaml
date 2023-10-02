@@ -230,3 +230,22 @@ people:
         link: https://github.com/friedrichknuth
     user_groups:
       - Hackweek Organizer
+  # =============
+  - title: Steven Pestana
+    avatar: https://avatars.githubusercontent.com/u/650301?v=4
+    role: Research Scientist
+    organizations:
+      - name: University of Washington
+    bio: >
+      Steven Pestana is a research scientist and instructor in the Civil and Environmental Engineering department at UW. His research focuses on remote sensing and hydrology of snowy mountain watersheds.
+    expertise:
+      - snow hydrology
+      - remote sensing
+      - python, xarray, git
+    social:
+      - icon: github
+        icon_pack: fab
+        link: https://github.com/spestana
+    user_groups:
+      - Hackweek Organizer
+# =============
