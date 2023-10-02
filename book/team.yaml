@@ -231,7 +231,7 @@ people:
     user_groups:
       - Hackweek Organizer
   # =============
- - title: Steven Pestana
+  - title: Steven Pestana
     avatar: https://avatars.githubusercontent.com/u/650301?v=4
     role: Research Scientist
     organizations:
