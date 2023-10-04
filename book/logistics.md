@@ -20,10 +20,6 @@
 
 ## Accommodation
 
-* A block of hotel rooms will be requested for participants traveling to the
-  GeoSMART Hackweek from outside the Seattle area.
-* Once the registration code for the hotel rooms is available, registered participants
-  will be notified by email, and the details posted on this page.
 * Guests traveling to Seattle should plan to arrive on October 22 to allow for the
   Monday morning start time of 8:30 am.
 
