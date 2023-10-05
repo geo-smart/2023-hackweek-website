@@ -20,7 +20,7 @@ parse:
     docker_image: "https://INSERT_DOCKER_IMAGE_URL"
     contact_email: "geohack@uw.edu"
     dataset: "GeoSmart"
-    anon_reporting_url: "https://INSERT_FORM_LINK"
+    anon_reporting_url: "https://forms.gle/JnHPF7R6L1oE9u3g9"
     project_spreadsheet_url: "https://INSERT_GOOGLE_SHEET"
   myst_enable_extensions:
     # Defaults
