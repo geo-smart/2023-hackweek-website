@@ -20,8 +20,8 @@ parse:
     docker_image: "https://INSERT_DOCKER_IMAGE_URL"
     contact_email: "geohack@uw.edu"
     dataset: "GeoSmart"
-    anon_reporting_url: "https://INSERT_FORM_LINK"
     project_spreadsheet_url: "https://docs.google.com/forms/d/e/1FAIpQLSf1oHsbNSwxFVu54KujUi6zpwt_RNxS9Bvod18f-CFyVKFQCA/viewform"
+    anon_reporting_url: "https://forms.gle/JnHPF7R6L1oE9u3g9"
   myst_enable_extensions:
     # Defaults
     - dollarmath
