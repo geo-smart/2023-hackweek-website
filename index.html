@@ -54,8 +54,8 @@
                      class="navbar-collapse collapse  justify-content-lg-end me-lg-3">
                     <ul class="nav navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link scrollto" href="#about-section">
-                                About
+                            <a class="nav-link scrollto" href="#schedule">
+                                Schedule
                             </a>
                         </li>
                         <li class="nav-item">
@@ -64,8 +64,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scrollto" href="#schedule">
-                                Schedule
+                            <a class="nav-link scrollto" href="#about-section">
+                                About
                             </a>
                         </li>
                         <li class="nav-item">
@@ -116,101 +116,20 @@
         <!--//hero-text-block-->
     </div>
     <!--//container-->
-
 </div>
 <!--//hero-block-->
 
-<section id="about-section" class="about-section section theme-bg-light">
-    <div class="container">
-        <h3 class="section-heading text-center mb-3">
-            About GeoSmart Hackweek
-        </h3>
-        <div class="section-intro single-col-max mx-auto mb-4">
-            <a href="https://escience.washington.edu/using-data-science/hackweeks/">Hackweeks</a> are participant-driven events that strive to create welcoming spaces for participants to learn new things, build community and gain hands-on experience with collaboration and team science. </br></br> The 2023 GeoSmart Hackweek will focus primarily on project work, with an emphasis on applications in Hydrology and Cryosphere science. Project ideas will be shared in advance. There will be space for new ideas to emerge during the Hackweek based on participant engagement. We will provide about 5 hours of data science tutorials spread over the week, including space for participant-led tutorials. </br></br> During the week, participants will have the opportunity to collaborate with their peers, share ideas, and work on projects leading to exciting results and discoveries. This event is open to all experience levels in machine learning knowledge, so whether you're a seasoned pro or just starting out, you're welcome to join. However, to benefit most from the event, prior knowledge of Python programming and data handling using common Python packages (pandas, xarray, etc.) is desired. See the event Jupyter book for more details. </br></br> Preliminary project ideas include streamflow prediction from SAR-derived snowmelt timing or snow data, predicting snow water equivalent with machine learning, glacier dh/dt from DEMs using geospatial time series analysis, derivation of snow covered areas from satellite imagery, derivation of snow depth from SAR backscatter and lidar-derived snow data, predicting river discharge from seismic waves and others! Join one of these projects or pitch your own project idea at the event!
-        </div>
-        <div class="section-intro single-col-max mx-auto mb-4">
-            <div class="accordion" id="expandDescription">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                  <button class="accordion-button"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#collapseList"
-                          aria-expanded="true"
-                          aria-controls="collapseList">
-                      Hackweek activities will include:
-                  </button>
-                </h2>
-                <div id="collapseList"
-                     class="accordion-collapse collapse show"
-                     aria-labelledby="headingOne"
-                     data-bs-parent="#headingOne">
-                  <div class="accordion-body">
-                        <ul>
-                            <i><strong>
-                                Brainstorming sessions
-                            </strong></i>: participants can join an existing project or come up with ideas for projects that can be implemented using machine learning.
-                        </ul>
-                        <ul>
-                            <i><strong>
-                                Tutorials
-                            </strong></i>: learn about common machine learning workflows, computational environments, reproducibility, and workflow management.
-                        </ul>
-                        <ul>
-                            <i><strong>
-                                Data preparation
-                            </strong></i>: explore datasets to identify and engineer relevant variables that can be used to build machine learning models.
-                        </ul>
-                        <ul>
-                            <i><strong>
-                                Models
-                            </strong></i>: work on building machine learning models using popular libraries such as TensorFlow, PyTorch, or scikit-learn.
-                        </ul>
-                        <ul>
-                            <i><strong>
-                                Model validation and optimization
-                            </strong></i>: validate models using cross-validation and other techniques to ensure that models are robust and accurate; fine-tuning hyperparameters, using feature engineering techniques, or other methods.
-                        </ul>
-                        <ul>
-                            <i><strong>
-                                Presentations
-                            </strong></i>: participants can share the results from projects to receive feedback from their peers.
-                        </ul>
-                        <ul>
-                            <i><strong>
-                                Networking
-                            </strong></i>: facilitated opportunities for networking and community building will be provided.
-                        </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
-
-        <div id="countdown-intro" class="event-countdown text-center mb-4">
-            <h4 class="countdown-intro mb-2 text-center">
-                2023 Event Starts In:
-            </h4>
-            <div id="countdown-box"
-                 class="countdown-box"
-                 data-start-date="23 October/2023">
-            </div>
-        </div>
-    </div>
-
-    <div class="media-block theme-bg-primary py-5">
-        <div class="container">
-            <h4 class="text-white text-center mb-3">
-                Information for Applicants
-            </h4>
-            <div
-                class="section-intro text-center single-col-max mx-auto text-white mb-3">
-                GeoSmart Hackweek will take place during October 23-27, 2023, at the University of Washington in Seattle, and remotely online. We anticipate about 70% of participants to be attending in person, with 30% joining online. Applications (via the red button at the top right of this webpage) are open until September 15, 2023!
-            </div>
+<section id="countdown" class="section theme-bg-light pt-4 pb-3">
+    <div id="countdown-intro" class="event-countdown text-center">
+        <h4 class="countdown-intro mb-2 text-center">
+            2023 Event Starts In:
+        </h4>
+        <div id="countdown-box"
+             class="countdown-box"
+             data-start-date="23 October/2023">
         </div>
     </div>
 </section>
-<!--//about-section-->
 <section id="schedule" class="schedule-section section">
     <div class="container">
         <h3 class="section-heading text-center mb-1">Schedule</h3>
@@ -220,7 +139,9 @@
             <a href="https://www.timeanddate.com/time/map/" target="_blank">
                 Time Zone Map
             </a>
-            to figure out times in your location.</h4>
+            to figure out times in your location. 
+            Tutorials will be located in 
+            <a href= "https://hfs.uw.edu/Meeting-Spaces/Alder-Auditorium" target="_blank"> Alder Auditorium.</a></h4>
         <!-- Nav tabs -->
         <ul class="schedule-nav nav nav-pills nav-fill" id="myTab"
             role="tablist">
@@ -2344,6 +2265,83 @@
     <!--//container-->
 </section>
 <!--//team-->
+
+<div class="container">
+    <hr>
+</div>
+
+<!--//about-section-->
+<section id="about-section" class="about-section section">
+    <div class="container">
+        <h3 class="section-heading text-center mb-3">
+            About GeoSmart Hackweek
+        </h3>
+        <div class="section-intro single-col-max mx-auto mb-4">
+            <a href="https://escience.washington.edu/using-data-science/hackweeks/">Hackweeks</a> are participant-driven events that strive to create welcoming spaces for participants to learn new things, build community and gain hands-on experience with collaboration and team science. </br></br> The 2023 GeoSmart Hackweek will focus primarily on project work, with an emphasis on applications in Hydrology and Cryosphere science. Project ideas will be shared in advance. There will be space for new ideas to emerge during the Hackweek based on participant engagement. We will provide about 5 hours of data science tutorials spread over the week, including space for participant-led tutorials. </br></br> During the week, participants will have the opportunity to collaborate with their peers, share ideas, and work on projects leading to exciting results and discoveries. This event is open to all experience levels in machine learning knowledge, so whether you're a seasoned pro or just starting out, you're welcome to join. However, to benefit most from the event, prior knowledge of Python programming and data handling using common Python packages (pandas, xarray, etc.) is desired. See the event Jupyter book for more details. </br></br> Preliminary project ideas include streamflow prediction from SAR-derived snowmelt timing or snow data, predicting snow water equivalent with machine learning, glacier dh/dt from DEMs using geospatial time series analysis, derivation of snow covered areas from satellite imagery, derivation of snow depth from SAR backscatter and lidar-derived snow data, predicting river discharge from seismic waves and others! Join one of these projects or pitch your own project idea at the event!
+        </div>
+            <div class="section-intro single-col-max mx-auto mb-4">
+                <div class="accordion" id="expandDescription">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapseList"
+                                    aria-expanded="true"
+                                    aria-controls="collapseList">
+                                Hackweek activities will include:
+                            </button>
+                        </h2>
+                        <div id="collapseList"
+                             class="accordion-collapse collapse show"
+                             aria-labelledby="headingOne"
+                             data-bs-parent="#headingOne">
+                            <div class="accordion-body">
+                                    <ul>
+                                        <i><strong>
+                                            Brainstorming sessions
+                                        </strong></i>: participants can join an existing project or come up with ideas for projects that can be implemented using machine learning.
+                                    </ul>
+                                    <ul>
+                                        <i><strong>
+                                            Tutorials
+                                        </strong></i>: learn about common machine learning workflows, computational environments, reproducibility, and workflow management.
+                                    </ul>
+                                    <ul>
+                                        <i><strong>
+                                            Data preparation
+                                        </strong></i>: explore datasets to identify and engineer relevant variables that can be used to build machine learning models.
+                                    </ul>
+                                    <ul>
+                                        <i><strong>
+                                            Models
+                                        </strong></i>: work on building machine learning models using popular libraries such as TensorFlow, PyTorch, or scikit-learn.
+                                    </ul>
+                                    <ul>
+                                        <i><strong>
+                                            Model validation and optimization
+                                        </strong></i>: validate models using cross-validation and other techniques to ensure that models are robust and accurate; fine-tuning hyperparameters, using feature engineering techniques, or other methods.
+                                    </ul>
+                                    <ul>
+                                        <i><strong>
+                                            Presentations
+                                        </strong></i>: participants can share the results from projects to receive feedback from their peers.
+                                    </ul>
+                                    <ul>
+                                        <i><strong>
+                                            Networking
+                                        </strong></i>: facilitated opportunities for networking and community building will be provided.
+                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</section>
+
+<!--//sponsors-section-->
 <section id="sponsors-section" class="sponsors-section section theme-bg-light">
     <div class="container">
         <h3 class="section-heading text-center mb-3">Our Sponsors</h3>
@@ -2381,7 +2379,6 @@
     </div>
     <!--//container-->
 </section>
-<!--//sponsors-section-->
 
 <footer class="footer py-5 theme-bg-primary">
     <div class="container text-center">
