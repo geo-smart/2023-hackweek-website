@@ -61,8 +61,6 @@ about:
           building will be provided.
 #  learn_more: https://escience.washington.edu/using-data-science/hackweeks
 applicant_info: GeoSmart Hackweek will take place during October 23-27, 2023, at the University of Washington in Seattle, and remotely online. 
-  We anticipate about 70% of participants to be attending in person, with 30% joining online. 
-  Applications (via the red button at the top right of this webpage) are open until September 15, 2023!
 team:
   !include book/team.yaml
 schedule:
