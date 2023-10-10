@@ -67,8 +67,8 @@
                      class="navbar-collapse collapse  justify-content-lg-end me-lg-3">
                     <ul class="nav navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link scrollto" href="#about-section">
-                                About
+                            <a class="nav-link scrollto" href="#schedule">
+                                Schedule
                             </a>
                         </li>
                         <li class="nav-item">
@@ -77,8 +77,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scrollto" href="#schedule">
-                                Schedule
+                            <a class="nav-link scrollto" href="#about-section">
+                                About
                             </a>
                         </li>
                         <li class="nav-item">
@@ -135,103 +135,20 @@
         <!--//hero-text-block-->
     </div>
     <!--//container-->
-
 </div>
 <!--//hero-block-->
 
-<section id="about-section" class="about-section section theme-bg-light">
-    <div class="container">
-        <h3 class="section-heading text-center mb-3">
-            About {{ cookiecutter.name }}
-        </h3>
-        <div class="section-intro single-col-max mx-auto mb-4">
-            {{ cookiecutter.about.description }}
-        </div>
-
-        {%- if 'expanded_description' in cookiecutter.about %}
-        <div class="section-intro single-col-max mx-auto mb-4">
-            <div class="accordion" id="expandDescription">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                  <button class="accordion-button"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#collapseList"
-                          aria-expanded="true"
-                          aria-controls="collapseList">
-                      {{ cookiecutter.about.expanded_description.header }}
-                  </button>
-                </h2>
-                <div id="collapseList"
-                     class="accordion-collapse collapse show"
-                     aria-labelledby="headingOne"
-                     data-bs-parent="#headingOne">
-                  <div class="accordion-body">
-                    {%- for item in cookiecutter.about.expanded_description.list %}
-                        <ul>
-                            <i><strong>
-                                {{ item.header }}
-                            </strong></i>: {{ item.description }}
-                        </ul>
-                    {%- endfor %}
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
-        {%- endif %}
-
-        {%- if 'learn more' in cookiecutter.about  %}
-        <div class="about-cta text-center mb-4">
-            <a class="btn btn-secondary btn-lg"
-               href="{{ cookiecutter.about.learn_more }}"
-               target="_blank">
-                Learn about "Hackweeks"
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-        </div>
-        {%- endif %}
-
-        {%- if 'links' in cookiecutter.about %}
-            <div class="hero-cta text-center mb-4">
-                <h4 class="mb-3 text-center">
-                    Past Events:
-                </h4>
-                {%- for link in cookiecutter.about.links %}
-                    <a class="btn btn-primary btn-lg mb-3 mx-2"
-                       href="{{ link.url }}"
-                        {{ 'target="_blank"' if link.new_window == 'True' else '' }}
-                    >
-                        {{ link.title }}
-                    </a>
-                {%- endfor %}
-            </div>
-        {%- endif %}
-
-        <div id="countdown-intro" class="event-countdown text-center mb-4">
-            <h4 class="countdown-intro mb-2 text-center">
-                {{ cookiecutter.banner.year }} Event Starts In:
-            </h4>
-            <div id="countdown-box"
-                 class="countdown-box"
-                 data-start-date="{{ cookiecutter.banner.start_date }}/{{ cookiecutter.banner.year}}">
-            </div>
-        </div>
-    </div>
-
-    <div class="media-block theme-bg-primary py-5">
-        <div class="container">
-            <h4 class="text-white text-center mb-3">
-                Information for Applicants
-            </h4>
-            <div
-                class="section-intro text-center single-col-max mx-auto text-white mb-3">
-                {{cookiecutter.applicant_info}}
-            </div>
+<section id="countdown" class="section theme-bg-light pt-4 pb-3">
+    <div id="countdown-intro" class="event-countdown text-center">
+        <h4 class="countdown-intro mb-2 text-center">
+            {{ cookiecutter.banner.year }} Event Starts In:
+        </h4>
+        <div id="countdown-box"
+             class="countdown-box"
+             data-start-date="{{ cookiecutter.banner.start_date }}/{{ cookiecutter.banner.year}}">
         </div>
     </div>
 </section>
-<!--//about-section-->
 
 {%- if cookiecutter.schedule %}
 <section id="schedule" class="schedule-section section">
@@ -243,7 +160,9 @@
             <a href="https://www.timeanddate.com/time/map/" target="_blank">
                 Time Zone Map
             </a>
-            to figure out times in your location.</h4>
+            to figure out times in your location. 
+            Tutorials will be located in 
+            <a href= "https://hfs.uw.edu/Meeting-Spaces/Alder-Auditorium" target="_blank"> Alder Auditorium.</a></h4>
         {%- if cookiecutter.schedule["tabs"] %}
         <!-- Nav tabs -->
         <ul class="schedule-nav nav nav-pills nav-fill" id="myTab"
@@ -535,6 +454,98 @@
 <!--//team-->
 {%- endif %}
 
+<div class="container">
+    <hr>
+</div>
+
+<!--//about-section-->
+<section id="about-section" class="about-section section">
+    <div class="container">
+        <h3 class="section-heading text-center mb-3">
+            About {{ cookiecutter.name }}
+        </h3>
+        <div class="section-intro single-col-max mx-auto mb-4">
+            {{ cookiecutter.about.description }}
+        </div>
+
+        {%- if 'expanded_description' in cookiecutter.about %}
+            <div class="section-intro single-col-max mx-auto mb-4">
+                <div class="accordion" id="expandDescription">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapseList"
+                                    aria-expanded="true"
+                                    aria-controls="collapseList">
+                                {{ cookiecutter.about.expanded_description.header }}
+                            </button>
+                        </h2>
+                        <div id="collapseList"
+                             class="accordion-collapse collapse show"
+                             aria-labelledby="headingOne"
+                             data-bs-parent="#headingOne">
+                            <div class="accordion-body">
+                                {%- for item in cookiecutter.about.expanded_description.list %}
+                                    <ul>
+                                        <i><strong>
+                                            {{ item.header }}
+                                        </strong></i>: {{ item.description }}
+                                    </ul>
+                                {%- endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {%- endif %}
+
+        {%- if 'learn more' in cookiecutter.about  %}
+            <div class="about-cta text-center mb-4">
+                <a class="btn btn-secondary btn-lg"
+                   href="{{ cookiecutter.about.learn_more }}"
+                   target="_blank">
+                    Learn about "Hackweeks"
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        {%- endif %}
+
+        {%- if 'links' in cookiecutter.about %}
+            <div class="hero-cta text-center mb-4">
+                <h4 class="mb-3 text-center">
+                    Past Events:
+                </h4>
+                {%- for link in cookiecutter.about.links %}
+                    <a class="btn btn-primary btn-lg mb-3 mx-2"
+                       href="{{ link.url }}"
+                        {{ 'target="_blank"' if link.new_window == 'True' else '' }}
+                    >
+                        {{ link.title }}
+                    </a>
+                {%- endfor %}
+            </div>
+        {%- endif %}
+
+    </div>
+
+    {%- if 'applicant_info' in cookiecutter %}
+        <div class="media-block theme-bg-primary py-5">
+            <div class="container">
+                <h4 class="text-white text-center mb-3">
+                    Information for Applicants
+                </h4>
+                <div
+                    class="section-intro text-center single-col-max mx-auto text-white mb-3">
+                    {{cookiecutter.applicant_info}}
+                </div>
+            </div>
+        </div>
+    {%- endif %}
+</section>
+
+<!--//sponsors-section-->
 {%- if cookiecutter.sponsors %}
 <section id="sponsors-section" class="sponsors-section section theme-bg-light">
     <div class="container">
@@ -561,7 +572,6 @@
     </div>
     <!--//container-->
 </section>
-<!--//sponsors-section-->
 {%- endif %}
 
 <footer class="footer py-5 theme-bg-primary">

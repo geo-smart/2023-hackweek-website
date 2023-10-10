@@ -19,10 +19,10 @@ about:
     welcoming spaces for participants to learn new things, build community and
     gain hands-on experience with collaboration and team science.
     </br></br>
-    The 2023 GeoSmart Hackweek will focus primarily on project work, with an emphasis on applications in Hydrology and Cryosphere science. 
-    Project ideas will be shared in advance. 
-    There will be space for new ideas to emerge during the Hackweek based on participant engagement. 
-    We will provide about 5 hours of data science tutorials spread over the week, including space for participant-led tutorials. 
+    The 2023 GeoSmart Hackweek will focus primarily on project work, with an emphasis on applications in Hydrology and Cryosphere science.
+    Project ideas will be shared in advance.
+    There will be space for new ideas to emerge during the Hackweek based on participant engagement.
+    We will provide about 5 hours of data science tutorials spread over the week, including space for participant-led tutorials.
     </br></br>
     During the week, participants will have the opportunity to collaborate with
     their peers, share ideas, and work on projects leading to exciting results and
@@ -30,7 +30,7 @@ about:
     knowledge, so whether you're a seasoned pro or just starting out, you're
     welcome to join. However, to benefit most from the event, prior knowledge of
     Python programming and data handling using common Python packages (pandas,
-    xarray, etc.) is desired. See the event Jupyter book for more details. 
+    xarray, etc.) is desired. See the event Jupyter book for more details.
     </br></br>
     Preliminary project ideas include streamflow prediction from SAR-derived snowmelt timing or snow data, predicting snow water equivalent with machine learning, glacier dh/dt from DEMs using geospatial time series analysis, derivation of snow covered areas from satellite imagery, derivation of snow depth from SAR backscatter and lidar-derived snow data, predicting river discharge from seismic waves and others! Join one of these projects or pitch your own project idea at the event!
   expanded_description:
@@ -60,9 +60,6 @@ about:
         description: facilitated opportunities for networking and community
           building will be provided.
 #  learn_more: https://escience.washington.edu/using-data-science/hackweeks
-applicant_info: GeoSmart Hackweek will take place during October 23-27, 2023, at the University of Washington in Seattle, and remotely online. 
-  We anticipate about 70% of participants to be attending in person, with 30% joining online. 
-  Applications (via the red button at the top right of this webpage) are open until September 15, 2023!
 team:
   !include book/team.yaml
 schedule:
