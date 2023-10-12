@@ -226,3 +226,21 @@ people:
     user_groups:
       - Hackweek Organizer
 # =============
+  - title: Morgan Sanger
+    avatar: 
+    role: PhD Student
+    organizations:
+      - name: University of Washington
+    bio: >
+      Morgan Sanger is a PhD Student in the Civil and Environmental Engineering department at UW. Her research focuses on mechanics-informed machine learning for improved geohazard modeling and risk management.
+    expertise:
+      - geotechnical engineering, geohazards
+      - python
+      - machine learning
+    social:
+      - icon: github
+        icon_pack: fab
+        link: https://github.com/sangermd
+    user_groups:
+      - Hackweek Helper
+# =============
