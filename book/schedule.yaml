@@ -81,6 +81,7 @@ tabs:
     description: null
     time: 10:15 - 12:00
   - title: LUNCH
+    time: 12:00 - 13:00
     description: ''
   - title: Group photo
     description: null
