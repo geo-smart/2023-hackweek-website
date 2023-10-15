@@ -14,7 +14,7 @@ tabs:
     description: Getting connected to our shared computational resources.
     time: 9:15 - 10:45
     leads:
-      - Tasha Snow
+    - Tasha Snow
   - title: BREAK
     description: null
     time: 10:45 - 11:00
@@ -62,7 +62,7 @@ tabs:
     description: Introducing tree-based methods
     time: 13:00 - 14:00
     leads:
-      - Ibrahim Olalekan Alabi
+    - Ibrahim Olalekan Alabi
   - title: Project Work
     description: null
     time: 14:00 - 17:00
