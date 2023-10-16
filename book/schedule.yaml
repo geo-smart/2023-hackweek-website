@@ -5,54 +5,50 @@ tabs:
   contents:
   - title: Intro and welcome
     description: Getting to know each other setting the stage for our work together.
-    time: 8:30 - 9:30
+    time: 8:30 - 9:15
     leads:
     - Anthony Arendt
     - Nicoleta Cristea
     - Charley Haley
-  - title: ML Workflows
-    description: An overview of the primary stages of typical Machine Learning workflows
-      including data preparation, model selection, training, and visualization.
-    time: 9:30 - 10:30
+  - title: CryoCloud and Jupyter Notebooks
+    description: Getting connected to our shared computational resources.
+    time: 9:15 - 10:45
     leads:
-    - Andrew Bennett
+    - Tasha Snow
   - title: BREAK
     description: null
-    time: 10:30 - 11:00
-  - title: Intro to Projects
-    description: Overview of projects for this hackweek and how we will gather in
-      small groups.
-    time: 11:00 - 12:00
+    time: 10:45 - 11:00
+  - title: Introduction to machine learning
+    description: An overview of machine learning and the primary stages of typical Machine Learning workflows
+      including data preparation, model selection, training, and visualization.
+    time: 11:00 - 12:30
     leads:
-    - Charley Haley
+    - Valentina Staneva
   - title: LUNCH
     description: null
     time: 12:00 - 13:00
-  - title: Project Team Formation
-    description: Choosing our project team for the week.
-    time: 13:00 - 13:30
+  - title: Intro to Projects
+    description: Overview of projects for this hackweek and how we will gather in
+      small groups. Choosing our project team for the week.
+    time: 13:00 - 14:00
     leads:
-    - Charley Haley
+    - Charley Haley, Steven Pestana
   - title: Project Work
     description: null
     time: 14:00 - 17:00
 - title: Day 2
   date: Tuesday 24 October
   contents:
-  - title: GeoWeaver
-    description: Introduction to a management tool to streamline Machine Learning
-      workflows.
+  - title: Approaches to Working in Teams
+    description: Discussion of best practices for collaborative work. Reflecting on the opportunities and challenges of small group work.
     time: 8:30 - 9:00
     leads:
-    - Ziheng Sun
-  - title: Approaches to Working in Teams
-    description: Reflecting on the opportunities and challenges of small group work.
-    time: 9:00 - 9:30
-    leads:
     - Naomi Alterman
-  - title: Open time for tutorial Q&A
-    description: null
-    time: 9:30 - 10:00
+  - title: ML methods for regression problems Part 1
+    description: Introducing neural networks
+    time: 9:00 - 10:00
+    leads:
+    - Ryan Johnson
   - title: BREAK
     description: null
     time: 10:00 - 10:30
@@ -62,58 +58,53 @@ tabs:
   - title: LUNCH
     description: null
     time: 12:00 - 13:00
+  - title: ML methods for regression problems Part 2
+    description: Introducing tree-based methods
+    time: 13:00 - 14:00
+    leads:
+    - Ibrahim Olalekan Alabi
   - title: Project Work
     description: null
-    time: 13:00 - 16:00
+    time: 14:00 - 17:00
 - title: Day 3
   date: Wednesday 25 October
   contents:
-  - title: Computational Resources for ML
-    description: Guidance on deploying Machine Learning workflows on cloud computing
-      infrastructure.
-    time: 8:30 - 9:00
+  - title: ML Workflow Management -  GeoWEAVER
+    description: Guidance on managing reproducible ML workflows.
+    time: 8:30 - 9:45
     leads:
-    - TBD
-  - title: Open time for tutorial Q&A
+    - Ziheng Sun
+  - title: BREAK
     description: null
-    time: 9:00 - 9:30
+    time: 9:45 - 10:15
+  - title: Project work
+    description: null
+    time: 10:15 - 12:00
+  - title: LUNCH
+    time: 12:00 - 13:00
+    description: ''
+  - title: Group photo
+    description: null
+    time: 13:00 - 13:30
+  - title: Project Work
+    description: ''
+    time: 13:30 - 16:00
+    leads:
+    - ''
+- title: Day 4
+  date: Thursday 26 October
+  contents:
+  - title: ML for classification
+    description: Using ML methods for classification purposes.
+    time: 8:30 - 9:30
+    leads:
+    - Aji John
   - title: BREAK
     description: null
     time: 9:30 - 10:00
   - title: Project Work
     description: null
     time: 10:00 - 12:00
-  - title: LUNCH
-    description: ''
-    time: 12:00 - 13:00
-    leads:
-    - ''
-  - title: Project Work
-    description: ''
-    time: 13:00 - 16:00
-    leads:
-    - ''
-- title: Day 4
-  date: Thursday 26 October
-  contents:
-  - title: AI Ethics
-    description: Group discussion on ethical considerations of AI development including
-      cultural considerations, awareness of bias, and other themes.
-    time: 8:30 - 9:00
-    leads:
-    - TBD
-  - title: Contributing to Open Source
-    description: Best practices for contributing to community software; exploration
-      of community alignment around ML geoscience software.
-    time: 9:30 - 10:00
-    leads:
-    - Joachim Meyer
-  - title: BREAK
-    description: null
-    time: 10:00 - 10:30
-  - title: Project Work
-    description: null
-    time: 10:30 - 12:00
   - title: LUNCH
     description: null
     time: 12:00 - 13:00
@@ -123,18 +114,16 @@ tabs:
 - title: Day 5
   date: Friday 27 October
   contents:
-  - title: Ideas for Community Building
-    description: Setting a course for continued engagement with a ML geoscience community
+  - title: Ideas for Community Building and Open Science Part 1
+    description: Setting a course for continued engagement with CUAHSI and the ML geoscience community
       of practice.
     time: 8:30 - 9:00
     leads:
-    - Anthony Arendt
-  - title: Future Hackweeks
-    description: Designing curriculum and project work for a 2024 GeoSMART hackweek.
-    time: 9:00 - 9:30
-    leads:
-    - Nicoleta Cristea
-  - title: BREAK
+    - Tony Castronova, Irene Garoussi, Anthony Arendt, Nicoleta Cristea
+  - title: Project wrap-up
+    description: null
+    time: 9:00 - 10:00
+  - title: BREAK / FOCUS GROUP
     description: null
     time: 10:00 - 10:30
   - title: Sharing Project Outcomes Part 1
@@ -143,17 +132,17 @@ tabs:
     leads:
     - Nicoleta Cristea
     - Anthony Arendt
-  - title: Hackweek Survey
-    description: Complete a survey providing us with feedback for improving our program.
-    time: 10:30 - 11:00
-    leads:
-    - Mark Welden-Smith
   - title: LUNCH
     description: null
     time: 12:00 - 13:00
+  - title: Hackweek Survey
+    description: Complete a survey providing us with feedback for improving our program.
+    time: 13:00 - 13:30
+    leads:
+    - Mark Welden-Smith
   - title: Sharing Project Outcomes Part 2
     description: An opportunity to show what we accomplished during the week.
-    time: 13:00 - 15:00
+    time: 13:30 - 15:30
     leads:
     - Nicoleta Cristea
     - Anthony Arendt
