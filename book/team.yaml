@@ -225,7 +225,7 @@ people:
         link: https://github.com/spestana
     user_groups:
       - Hackweek Organizer
-# =============
+  # =============
   - title: Morgan Sanger
     avatar: https://avatars.githubusercontent.com/u/121844474?v=4
     role: PhD Student
@@ -243,3 +243,22 @@ people:
         link: https://github.com/sangermd
     user_groups:
       - Hackweek Helper
+  # =============
+  - title: Ziheng Sun
+    avatar: https://geo-smart.github.io/assets/team/zs.jpeg
+    role: Research Scientist
+    organizations:
+      - name: George Mason University
+    bio: >
+      Dr. Ziheng Sun is a research scientist at George Mason University. His research interests are harnessing cutting-edge technologies like artificial intelligence and high-performance computing, to answer vital questions in the realms of cryospheric and climate sciences.
+    expertise:
+      - earth artificial intelligence
+      - cryosphere & atmosphere
+      - scientific workflow
+      - high performance computing
+    social:
+      - icon: github
+        icon_pack: fab
+        link: https://github.com/ZihengSun
+    user_groups:
+      - Tutorial Lead
