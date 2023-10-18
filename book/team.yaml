@@ -53,6 +53,24 @@ people:
     user_groups:
       - Lead Hackweek Organizer
   # =============
+  - title: Mark Welden-Smith
+    avatar: https://avatars.githubusercontent.com/u/137837140
+    role: Program Manager
+    organizations:
+      - name: eScience Institute
+    bio: >
+      Mark is the Program Manager for Community Engagement at the eScience Institute. His career has been spent with higher education and nonprofit organizations, most recently at the University of California, Santa Cruz as the Associate Director of Marketing, Events, and Technology for the Office of Undergraduate Admissions. Mark graduated from Southern Cross University (1999) with a BA in Communications and Media Production.
+    expertise:
+      - Project management
+      - Community building
+      - Event planning
+    social:
+      - icon: github
+        icon_pack: fab
+        link: https://github.com/markweldensmith
+    user_groups:
+      - Program Manager
+  # =============
   - title: Charley Haley
     avatar: https://avatars.githubusercontent.com/u/70242677?v=4
     role: Participant Interaction and Collaboration Architect
@@ -262,3 +280,75 @@ people:
         link: https://github.com/ZihengSun
     user_groups:
       - Tutorial Lead
+  # =============
+  - title: Tasha Snow
+    avatar: https://avatars.githubusercontent.com/u/12904976?v=4
+    role: Postdoctoral Researcher
+    organizations:
+      - name: Colorado School of Mines
+    bio: Tasha is a postdoc at the Colorado School of Mines working to develop new ways of detecting ocean heat transport and glacier-ocean interactions with remote sensing (especially thermal infrared). In her research, she also works on cloud-based, open-sourced workflows for advancing data integration and machine learning techniques.
+    expertise:
+      - remote sensing
+      - ice-ocean interaction
+      - machine learning
+      - open science
+      - cloud-computing
+    social:
+      - icon: github
+        icon_pack: fab
+        link: https://github.com/tsnow03
+    user_groups:
+      - CryoCloud Lead
+      - Tutorial Lead
+  # =============
+  - title: Ann Nykamp
+    avatar: http://escience.washington.edu/wp-content/uploads/2019/01/Ann-and-Dubs-2.jpg
+    role: Grants Manager
+    organizations:
+      - name: eScience Institute
+    bio: Ann is the eScience Institute's Grants Manager. Prior to joining eScience in 2018, Ann was a research coordinator and grant specialist for the University of Washington's Child Health Institute, the School of Dentistry, and the Institute for Health Metrics & Evaluation. Her skills include proposal development, financial reporting, fiscal oversight, and interpreting University and sponsor guidelines. 
+    expertise:
+      - hackweek organization and budgeting
+    social:
+      - icon: github
+        icon_pack: fab
+        link: 
+    user_groups:
+      - Grants Manager
+  # =============
+  - title: Ibrahim Olalekan Alabi
+    avatar: https://avatars.githubusercontent.com/u/72909059?v=4
+    role: Graduate Student
+    organizations:
+      - name: Boise State University
+    bio: Ibrahim Alabi is a second-year PhD student in the Computing PhD program (Data Science Emphasis) at Boise State University. His doctoral research revolves around the use of Machine Learning to improve snow products. Specifically, his research is focused on using Machine Learning approaches to predict the amount of water stored in the seasonal snowpack.
+    expertise:
+      - Machine Learning
+      - Python
+      - snow science
+    social:
+      - icon: github
+        icon_pack: fab
+        link: https://github.com/Ibrahim-Ola
+    user_groups:
+      - Tutorial Lead
+  # =============
+  - title: Ryan Johnson
+    avatar: https://awi.ua.edu/wp-content/uploads/2022/12/Ryan-Johnson-Photo-Cropped-768x768.jpg
+    role: AI/ML Research Scientist
+    organizations:
+      - name: University of Alabama
+    bio: Ryan Johnson is a Civil and Environmental Engineering doctoral graduate from the University of Utah, focusing his work on water system operations. He expands on this research at the Alabama Water Institute, seeking to characterize nonstationary affecting water supply and demand to enhance the management of water resources. This builds on the understanding of snow & streamflow monitoring and prediction, and coupling with urban water systems operations. Advancing this water resources research leverages state-of-the-art hydroinformatic sensor networks and remote sensing to characterize water use and availability, and integrate both physical and machine learning tools to advance complex modeling tasks. 
+    expertise:
+      - Machine Learning
+      - Python
+      - snow science
+    social:
+      - icon: github
+        icon_pack: fab
+        link: https://github.com/whitelightning450
+    user_groups:
+      - Tutorial Lead
+
+
+
