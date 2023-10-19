@@ -350,5 +350,24 @@ people:
     user_groups:
       - Tutorial Lead
 
+    # =================
+  - title: Valentina Staneva
+    avatar: https://escience.washington.edu/wp-content/uploads/2022/09/Valentina-Staneva.jpg
+    role: Data Scientist
+    organizations:
+      - name: University of Washington
+    bio: Valentina Staneva is a data scientist at the eScience Institute at the University of Washington. Her background is in math and image processing, and she collaborates with scientists on leveraging ML/AI techniques in their research. She likes teaching researchers how to get started with programming and improve their data analysis workflows. 
+    expertise:
+      - Machine Learning
+      - Image Processing
+      - Python, git/GitHub
+      - Reproducible Data Workflows
+    social:
+      - icon: github
+        icon_pack: fab
+        link: https://github.com/valentina-s
+    user_groups:
+      - Tutorial Lead, Hackweek Helper
+
 
 
