@@ -5,14 +5,17 @@ tabs:
   contents:
   - title: Intro and welcome
     description: Getting to know each other setting the stage for our work together.
-    time: 8:30 - 9:15
+    time: 8:30 - 9:30
     leads:
     - Anthony Arendt
     - Nicoleta Cristea
     - Charley Haley
+  - title: BREAK
+    description: null
+    time: 9:30 - 9:45
   - title: CryoCloud and Jupyter Notebooks
     description: Getting connected to our shared computational resources.
-    time: 9:15 - 10:45
+    time: 9:45 - 10:45
     leads:
     - Tasha Snow
   - title: BREAK
@@ -21,7 +24,7 @@ tabs:
   - title: Introduction to machine learning
     description: An overview of machine learning and the primary stages of typical Machine Learning workflows
       including data preparation, model selection, training, and visualization.
-    time: 11:00 - 12:30
+    time: 11:00 - 12:00
     leads:
     - Valentina Staneva
   - title: LUNCH
@@ -30,12 +33,13 @@ tabs:
   - title: Intro to Projects
     description: Overview of projects for this hackweek and how we will gather in
       small groups. Choosing our project team for the week.
-    time: 13:00 - 14:00
+    time: 13:00 - 15:00
     leads:
-    - Charley Haley, Steven Pestana
+    - Charley Haley
+    - Steven Pestana
   - title: Project Work
     description: null
-    time: 14:00 - 16:00
+    time: 15:00 - 16:00
 - title: Day 2
   date: Tuesday 24 October
   contents:
@@ -87,10 +91,8 @@ tabs:
     description: null
     time: 13:00 - 13:30
   - title: Project Work
-    description: ''
+    description: null
     time: 13:30 - 16:00
-    leads:
-    - ''
 - title: Day 4
   date: Thursday 26 October
   contents:
@@ -110,16 +112,23 @@ tabs:
     time: 12:00 - 13:00
   - title: Project Work
     description: null
-    time: 13:00 - 16:00
+    time: 13:00 - 15:00
+  - title: Machine Learning Using Google Earth Engine
+    description: null
+    leads:
+    - Steve Greenberg
+    time: 15:00 - 16:00
 - title: Day 5
   date: Friday 27 October
   contents:
-  - title: Ideas for Community Building and Open Science Part 1
+  - title: Ideas for Community Building and Open Science 
     description: Setting a course for continued engagement with CUAHSI and the ML geoscience community
       of practice.
     time: 8:30 - 9:00
     leads:
-    - Tony Castronova, Irene Garoussi, Anthony Arendt, Nicoleta Cristea
+    - Tony Castronova
+    - Irene Garousi-Nejad
+    - Nicoleta Cristea
   - title: Project wrap-up
     description: null
     time: 9:00 - 10:00
@@ -148,6 +157,6 @@ tabs:
     - Anthony Arendt
   - title: Closing
     description: null
-    time: 15:00 - 15:30
+    time: 15:30 - 16:00
     leads:
     - Nicoleta Cristea
