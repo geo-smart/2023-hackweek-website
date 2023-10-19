@@ -30,6 +30,7 @@ parts:
       sections:
         - file: tutorials/example/tutorial-notebook
         - file: tutorials/computing
+        - file: tutorials/snow-extrapolation/Introduction
 - caption: Projects
   chapters:
     - file: projects/index
