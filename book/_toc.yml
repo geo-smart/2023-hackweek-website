@@ -28,9 +28,19 @@ parts:
   chapters:
     - file: tutorials/index
       sections:
-        - file: tutorials/example/tutorial-notebook
-        - file: tutorials/computing
-        - file: tutorials/snow-extrapolation/Introduction
+      - file: tutorials/example/tutorial-notebook
+      - file: tutorials/computing
+      - file: tutorials/snow-extrapolation/Introduction
+      - file: tutorials/snow-extrapolation/methods
+      - file: tutorials/snow-extrapolation/data
+      - file: tutorials/snow-extrapolation/training
+      - file: tutorials/snow-extrapolation/evaluation
+      - file: tutorials/snow-extrapolation/SSM_Hindcast_2019
+      - file: tutorials/snow-extrapolation/Hindcast_Evaluation
+   
+   
+ 
+        
 - caption: Projects
   chapters:
     - file: projects/index
