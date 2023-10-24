@@ -39,7 +39,8 @@ parts:
             - file: tutorials/snow-extrapolation/training
             - file: tutorials/snow-extrapolation/evaluation
             - file: tutorials/snow-extrapolation/SSM_Hindcast_2019
-            - file: tutorials/snow-extrapolation/Hindcast_Evaluation        
+            - file: tutorials/snow-extrapolation/Hindcast_Evaluation
+        - file: tutorials/tree_models/Tree_Models_in_ML
 - caption: Projects
   chapters:
     - file: projects/index
