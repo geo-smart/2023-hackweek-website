@@ -33,14 +33,14 @@ parts:
         - file: tutorials/cryocloud_demo/CryoCloud_demo
         - file: tutorials/computing
         - file: tutorials/snow-extrapolation/Introduction
-        - file: tutorials/tree_models/Tree_Models_in_ML
           sections:
             - file: tutorials/snow-extrapolation/methods
             - file: tutorials/snow-extrapolation/data
             - file: tutorials/snow-extrapolation/training
             - file: tutorials/snow-extrapolation/evaluation
             - file: tutorials/snow-extrapolation/SSM_Hindcast_2019
-            - file: tutorials/snow-extrapolation/Hindcast_Evaluation        
+            - file: tutorials/snow-extrapolation/Hindcast_Evaluation
+        - file: tutorials/tree_models/Tree_Models_in_ML
 - caption: Projects
   chapters:
     - file: projects/index
