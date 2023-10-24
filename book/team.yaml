@@ -367,7 +367,8 @@ people:
         icon_pack: fab
         link: https://github.com/valentina-s
     user_groups:
-      - Tutorial Lead, Hackweek Helper
+      - Tutorial Lead
+      - Hackweek Helper
 
 
 
