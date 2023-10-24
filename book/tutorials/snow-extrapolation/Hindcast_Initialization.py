@@ -305,7 +305,7 @@ def Region_id(df):
 def Snowgif(cwd, datelist, Region_list):
     
     #Load prediction file with geospatial information
-    path = f"{cwd}/Predictions/Hold_Out_Year/Predictions/Prediction_DF_SCA_2018-10-02.pkl"
+    path = f"{cwd}Predictions/Hold_Out_Year/Predictions/Prediction_DF_SCA_2018-10-02.pkl"
     geofile =open(path, "rb")
     geofile = pickle.load(geofile)
     cols = ['Long', 'Lat']
@@ -321,7 +321,7 @@ def Snowgif(cwd, datelist, Region_list):
         geo_df, geometry=gpd.points_from_xy(geo_df.Long, geo_df.Lat), crs="EPSG:4326"
     )
 
-    path = f"{cwd}/Predictions/Hold_Out_Year/Predictions/2019_predictions.h5"
+    path = f"{cwd}Predictions/Hold_Out_Year/Predictions/2019_predictions.h5"
     #get predictions for each timestep
     print('processing predictions into geodataframe')
     for date in tqdm(datelist):
@@ -346,7 +346,7 @@ def Snowgif(cwd, datelist, Region_list):
                      markersize = 10,
                      edgecolor="k", 
                      vmin =1, 
-                     vmax =250,
+                     vmax =200,
                     legend = True,
                     legend_kwds={"label": "Snow Water Equivalent (cm)", "orientation": "vertical"},
                     ax = ax)
@@ -356,13 +356,13 @@ def Snowgif(cwd, datelist, Region_list):
         ax.set_axis_off()
         ax.text(-1.35e7, 5.17e6, f"SWE estimate: {date}", fontsize =14)
         #plt.title(f"SWE estimate: {date}")
-        plt.savefig(f"{cwd}/Predictions/Hold_Out_Year/Predictions/Figures/SWE_{date}.PNG")
+        plt.savefig(f"{cwd}Predictions/Hold_Out_Year/Predictions/Figures/SWE_{date}.PNG")
         plt.close(fig)
             
     # filepaths
     print('Figures complete, creating .gif image')
-    fp_in =f"{cwd}/Predictions/Hold_Out_Year/Predictions/Figures/SWE_*.PNG"
-    fp_out = f"{cwd}/Predictions/Hold_Out_Year/Predictions/Figures/SWE_2019.gif"
+    fp_in =f"{cwd}Predictions/Hold_Out_Year/Predictions/Figures/SWE_*.PNG"
+    fp_out = f"{cwd}Predictions/Hold_Out_Year/Predictions/Figures/SWE_2019.gif"
 
     # use exit stack to automatically close opened images
     with contextlib.ExitStack() as stack:
