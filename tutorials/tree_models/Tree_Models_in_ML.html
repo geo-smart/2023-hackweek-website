@@ -1,0 +1,2262 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Tree Models in Machine Learning &#8212; GeoSMART Hackweek</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Projects" href="../../projects/index.html" />
+    <link rel="prev" title="Performance Evaluation" href="../snow-extrapolation/Hindcast_Evaluation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">GeoSMART Hackweek</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to GeoSmart Hackweek!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Details
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../application.html">
+   Application
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../logistics.html">
+   Event Logistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://geosmart.hackweek.io/index.html?jump_to=schedule">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://geosmart.hackweek.io/index.html?jump_to=team">
+   Team
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mission.html">
+   Hackweek Mission
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../CoC.html">
+   Event Code of Conduct
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preparation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../preliminary/checklist_index.html">
+   Checklist
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/checklist/github.html">
+     GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/checklist/jupyterhub.html">
+     JupyterHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/checklist/git.html">
+     Git
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/checklist/earthdata.html">
+     Earthdata Login
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/checklist/earthengine.html">
+     Google Earth Engine Sign-Up
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../preliminary/skills_refresher_index.html">
+   Skills Refresher
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/skills-refresher/swc.html">
+     Software Carpentry Training
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
+   Tutorials
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../example/tutorial-notebook.html">
+     Example tutorial notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cryocloud_demo/CryoCloud_demo.html">
+     Demo CryoCloud
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computing.html">
+     Cloud computing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../snow-extrapolation/Introduction.html">
+     Introduction: GeoSMART Hackweek Snow Extrapolation Project
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tree Models in Machine Learning
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../projects/index.html">
+   Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../projects/project_roadmap.html">
+     Project Roadmap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../projects/project_initialization.html">
+     Project Initialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../projects/list_of_projects.html">
+     List of Projects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/glossary.html">
+   Glossaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/bibliography.html">
+   Bibliography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/open_science.html">
+   Open Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/open_source_software.html">
+   Open-source Software
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/questions.html">
+   How to Get Help
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/social.html">
+   Things to do in Seattle
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../reference/supplemental_index.html">
+   Supplemental Material
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reference/supplemental/python.html">
+     Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reference/supplemental/conda.html">
+     Conda
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/geo-smart/2023-hackweek-website/main?urlpath=lab/tree/book/tutorials/tree_models/Tree_Models_in_ML.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/geo-smart/2023-hackweek-website"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/geo-smart/2023-hackweek-website/issues/new?title=Issue%20on%20page%20%2Ftutorials/tree_models/Tree_Models_in_ML.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/geo-smart/2023-hackweek-website/edit/main/book/tutorials/tree_models/Tree_Models_in_ML.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/tutorials/tree_models/Tree_Models_in_ML.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-machine-learning">
+   What is Machine Learning?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-vs-traditional-programming">
+   Machine Learning Vs. Traditional Programming
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#task">
+     Task
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traditional-programming-approach">
+     Traditional Programming Approach
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-approach">
+     Machine Learning Approach
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predicting-total-snow-depth-with-l-band-insar-products">
+   Predicting Total Snow Depth with L-band InSAR Products
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivation">
+     Motivation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Task
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about-the-data">
+   About the Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-dataset">
+   Load Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-and-test-sets">
+   Train and Test Sets
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inspect-the-data">
+     Inspect the Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering">
+   Feature Engineering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#types-of-feature-engineering">
+     Types of Feature Engineering
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-estimate-f">
+   Why Estimate
+   <span class="math notranslate nohighlight">
+    \(f\)
+   </span>
+   ?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-we-estimate-f">
+   How Do We Estimate
+   <span class="math notranslate nohighlight">
+    \(f\)
+   </span>
+   ?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-algorithms">
+     Machine Learning Algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tree-models">
+   Tree Models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-trees">
+     Regression Trees
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-evaluation">
+   Performance Evaluation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-tree-in-practice">
+     Regression Tree in Practice
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#now-let-s-explain-the-regression-tree-above">
+     Now let’s explain the regression tree above
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-do-we-construct-the-regions">
+       How do we construct the regions?
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-make-predictions">
+   How to make predictions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-importance">
+     Feature Importance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ensembles">
+   Ensembles
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-ensemble-models-work">
+     Why Ensemble Models Work:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#common-ensemble-techniques">
+     Common Ensemble Techniques
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-forest">
+   Random Forest
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-random-forest">
+     Training Random Forest
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#making-predictions">
+     Making Predictions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Feature Importance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Exercise:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#putting-it-all-together">
+     Putting it all together
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#main-challenges-of-machine-learning">
+     Main Challenges of Machine Learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperparameter-optimization">
+     Hyperparameter Optimization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deploying-machine-learning-models">
+   Deploying Machine Learning Models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-machine-learning-pipeline">
+     The Machine Learning Pipeline
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#your-turn">
+   Your Turn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acknowledgements">
+   Acknowledgements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tree Models in Machine Learning</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-machine-learning">
+   What is Machine Learning?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-vs-traditional-programming">
+   Machine Learning Vs. Traditional Programming
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#task">
+     Task
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traditional-programming-approach">
+     Traditional Programming Approach
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-approach">
+     Machine Learning Approach
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predicting-total-snow-depth-with-l-band-insar-products">
+   Predicting Total Snow Depth with L-band InSAR Products
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivation">
+     Motivation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Task
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about-the-data">
+   About the Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-dataset">
+   Load Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-and-test-sets">
+   Train and Test Sets
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inspect-the-data">
+     Inspect the Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering">
+   Feature Engineering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#types-of-feature-engineering">
+     Types of Feature Engineering
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-estimate-f">
+   Why Estimate
+   <span class="math notranslate nohighlight">
+    \(f\)
+   </span>
+   ?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-we-estimate-f">
+   How Do We Estimate
+   <span class="math notranslate nohighlight">
+    \(f\)
+   </span>
+   ?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-algorithms">
+     Machine Learning Algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tree-models">
+   Tree Models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-trees">
+     Regression Trees
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-evaluation">
+   Performance Evaluation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-tree-in-practice">
+     Regression Tree in Practice
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#now-let-s-explain-the-regression-tree-above">
+     Now let’s explain the regression tree above
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-do-we-construct-the-regions">
+       How do we construct the regions?
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-make-predictions">
+   How to make predictions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-importance">
+     Feature Importance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ensembles">
+   Ensembles
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-ensemble-models-work">
+     Why Ensemble Models Work:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#common-ensemble-techniques">
+     Common Ensemble Techniques
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-forest">
+   Random Forest
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-random-forest">
+     Training Random Forest
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#making-predictions">
+     Making Predictions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Feature Importance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Exercise:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#putting-it-all-together">
+     Putting it all together
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#main-challenges-of-machine-learning">
+     Main Challenges of Machine Learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperparameter-optimization">
+     Hyperparameter Optimization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deploying-machine-learning-models">
+   Deploying Machine Learning Models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-machine-learning-pipeline">
+     The Machine Learning Pipeline
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#your-turn">
+   Your Turn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acknowledgements">
+   Acknowledgements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="tree-models-in-machine-learning">
+<h1>Tree Models in Machine Learning<a class="headerlink" href="#tree-models-in-machine-learning" title="Permalink to this headline">#</a></h1>
+<p><strong>Compiled by: Ibrahim Alabi (Computing PhD, Data Science, Boise State University)</strong></p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Understand the goals and main concepts of a Machine Learning Algorithm</p></li>
+<li><p>Prepare a SnowEx dataset (InSAR) for Machine Learning</p></li>
+<li><p>Understand the fundamental types of and techniques in Machine Learning</p></li>
+<li><p>Implement Machine Learning (tree model) with a SnowEx dataset</p></li>
+<li><p>Steps to deploy a Machine Learning Model</p></li>
+</ol>
+</section>
+<section id="what-is-machine-learning">
+<h2>What is Machine Learning?<a class="headerlink" href="#what-is-machine-learning" title="Permalink to this headline">#</a></h2>
+<p>Machine Learning simply means building algorithms or computer models using data. The goal is to use these “trained” computer models to make decisions.</p>
+<p>Here is a general definition;</p>
+<blockquote>
+<div><p>Machine Learning is the field of study that gives computers the ability to learn without being explicitly programmed (Arthur Samuel, 1959).</p>
+</div></blockquote>
+<p>Over the years, ML algorithms have achieved great success in a wide variety of fields. Today, we will build <strong>tree models</strong> that predicts total snow depth L-band products.</p>
+</section>
+<section id="machine-learning-vs-traditional-programming">
+<h2>Machine Learning Vs. Traditional Programming<a class="headerlink" href="#machine-learning-vs-traditional-programming" title="Permalink to this headline">#</a></h2>
+<p>Machine Learning (ML) and traditional programming are two different paradigms used to solve problems and create intelligent systems. The primary difference lies in how they are instructed to solve a problem.</p>
+<section id="task">
+<h3>Task<a class="headerlink" href="#task" title="Permalink to this headline">#</a></h3>
+<p>Suppose we want to build an intelligent system that identifies whether a given number is even or odd. This intelligent system can be represented mathematically as:</p>
+<div class="math notranslate nohighlight">
+\[y = f(x)\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x \to\)</span> the number entered also called a feature</p></li>
+<li><p><span class="math notranslate nohighlight">\(y \to\)</span> the outcome we want to predict</p></li>
+<li><p><span class="math notranslate nohighlight">\(f \to\)</span> the model that gets the job done</p></li>
+</ul>
+</section>
+<section id="traditional-programming-approach">
+<h3>Traditional Programming Approach<a class="headerlink" href="#traditional-programming-approach" title="Permalink to this headline">#</a></h3>
+<p>In traditional programming, the programmer writes explicit rules (code) for the program to follow. The system follows these instructions exactly to produce a solution.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_even_odd</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Even&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Odd&quot;</span>
+
+<span class="c1"># Usage</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">check_even_odd</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># Output: Even</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/traditional_programming_flowchart.jpeg"><img alt="../../_images/traditional_programming_flowchart.jpeg" src="../../_images/traditional_programming_flowchart.jpeg" style="width: 500px;" /></a>
+</section>
+<section id="machine-learning-approach">
+<h3>Machine Learning Approach<a class="headerlink" href="#machine-learning-approach" title="Permalink to this headline">#</a></h3>
+<p>In Machine Learning, instead of writing explicit instructions, we provide a model with data and let it learn the patterns. The model, after training, can then make predictions or decisions based on what it has learned.</p>
+<a class="reference internal image-reference" href="../../_images/ML_flowchart.jpeg"><img alt="../../_images/ML_flowchart.jpeg" src="../../_images/ML_flowchart.jpeg" style="width: 500px;" /></a>
+<p><strong>Machine Learning is useful when the function cannot be programmed or the relationship between the features and outcome is unknown.</strong></p>
+</section>
+</section>
+<section id="predicting-total-snow-depth-with-l-band-insar-products">
+<h2>Predicting Total Snow Depth with L-band InSAR Products<a class="headerlink" href="#predicting-total-snow-depth-with-l-band-insar-products" title="Permalink to this headline">#</a></h2>
+<p>Now we will import data from the 2017 SnowEx Airborne Campaign.</p>
+<section id="motivation">
+<h3>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">#</a></h3>
+<p>Preparing the ground for the <a class="reference external" href="https://nisar.jpl.nasa.gov/">NASA-ISRO (Indian Space Research Organisation)</a> (NISAR) mission. The NISAR satellite mission is slated to observe nearly all of Earth’s terrestrial and ice surfaces at ∼10 m resolution and with a revisit frequency of twice every 12 days. We want to show a potential way to analyze NISAR-like data when it becomes available in the future.</p>
+</section>
+<section id="id1">
+<h3>Task<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>To predict total snow depth from L-band InSAR products.</p>
+<p>In Machine Learning terminologies, the data contains the following features;</p>
+<ul class="simple">
+<li><p>unwrapped phase</p></li>
+<li><p>coherence</p></li>
+<li><p>vegetation height</p></li>
+<li><p>bare earth DEM</p></li>
+<li><p>incidence angle</p></li>
+</ul>
+<p>and outcome</p>
+<ul class="simple">
+<li><p>snow depth</p></li>
+</ul>
+<p>The goal is to use the data to learn the computer model <span class="math notranslate nohighlight">\(f\)</span> so that</p>
+<p>snow depth = <span class="math notranslate nohighlight">\(f\)</span>(phase, coherence, amplitude, incidence angle)</p>
+<p>Once <span class="math notranslate nohighlight">\(f\)</span> is learned, it can be used to predict snow depth given the features.</p>
+</section>
+</section>
+<section id="about-the-data">
+<h2>About the Data<a class="headerlink" href="#about-the-data" title="Permalink to this headline">#</a></h2>
+<p>Features are the observations from the Lband InSAR (UAVSAR) in 2017 over Grand Mesa.  Note that we are only using measurements from the airborne instrument flying at 40,000 ft above the ground (no other ground or aircraft data).</p>
+<p>The output/response you are predicting is total snow depth from the airborne LiDAR survey around the same time in February 2017.  While UAVSAR should be more related to snow depth change, rather than total snow depth, we know that snow patterns can be consistent and so total snow depth (before melt starts) should be similar to snow depth change patterns.</p>
+<p>You can read more about SAR and InSAR here: <a class="reference external" href="https://www.earthdata.nasa.gov/learn/backgrounders/what-is-sar">link</a></p>
+</section>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<p>Load libraries:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># machine learning packages</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">set_config</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">set_config</span><span class="p">(</span><span class="n">display</span><span class="o">=</span><span class="s1">&#39;diagram&#39;</span><span class="p">,</span> <span class="n">transform_output</span><span class="o">=</span><span class="s2">&quot;pandas&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-dataset">
+<h2>Load Dataset<a class="headerlink" href="#load-dataset" title="Permalink to this headline">#</a></h2>
+<p>Note that this dataset has been cleaned in a separate notebook, and it is available for anyone interested.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./Data/insar_snowdepth.csv&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 3000 entries, 0 to 2999
+Data columns (total 6 columns):
+ #   Column           Non-Null Count  Dtype  
+---  ------           --------------  -----  
+ 0   coherence        3000 non-null   float64
+ 1   incidence_angle  3000 non-null   float64
+ 2   bare_earth_dem   3000 non-null   float64
+ 3   vegetation_ht    3000 non-null   float64
+ 4   unwrapped_phase  3000 non-null   float64
+ 5   snow_depth       3000 non-null   float64
+dtypes: float64(6)
+memory usage: 140.8 KB
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coherence</th>
+      <th>incidence_angle</th>
+      <th>bare_earth_dem</th>
+      <th>vegetation_ht</th>
+      <th>unwrapped_phase</th>
+      <th>snow_depth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.579178</td>
+      <td>0.948914</td>
+      <td>3048.159</td>
+      <td>0.000000</td>
+      <td>-7.692788</td>
+      <td>1.319504</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.564571</td>
+      <td>0.946893</td>
+      <td>3046.989</td>
+      <td>0.000000</td>
+      <td>-8.000650</td>
+      <td>1.216233</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.701721</td>
+      <td>1.001180</td>
+      <td>3063.148</td>
+      <td>0.000000</td>
+      <td>-7.641302</td>
+      <td>1.020432</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.431904</td>
+      <td>0.753452</td>
+      <td>2963.084</td>
+      <td>9.100586</td>
+      <td>-7.756969</td>
+      <td>1.146408</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.746369</td>
+      <td>0.872160</td>
+      <td>3015.573</td>
+      <td>0.000000</td>
+      <td>-8.423515</td>
+      <td>0.814133</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="train-and-test-sets">
+<h2>Train and Test Sets<a class="headerlink" href="#train-and-test-sets" title="Permalink to this headline">#</a></h2>
+<p>For the algorithm to learn the relationship pattern between the feature(s) and the outcome variable, it has to be exposed to examples. The dataset containing the examples for training a learning machine is called the <em>train set</em> (<span class="math notranslate nohighlight">\(\mathcal{D}^{(tr)}\)</span>).</p>
+<p>On the other hand, the accuracy of an algorithm is measured on how well it predicts the outcome of observations it has not seen before. The dataset containing the observations not used in training the ML algorithm is called the <em>test set</em> (<span class="math notranslate nohighlight">\(\mathcal{D}^{(te)}\)</span>).</p>
+<p>In practice, we divide our dataset into train and test sets, train the algorithm on the train set and evaluate its performance on the test set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;snow_depth&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;snow_depth&quot;</span><span class="p">],</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+<span class="p">)</span> <span class="c1"># random_state is used to make sure that the split is always the same</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="inspect-the-data">
+<h3>Inspect the Data<a class="headerlink" href="#inspect-the-data" title="Permalink to this headline">#</a></h3>
+<p><strong>Visualization</strong></p>
+<p>Before modelling, it is always a good idea to visualize our dataset. With visualization, we gain insights into the relationships between the variables and the shape of the distribution of each variable. For this data, we shall look into the scatterplot matrix.</p>
+<p><strong>Note:</strong> spatial plots are available in the data cleaning notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">snow_depth</span><span class="o">=</span><span class="n">y_train</span><span class="p">),</span>
+    <span class="n">diag_kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">,</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Tree_Models_in_ML_13_0.png" src="../../_images/Tree_Models_in_ML_13_0.png" />
+</div>
+</div>
+<p>Each panel (excluding the main diagonal) of the scatterplot matrix is a scatterplot for a pair of variables whose identities are given by the corresponding row and column labels. The main diagonal is density plot for each variable. None of the features have a linear relationship with <em>snow_depth</em>. This may indicate that a linear model might not be the best option.</p>
+<p><strong>Descriptive Statistics</strong></p>
+<ul class="simple">
+<li><p>count: the size of the training set</p></li>
+<li><p>mean: arithmetic mean</p></li>
+<li><p>std: sample standard deviation</p></li>
+<li><p>min: minimum value</p></li>
+<li><p>25%: 25% of the values fall below this number</p></li>
+<li><p>50%: <span class="math notranslate nohighlight">\(50^{th}\)</span> percentile also called the median. 50% of the values fall below this number and 50% of the values fall above this number</p></li>
+<li><p>75%: 75% of the values fall below this number</p></li>
+<li><p>max: maximum value</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">snow_depth</span><span class="o">=</span><span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>coherence</th>
+      <td>2400.0</td>
+      <td>0.574918</td>
+      <td>0.160508</td>
+      <td>0.083285</td>
+      <td>0.469890</td>
+      <td>0.599048</td>
+      <td>0.696409</td>
+      <td>0.959508</td>
+    </tr>
+    <tr>
+      <th>incidence_angle</th>
+      <td>2400.0</td>
+      <td>0.875300</td>
+      <td>0.175937</td>
+      <td>0.235626</td>
+      <td>0.784742</td>
+      <td>0.915966</td>
+      <td>0.991815</td>
+      <td>1.641741</td>
+    </tr>
+    <tr>
+      <th>bare_earth_dem</th>
+      <td>2400.0</td>
+      <td>3014.996586</td>
+      <td>111.025229</td>
+      <td>2507.174000</td>
+      <td>3011.551750</td>
+      <td>3034.403000</td>
+      <td>3081.089000</td>
+      <td>3157.122000</td>
+    </tr>
+    <tr>
+      <th>vegetation_ht</th>
+      <td>2400.0</td>
+      <td>3.352921</td>
+      <td>5.287417</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.168823</td>
+      <td>5.840820</td>
+      <td>24.351074</td>
+    </tr>
+    <tr>
+      <th>unwrapped_phase</th>
+      <td>2400.0</td>
+      <td>-8.246177</td>
+      <td>0.889763</td>
+      <td>-12.277428</td>
+      <td>-8.746127</td>
+      <td>-8.271425</td>
+      <td>-7.670407</td>
+      <td>-2.984939</td>
+    </tr>
+    <tr>
+      <th>snow_depth</th>
+      <td>2400.0</td>
+      <td>1.075451</td>
+      <td>0.281666</td>
+      <td>0.014328</td>
+      <td>0.902268</td>
+      <td>1.092575</td>
+      <td>1.255783</td>
+      <td>1.987961</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="feature-engineering">
+<h2>Feature Engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">#</a></h2>
+<p>Feature engineering means different things to different data scientists. However, in this tutorial, we will define feature engineering as the art of manipulating and transforming data into a format that optimally represents the underlying problem.</p>
+<p>More generally, feature engineering is the process of using your own knowledge about the data and about the machine learning algorithm at hand to make the algorithm work better by applying hardcoded (non-learned) transformations to the data before it goes into the model.</p>
+<section id="types-of-feature-engineering">
+<h3>Types of Feature Engineering<a class="headerlink" href="#types-of-feature-engineering" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>Feature improvement (normalization, missing value imputation, etc.): these techniques deal with augmenting existing structured features through various transformations.</p></li>
+<li><p>Feature construction (creating new features from original data): these techniques deal with augmenting existing structured features through various transformations.</p></li>
+<li><p>Feature selection (hypthesis testing, information gain from tree-based models): choosing the best set of features from existing ones to reduce the total number of features.</p></li>
+<li><p>Feature extraction (e.g. bag of words).</p></li>
+</ol>
+<p><strong>Note: Tree models do not require feature normalization/standardization.</strong></p>
+</section>
+</section>
+<section id="why-estimate-f">
+<h2>Why Estimate <span class="math notranslate nohighlight">\(f\)</span>?<a class="headerlink" href="#why-estimate-f" title="Permalink to this headline">#</a></h2>
+<p>We estimate <span class="math notranslate nohighlight">\(f\)</span> for two main reasons;</p>
+<ol class="simple">
+<li><p><strong>Prediction</strong>: in this case, the features <span class="math notranslate nohighlight">\(X\)</span> are available, but there is no explicit rule for obtaining the outcome <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p><strong>Inference</strong>: in practice, we are sometimes interested in how changing the input <span class="math notranslate nohighlight">\(X\)</span> effects <span class="math notranslate nohighlight">\(y\)</span>. Inference can tell us which features are significantly associated with a paticular outcome and the nature of the relationship between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+</ol>
+</section>
+<section id="how-do-we-estimate-f">
+<h2>How Do We Estimate <span class="math notranslate nohighlight">\(f\)</span>?<a class="headerlink" href="#how-do-we-estimate-f" title="Permalink to this headline">#</a></h2>
+<section id="machine-learning-algorithms">
+<h3>Machine Learning Algorithms<a class="headerlink" href="#machine-learning-algorithms" title="Permalink to this headline">#</a></h3>
+<p>Machine learning algorithms can be categorized based on different criteria. In this tutorial, our categorization will be based on the amount and type of supervision needed during the training process. Based on this criterion, there are four major categories; supervised learning, unsupervised learning, semisupervised learning, and reinforcement learning. We shall limit our definition to the first two;</p>
+<ul class="simple">
+<li><p><strong>Supervised Learning</strong>: this refers to tasks where we have a specific outcome to predict. That is, every observation of the features has a corresponding outcome. An example of a supervised learning task is predicting snow depth based on some influencing features.</p></li>
+<li><p><strong>Unsupervised Learning</strong>: this refers to tasks where we have no outcome to predict.  Here, rather than predict an outcome, we seek to understand the relationship between the features or between the observations or to detect anomalous observations. Considering the example above, we assume the snow depth variable does not exist and we either understand the relationship between the features or between the observations based on the features.</p></li>
+</ul>
+<p>It is worth noting that a variable can either be categorical or continuous. For now, let’s focus on the nature of the <strong>outcome variable</strong>. In <em>Supervised Learning</em> parlance, if the outcome variable is categorical, we have a <strong>classification</strong> task and if continuous, we are in the presence of a <strong>regression</strong> task. Categorical implies that the variable is made of distinct categories (e.g. hair color: grey, blonde, black) and continuous implies that the variable is measured (e.g. snow depth). For the rest of this tutorial, we will focus on <strong>Supervised Learning</strong> tasks with a special concentration on regression tasks.</p>
+<p>Most Machine Learning techniques can be characterised as either <em>parametric</em> or <em>non-parametric</em>.</p>
+<p><strong>Parametric:</strong> The parametric approach simplifies the problem of estimating <span class="math notranslate nohighlight">\(f\)</span> to a parameter estimation problem. The disadvantage is that we assume a particular shape of <span class="math notranslate nohighlight">\(f\)</span> that may not match the true shape of <span class="math notranslate nohighlight">\(f\)</span>. The major advantage of using parametric approach that when inference is the goal we can understand how changing <span class="math notranslate nohighlight">\(X_1, X_2, \cdots, X_k\)</span> effects <span class="math notranslate nohighlight">\(Y\)</span>. A common parametric method is the Linear Regression.</p>
+<p><strong>Non-parametric:</strong> Non-parametric approaches do not assume any shape for <span class="math notranslate nohighlight">\(f\)</span>. Instead, they try to estimate <span class="math notranslate nohighlight">\(f\)</span> that gets as close to the data points as possible. The disadvantage of non-parametric approaches is that they may require extensive training observations to estimate <span class="math notranslate nohighlight">\(f\)</span> accurately. Common examples of non-parametric methods are the tree models.</p>
+</section>
+</section>
+<section id="tree-models">
+<h2>Tree Models<a class="headerlink" href="#tree-models" title="Permalink to this headline">#</a></h2>
+<p>Tree models are machine learning algorithms that use tree-based graph structures to predict an output by learning simple decision rules inferred from the features. When we use decision trees for regression tasks, we call them <strong>regression trees</strong>; when we use decision trees for classification tasks, we call them <strong>classification trees</strong>. Subsequently, we use “regression trees” instead of “decision trees” because we will solve a regression problem in this tutorial.</p>
+<section id="regression-trees">
+<h3>Regression Trees<a class="headerlink" href="#regression-trees" title="Permalink to this headline">#</a></h3>
+<p>Consider a dataset <span class="math notranslate nohighlight">\(\mathcal{D}_n = \left\lbrace (\textbf{x}_1, y_1), (\textbf{x}_2, y_2), \cdots, (\textbf{x}_n, y_n) \right\rbrace\)</span> where <span class="math notranslate nohighlight">\(\textbf{x}_i^\top \equiv ({x}_{i1}, {x}_{i2}, \cdots, {x}_{ik})\)</span> denotes the <span class="math notranslate nohighlight">\(k\)</span>-dimensional vector of features, and <span class="math notranslate nohighlight">\(y_i\)</span> represents the corresponding outcome (continuous in this case).</p>
+<p>The fundamental concept underlying regression trees is to split the feature space (set of possible values for the features) into two sub-regions. The sub-regions are further divided into two until a stopping criterion is reached. The predicted value of a given observation is the arithmetic mean of the training observations in the region it belongs.</p>
+</section>
+</section>
+<section id="performance-evaluation">
+<h2>Performance Evaluation<a class="headerlink" href="#performance-evaluation" title="Permalink to this headline">#</a></h2>
+<p>Each time we estimate the true outcome (<span class="math notranslate nohighlight">\(y\)</span>) using a trained ML algorithm (<span class="math notranslate nohighlight">\(f(\textbf{x})\)</span>), the discrepancy between the observed and predicted must be quantified. The question is, how do we quantify this discrepancy? This brings the notion of <strong>loss function</strong>.</p>
+<p><em>Loss Function</em> <span class="math notranslate nohighlight">\(\mathcal{L} (\cdot,\cdot)\)</span> is a bivariate function that quantifies the loss (error) we sustain from predicting <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(f(\textbf{x})\)</span>. Put another way, <strong>loss function</strong> quantifies how close the prediction <span class="math notranslate nohighlight">\(f(\textbf{x})\)</span> is to the ground truth <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<ul class="simple">
+<li><p>Regression Loss Function</p></li>
+</ul>
+<p>There exists quite a number of ways for which the loss of a regression problem may be quantified. We now illustrate two of them;</p>
+<ol class="simple">
+<li></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L} (y,f(\textbf{x})) = (y - f(\textbf{x}))^2
+\]</div>
+<p>This is popularly known as the <strong>squared error loss</strong> and it is simply the square of the difference between the observed and the predicted values. The loss is squared so that the function reaches its minimum (convex).</p>
+<ol class="simple">
+<li></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L} (y,f(\textbf{x})) = |y - f(\textbf{x})|
+\]</div>
+<p>Another way to quantify regression loss is by taking the absolute value of the difference between the observed (<span class="math notranslate nohighlight">\(y\)</span>) and the predicted (<span class="math notranslate nohighlight">\(f(\textbf{x})\)</span>) values. This is called the <span class="math notranslate nohighlight">\(L_1\)</span> loss.</p>
+<p>It is worth noting that the <em>loss function</em> as defined above corresponds to a single observation. However, in practice, we want to quantify the loss over the entire dataset and this is where the notion of <strong>empirical risk</strong> comes in. Loss quantified over the entire dataset is called the <em>empirical risk</em>. Our goal in ML is to develop an algorithm such that the <em>empirical risk</em> is as minimum as possible. <em>Empirical risk</em> is also called the <em>cost function</em> or the <em>objective function</em> we want to minimize.</p>
+<ul class="simple">
+<li><p>Regression Empirical Risk</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\widehat{\mathcal{R}}_n(f) = \frac{1}{n}\sum_{i=1}^n{\mathcal{L}(y_i, \textbf{x}_i)}
+\]</div>
+<p>The empirical risk corresponding to the squared error loss is called “mean squared error”, while the empirical risk corresponding to the L1 loss is called “mean absolute error”. Other Regression Loss functions can be found at <a class="reference external" href="https://keras.io/api/losses/">Keras: losses</a>.</p>
+<section id="regression-tree-in-practice">
+<h3>Regression Tree in Practice<a class="headerlink" href="#regression-tree-in-practice" title="Permalink to this headline">#</a></h3>
+<p>The sklearn documentation for regression tree can be found <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span><span class="p">,</span> <span class="n">plot_tree</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1">## random_state=0 for reproducible results</span>
+<span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-5 {color: black;}#sk-container-id-5 pre{padding: 0;}#sk-container-id-5 div.sk-toggleable {background-color: white;}#sk-container-id-5 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-5 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-5 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-5 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-5 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-5 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-5 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-5 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-5 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-5 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-5 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-5 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-5 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-5 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-5 div.sk-item {position: relative;z-index: 1;}#sk-container-id-5 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-5 div.sk-item::before, #sk-container-id-5 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-5 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-5 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-5 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-5 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-5 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-5 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-5 div.sk-label-container {text-align: center;}#sk-container-id-5 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-5 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-5" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeRegressor(max_depth=2, random_state=0)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-10" type="checkbox" checked><label for="sk-estimator-id-10" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeRegressor</label><div class="sk-toggleable__content"><pre>DecisionTreeRegressor(max_depth=2, random_state=0)</pre></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plot_tree</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> 
+          <span class="n">filled</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+          <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+          <span class="n">node_ids</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+          <span class="n">rounded</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+          <span class="n">proportion</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+         <span class="n">feature_names</span><span class="o">=</span> <span class="n">features</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Tree_Models_in_ML_26_0.png" src="../../_images/Tree_Models_in_ML_26_0.png" />
+</div>
+</div>
+</section>
+<section id="now-let-s-explain-the-regression-tree-above">
+<h3>Now let’s explain the regression tree above<a class="headerlink" href="#now-let-s-explain-the-regression-tree-above" title="Permalink to this headline">#</a></h3>
+<p>The root node (node #0) assigns values of <strong>bare_eart_dem</strong> lesser than or equal to 3076.523 to the right branch and values of <strong>bare_eart_dem</strong> greater than 3076.523 to the left node. Observations with <strong>bare_eart_dem</strong> lesser than or equal to 3076.523 are further partitioned based on <strong>unwrapped_phase</strong> values. Overall, the regression tree splits the observations into four disjoint groups or regions (<span class="math notranslate nohighlight">\(R_i\)</span>) of the feature space.</p>
+<a class="reference internal image-reference" href="../../_images/tree_explanation.png"><img alt="../../_images/tree_explanation.png" src="../../_images/tree_explanation.png" style="width: 500px;" /></a>
+<p>where <span class="math notranslate nohighlight">\(\hat{y}_{R_i}\)</span> is the mean of the respective regions. The regions <span class="math notranslate nohighlight">\(R_i, \ i = 1,2,3, 4\)</span> are called <strong>terminal nodes</strong> or <strong>leaves</strong>, the points where the feature space (<span class="math notranslate nohighlight">\(\textbf{x}\)</span>) is partitioned are called <strong>internal nodes</strong> and the line segments connecting the nodes are referred to as <strong>branches</strong>. Generally, to know which region an observation belongs to, we ask series of question(s) starting from the root node until we get to the terminal node and the value predicted for the observation is mean of all training observations in that region. Mathematically we write;</p>
+<p>\begin{equation}
+\hat{y} = \hat{f}(\text{x}) = \frac{1}{|R_j|} \sum_{i = 1}^{n} y_i 1(\text{x}_i \in R_j).
+\end{equation}</p>
+<p>Here, if the <span class="math notranslate nohighlight">\(i^{th}\)</span> observation belongs to region <span class="math notranslate nohighlight">\(R_j\)</span>, the indicator function equals 1, else, it equals zero.</p>
+<ul class="simple">
+<li><p>Root node: node #0.</p></li>
+<li><p>Internal nodes: node #1 and node #4.</p></li>
+<li><p>Terminal nodes: node #2, node #3, node #5, and node #6.</p></li>
+</ul>
+<section id="how-do-we-construct-the-regions">
+<h4>How do we construct the regions?<a class="headerlink" href="#how-do-we-construct-the-regions" title="Permalink to this headline">#</a></h4>
+<p>We have mentioned the recursive splitting of observations into regions, the natural question that comes to mind is, how do we construct the regions? Our goal is to find regions such that the expected loss is minimized. To perform the recursive binary splitting, we consider all features in the feature space and all possible cut-point(s) for the individual features. The feature and cut-point leading to the greatest reduction in expected loss are chosen for splitting. This process is then continued until a stopping criterion is reached. A stopping criterion could be until no region contains more than five observations. In sklearn, the stopping criterion is controlled by <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> and <code class="docutils literal notranslate"><span class="pre">min_samples_split</span></code>.</p>
+</section>
+</section>
+</section>
+<section id="how-to-make-predictions">
+<h2>How to make predictions<a class="headerlink" href="#how-to-make-predictions" title="Permalink to this headline">#</a></h2>
+<p>An example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span><span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">sample</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coherence</th>
+      <th>incidence_angle</th>
+      <th>bare_earth_dem</th>
+      <th>vegetation_ht</th>
+      <th>unwrapped_phase</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1705</th>
+      <td>0.334815</td>
+      <td>0.948335</td>
+      <td>3086.18</td>
+      <td>5.094482</td>
+      <td>-7.708499</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.29318053])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>bare earth DEM is greater than 3076.523 and vegetation height is lesser than 9.101. This falls in region one (<span class="math notranslate nohighlight">\(R_3\)</span>), and our prediction will be 1.293.</p></li>
+</ul>
+<section id="feature-importance">
+<h3>Feature Importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">#</a></h3>
+<p>The total amount by which the empirical risk is decreased due to splits over a given predictor is documented. The larger the value, the more important the variable. <a class="reference external" href="https://scikit-learn.org/stable/">Sklearn’s</a> implementation of variable importance normalizes the variable importance so that they add up to 1. Mathematically, feature importance is computed as:</p>
+<div class="math notranslate nohighlight">
+\[I_j= \sum_j w_jC_j - w_{left(j)}C_{left(j)} - w_{right(j)}C_{right(j)}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(I_j\)</span>= importance of variable <span class="math notranslate nohighlight">\(j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(C_j\)</span>= the MSE of node <span class="math notranslate nohighlight">\(j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(w_j\)</span>= percentage of the observation reaching node <span class="math notranslate nohighlight">\(j\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## compute bare_earth_dem importance</span>
+
+<span class="n">imp_bare_earth_dem</span><span class="o">=</span><span class="mf">0.079</span> <span class="o">-</span> <span class="p">(</span><span class="mf">0.729</span><span class="o">*</span><span class="mf">0.08</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mf">0.271</span><span class="o">*</span><span class="mf">0.028</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Importance of bare_earth_dem: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">imp_bare_earth_dem</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Importance of bare_earth_dem:  0.013
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_impotanceRT</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Unormalized Importance&#39;</span><span class="p">:</span> <span class="n">tree</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">compute_feature_importances</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="s1">&#39;Normalized Importance&#39;</span><span class="p">:</span> <span class="n">tree</span><span class="o">.</span><span class="n">feature_importances_</span>
+<span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
+<span class="n">feature_impotanceRT</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unormalized Importance</th>
+      <th>Normalized Importance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>coherence</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>incidence_angle</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>bare_earth_dem</th>
+      <td>0.013637</td>
+      <td>0.617676</td>
+    </tr>
+    <tr>
+      <th>vegetation_ht</th>
+      <td>0.001316</td>
+      <td>0.059610</td>
+    </tr>
+    <tr>
+      <th>unwrapped_phase</th>
+      <td>0.007125</td>
+      <td>0.322714</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot feature importance (sorted by unnormalized importance)</span>
+
+<span class="n">feature_impotanceRT</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Unormalized Importance&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">feature_impotanceRT</span><span class="p">[</span><span class="s2">&quot;Unormalized Importance&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Unormalized Importance&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">feature_impotanceRT</span><span class="p">[</span><span class="s2">&quot;Normalized Importance&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Normalized Importance&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Tree_Models_in_ML_35_0.png" src="../../_images/Tree_Models_in_ML_35_0.png" />
+</div>
+</div>
+</section>
+<section id="exercise">
+<h3>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h3>
+<p>Compute the normalized importance manually and compare it with sklearn’s output above.</p>
+</section>
+</section>
+<section id="ensembles">
+<h2>Ensembles<a class="headerlink" href="#ensembles" title="Permalink to this headline">#</a></h2>
+<p>An ensemble model is a machine learning technique that combines the predictions from multiple models in order to produce a single, more accurate and robust prediction. The main idea behind ensembles is that by aggregating predictions from multiple models, the individual weaknesses, biases, and variances of each model can be mitigated/averaged out, leading to a better overall performance.</p>
+<section id="why-ensemble-models-work">
+<h3>Why Ensemble Models Work:<a class="headerlink" href="#why-ensemble-models-work" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>Diversity: Different models capture different patterns and nuances in the data. By combining them, you can capture a wider range of patterns and reduce the chance of missing out on certain insights.</p></li>
+<li><p>Reduction of Overfitting: Individual models, especially complex ones, might overfit to the training data. By averaging or voting, the overfitting tendencies of individual models can be neutralized.</p></li>
+<li><p>Reduction of Variance: The combined predictions from multiple models can lead to reduced variance, especially if the individual models have uncorrelated errors.</p></li>
+<li><p>Error Compensation: If different models make different errors on the same data points, these errors can offset each other when predictions are aggregated, leading to a more accurate combined prediction.</p></li>
+</ol>
+</section>
+<section id="common-ensemble-techniques">
+<h3>Common Ensemble Techniques<a class="headerlink" href="#common-ensemble-techniques" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>Bagging: Involves training multiple instances of the same model on different subsets of the training data (e.g., Random Forests).</p></li>
+<li><p>Boosting: Iteratively trains models where each new model attempts to correct the errors of the combined ensemble of existing models (e.g., AdaBoost, Gradient Boosting).</p></li>
+<li><p>Stacking: Uses predictions from multiple models as inputs into another model (the “meta-learner”) to make the final prediction.</p></li>
+</ol>
+</section>
+</section>
+<section id="random-forest">
+<h2>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>If you want to go fast, go alone. If you want to go far, go together (African Proverb).</p>
+</div></blockquote>
+<p>Regression trees suffer from high variance, that is, they have a habit of overfitting the training observations. A straightforward way to reduce the variance is to employ the Random Forest (RF) algorithm. RF is an ensemble learning technique that can be used for both classification and regression.</p>
+<ul class="simple">
+<li><p><strong>Bagging:</strong> Bagging consists of two words; Bootstrap and Aggregation. Bootstrap is a popular resampling technique where random sub-samples (with replacement) are created from the training data. The individual bootstrapped sub-sample is called a “Bag.” Aggregation, however, means combining the results from machines trained on the respective bags. We could say, given our training data, we generate <span class="math notranslate nohighlight">\(B\)</span> bootstrapped training sub-samples from the original training data, then we train an algorithm on the respective bootstrapped sub-sample to obtain <span class="math notranslate nohighlight">\(\hat{f}^1 (\text{x}), \hat{f}^2 (\text{x}), \cdots , \hat{f}^B (\text{x})\)</span>. The final predicted value is the average of all the individual predictions and it is given by:
+\begin{equation}
+\hat{f}<em>{\text{bag}} (\text{x}) = \frac{1}{B} \sum</em>{b = 1}^{B} \hat{f}^{b} (\text{x}).
+\end{equation}</p></li>
+</ul>
+<p>This is bagging! In the RF algorithm, regression trees are built on the different bootstrapped samples and the result is a forest of regression trees, hence the “forest” in Random Forest.</p>
+<ul class="simple">
+<li><p><strong>What makes the forest random?</strong></p></li>
+</ul>
+<p>Recall that when training a regression tree, splitting is done at each internal node, however, in the RF algorithm, when building the individual regression trees, only a random sample of the total features is considered for optimal splitting and this is what makes the forest random! In essence, when we combine bagging with random feature selection at each internal node of the constituting regression trees, we are said to have constructed a <strong>Random Forest</strong> learning machine.</p>
+<section id="training-random-forest">
+<h3>Training Random Forest<a class="headerlink" href="#training-random-forest" title="Permalink to this headline">#</a></h3>
+<p>Sklearn’s documentation for Random Forest Regression can be found <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-6 {color: black;}#sk-container-id-6 pre{padding: 0;}#sk-container-id-6 div.sk-toggleable {background-color: white;}#sk-container-id-6 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-6 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-6 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-6 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-6 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-6 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-6 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-6 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-6 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-6 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-6 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-6 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-6 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-6 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-6 div.sk-item {position: relative;z-index: 1;}#sk-container-id-6 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-6 div.sk-item::before, #sk-container-id-6 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-6 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-6 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-6 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-6 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-6 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-6 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-6 div.sk-label-container {text-align: center;}#sk-container-id-6 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-6 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-6" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>RandomForestRegressor(max_depth=2, n_estimators=2, random_state=0)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-11" type="checkbox" checked><label for="sk-estimator-id-11" class="sk-toggleable__label sk-toggleable__label-arrow">RandomForestRegressor</label><div class="sk-toggleable__content"><pre>RandomForestRegressor(max_depth=2, n_estimators=2, random_state=0)</pre></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plot_tree</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">estimators_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+          <span class="n">filled</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+          <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+          <span class="n">node_ids</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+          <span class="n">rounded</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+          <span class="n">proportion</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+         <span class="n">feature_names</span><span class="o">=</span> <span class="n">features</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plot_tree</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">estimators_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
+          <span class="n">filled</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+          <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+          <span class="n">node_ids</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+          <span class="n">rounded</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+          <span class="n">proportion</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+         <span class="n">feature_names</span><span class="o">=</span> <span class="n">features</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Tree_Models_in_ML_42_0.png" src="../../_images/Tree_Models_in_ML_42_0.png" />
+</div>
+</div>
+</section>
+<section id="making-predictions">
+<h3>Making Predictions<a class="headerlink" href="#making-predictions" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>coherence</th>
+      <th>incidence_angle</th>
+      <th>bare_earth_dem</th>
+      <th>vegetation_ht</th>
+      <th>unwrapped_phase</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1705</th>
+      <td>0.334815</td>
+      <td>0.948335</td>
+      <td>3086.18</td>
+      <td>5.094482</td>
+      <td>-7.708499</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Overall predictions</span>
+
+<span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.22401209])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Prediction from the first tree</span>
+
+<span class="n">rf</span><span class="o">.</span><span class="n">estimators_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.2474622])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Prediction from the second tree</span>
+
+<span class="n">rf</span><span class="o">.</span><span class="n">estimators_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.20056198])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the same approach as above, the first regression tree predicts 0.7072, and the second regression tree predicts 0.7065. Hence, the final prediction is;</p>
+<div class="math notranslate nohighlight">
+\[\frac{1.2474622+1.20056198}{2} = 1.22401209\]</div>
+</section>
+<section id="id2">
+<h3>Feature Importance<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>The total amount by which the squared error loss is decreased due to splits over a given predictor is documented and averaged over all trees in the forest. The larger the value, the more important the variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_impotanceRF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
+<span class="n">feature_impotanceRF</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Feature&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Importance Score&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Tree_Models_in_ML_50_0.png" src="../../_images/Tree_Models_in_ML_50_0.png" />
+</div>
+</div>
+</section>
+<section id="id3">
+<h3>Exercise:<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>Compute the random forest’s normalized importance manually and compare it with sklearn’s output above.</p>
+</section>
+<section id="putting-it-all-together">
+<h3>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">#</a></h3>
+<p>We’ll use Sklearn’s <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html">Pipeline</a> to preprocess and fit our model in one shot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf_pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;Scaler&#39;</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;regressor&#39;</span><span class="p">,</span> <span class="n">RandomForestRegressor</span><span class="p">())</span>
+<span class="p">])</span>
+
+<span class="n">rf_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-7 {color: black;}#sk-container-id-7 pre{padding: 0;}#sk-container-id-7 div.sk-toggleable {background-color: white;}#sk-container-id-7 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-7 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-7 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-7 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-7 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-7 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-7 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-7 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-7 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-7 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-7 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-7 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-7 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-7 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-7 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-7 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-7 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-7 div.sk-item {position: relative;z-index: 1;}#sk-container-id-7 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-7 div.sk-item::before, #sk-container-id-7 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-7 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-7 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-7 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-7 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-7 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-7 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-7 div.sk-label-container {text-align: center;}#sk-container-id-7 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-7 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-7" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;Scaler&#x27;, MinMaxScaler()),
+                (&#x27;regressor&#x27;, RandomForestRegressor())])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-12" type="checkbox" ><label for="sk-estimator-id-12" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;Scaler&#x27;, MinMaxScaler()),
+                (&#x27;regressor&#x27;, RandomForestRegressor())])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-13" type="checkbox" ><label for="sk-estimator-id-13" class="sk-toggleable__label sk-toggleable__label-arrow">MinMaxScaler</label><div class="sk-toggleable__content"><pre>MinMaxScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-14" type="checkbox" ><label for="sk-estimator-id-14" class="sk-toggleable__label sk-toggleable__label-arrow">RandomForestRegressor</label><div class="sk-toggleable__content"><pre>RandomForestRegressor()</pre></div></div></div></div></div></div></div></div></div>
+</div>
+</section>
+<section id="main-challenges-of-machine-learning">
+<h3>Main Challenges of Machine Learning<a class="headerlink" href="#main-challenges-of-machine-learning" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>Bad Data (insufficient training data, nonrepresentative training data, irrelevant features).</p></li>
+<li><p>Bad Algorithm (overfitting the training the data, underfitting the training data).</p></li>
+</ol>
+<p>Hyperparameter tuning is one way to improve our model.</p>
+</section>
+<section id="hyperparameter-optimization">
+<h3>Hyperparameter Optimization<a class="headerlink" href="#hyperparameter-optimization" title="Permalink to this headline">#</a></h3>
+<p>Hyperameters are parameters that are a step above other model parameters because their values have to be specified before fitting the model. They are not learned during the training process. In practice, different values are often “tuned” to obtain the optimal value, called hyperparameter optimization. Hyperparameter optimization is often done via a cross-validation (CV) or validation set approach.</p>
+<ul class="simple">
+<li><p>In the validation set approach, we hold out a portion of the training set and use the held-out portion to test the performance of different hyperparameters.</p></li>
+<li><p>Cross-validation: the training data is divided into <em>k</em> disjoint sets. The idea is to use one of the k folds as test set and the remaining k − 1 folds as training set. The algorithm then changes the test set until every fold has served as test set. Performance metric is computed at each iteration and averaged in the end.Sklearn’s implementation of grid search cross validation can be found <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html">here</a>.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/cross_validation.png"><img alt="../../_images/cross_validation.png" src="../../_images/cross_validation.png" style="width: 500px;" /></a>
+<p>Image Source <a class="reference external" href="https://www.manning.com/books/machine-learning-bookcamp?query=machine">Machine Learning Bookcamp</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+
+<span class="n">parameter_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;regressor__min_samples_split&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+                  <span class="s1">&#39;regressor__n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> 
+                  <span class="s1">&#39;regressor__max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">5</span><span class="p">]}</span>
+
+<span class="n">rf_pipeline_CV</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">rf_pipe</span><span class="p">,</span> <span class="n">parameter_grid</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="c1">## set njobs = -1 to use all processors. cv defaults to 5</span>
+<span class="n">rf_pipeline_CV</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 3 folds for each of 8 candidates, totalling 24 fits
+</pre></div>
+</div>
+<div class="output text_html"><style>#sk-container-id-8 {color: black;}#sk-container-id-8 pre{padding: 0;}#sk-container-id-8 div.sk-toggleable {background-color: white;}#sk-container-id-8 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-8 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-8 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-8 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-8 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-8 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-8 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-8 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-8 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-8 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-8 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-8 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-8 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-8 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-8 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-8 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-8 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-8 div.sk-item {position: relative;z-index: 1;}#sk-container-id-8 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-8 div.sk-item::before, #sk-container-id-8 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-8 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-8 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-8 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-8 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-8 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-8 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-8 div.sk-label-container {text-align: center;}#sk-container-id-8 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-8 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-8" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(cv=3,
+             estimator=Pipeline(steps=[(&#x27;Scaler&#x27;, MinMaxScaler()),
+                                       (&#x27;regressor&#x27;, RandomForestRegressor())]),
+             param_grid={&#x27;regressor__max_depth&#x27;: [None, 5],
+                         &#x27;regressor__min_samples_split&#x27;: [2, 3],
+                         &#x27;regressor__n_estimators&#x27;: [200, 100]},
+             verbose=1)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-15" type="checkbox" ><label for="sk-estimator-id-15" class="sk-toggleable__label sk-toggleable__label-arrow">GridSearchCV</label><div class="sk-toggleable__content"><pre>GridSearchCV(cv=3,
+             estimator=Pipeline(steps=[(&#x27;Scaler&#x27;, MinMaxScaler()),
+                                       (&#x27;regressor&#x27;, RandomForestRegressor())]),
+             param_grid={&#x27;regressor__max_depth&#x27;: [None, 5],
+                         &#x27;regressor__min_samples_split&#x27;: [2, 3],
+                         &#x27;regressor__n_estimators&#x27;: [200, 100]},
+             verbose=1)</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-16" type="checkbox" ><label for="sk-estimator-id-16" class="sk-toggleable__label sk-toggleable__label-arrow">estimator: Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;Scaler&#x27;, MinMaxScaler()),
+                (&#x27;regressor&#x27;, RandomForestRegressor())])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-17" type="checkbox" ><label for="sk-estimator-id-17" class="sk-toggleable__label sk-toggleable__label-arrow">MinMaxScaler</label><div class="sk-toggleable__content"><pre>MinMaxScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-18" type="checkbox" ><label for="sk-estimator-id-18" class="sk-toggleable__label sk-toggleable__label-arrow">RandomForestRegressor</label><div class="sk-toggleable__content"><pre>RandomForestRegressor()</pre></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Best Parameters are: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rf_pipeline_CV</span><span class="o">.</span><span class="n">best_params_</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best Parameters are: {&#39;regressor__max_depth&#39;: None, &#39;regressor__min_samples_split&#39;: 3, &#39;regressor__n_estimators&#39;: 200}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_before_tuning</span> <span class="o">=</span> <span class="n">rf_pipe</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">pred_after_tuning</span> <span class="o">=</span> <span class="n">rf_pipeline_CV</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RMSE before tuning: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_before_tuning</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="mi">4</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RMSE after tuning: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_after_tuning</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="mi">4</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RMSE before tuning: 0.1937
+RMSE after tuning: 0.1932
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="deploying-machine-learning-models">
+<h2>Deploying Machine Learning Models<a class="headerlink" href="#deploying-machine-learning-models" title="Permalink to this headline">#</a></h2>
+<p>Now, our model lives in a Jupyter Notebook. Once we close our Jupyter Notebook or restart our kernel, the model disappears. How do we take our model out of our Jupyter Notebook? Model deployment is mainly concerned with putting optimal models into use/production. Steps for deploying our machine learning models:</p>
+<ol class="simple">
+<li><p>Save the model (e.g. using pickle)</p></li>
+<li><p>Serve the model: this is the process of making the model available to others. This is usually done using web services. A simple way to to implement a web service in Python is to use <a class="reference external" href="https://flask.palletsprojects.com/en/2.1.x/">Flask</a>.</p></li>
+<li><p>Deployment: We don’t run production services on personal machines, we need special services for that. Sample services include; Amazon Web Services, Google Cloud, Microsoft Azure, and Digital Ocean. These services are used to deploy a web service.</p></li>
+</ol>
+<p>Other approaches for model deployments are:</p>
+<ul class="simple">
+<li><p>TensorFlow Lite: TensorFlow Lite is a lightweight alternative to “full” TensorFlow. It is a serverless approach that makes deploying models with AWS Lambda faster and simpler.</p></li>
+<li><p>Kubernetes: it is a powerful but uneasy tool for model deployment. More information can be found <a class="reference external" href="https://kubernetes.io/">here</a>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Save and load RF model</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="n">f_out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;SWE_Prediction_RF.bin&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">rf_pipe</span><span class="p">,</span> <span class="n">f_out</span><span class="p">)</span>
+<span class="n">f_out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="c1">## To load model, use;</span>
+<span class="n">f_in</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;SWE_Prediction_RF.bin&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">reloaded_rf</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f_in</span><span class="p">)</span>
+<span class="n">f_in</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="the-machine-learning-pipeline">
+<h3>The Machine Learning Pipeline<a class="headerlink" href="#the-machine-learning-pipeline" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>Define the problem.</p></li>
+<li><p>Obtain a representative dataset.</p></li>
+<li><p>Feature engineering.</p></li>
+<li><p>Model selection and training.</p></li>
+<li><p>Model deployment and evaluation: watch out for <strong>concept drift</strong> (when our interpretation of the data changes) and <strong>data drift</strong> (when the underlying distributions of our data change).</p></li>
+</ol>
+</section>
+</section>
+<section id="your-turn">
+<h2>Your Turn<a class="headerlink" href="#your-turn" title="Permalink to this headline">#</a></h2>
+<p>Using the same dataset, perform hyperparameter optimization for a range of more comprehensive hyperparameter values and compare the performance of the two models.</p>
+</section>
+<section id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Many thanks to e-Science institute and all organizing members for allowing me deploy/presenting this tutorial. A huge thanks to them for supporting my travel to Seattle.</p></li>
+<li><p>Many thanks to HP Marshall (my advisor) for allowing me present this tutorial and also suppoerting my travel.</p></li>
+</ul>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://www.manning.com/books/ensemble-methods-for-machine-learning">Ensemble Methods for Machine Learning</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1501.00604">A Taxonomy of Big Data for Optimal Predictive Machine Learning and Data Mining by Ernest Fokoue</a></p></li>
+<li><p><a class="reference external" href="https://link.springer.com/book/10.1007%2F978-1-4614-7138-7">An Introduction to Statistical Learning with Applications in R</a> (available online for free)</p></li>
+<li><p><a class="reference external" href="https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1492032646">Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems 2nd Edition</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/channel/UCtslD4DGH6PKyG_1gFAX7sg">MIT 6.S191: Introduction to Deep Learning</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=AhE8RhPGH1A&amp;t=2685s">Intro to Deep Learning (ML Tech Talks)</a></p></li>
+<li><p><a class="reference external" href="https://www.manning.com/books/deep-learning-with-python">Deep Learning with Python</a></p></li>
+<li><p><a class="reference external" href="https://www.manning.com/books/machine-learning-bookcamp?query=machine">Machine Learning Bookcamp</a></p></li>
+<li><p><a class="reference external" href="https://www.manning.com/books/feature-engineering-bookcamp">Feature Engineering Bookcamp</a></p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/tree_models"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../snow-extrapolation/Hindcast_Evaluation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Performance Evaluation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../projects/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Projects</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By eScience Institute, University of Washington<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
