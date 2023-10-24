@@ -33,6 +33,7 @@ parts:
         - file: tutorials/cryocloud_demo/CryoCloud_demo
         - file: tutorials/computing
         - file: tutorials/snow-extrapolation/Introduction
+        - file: tutorials/tree_models/Tree_Models_in_ML
           sections:
             - file: tutorials/snow-extrapolation/methods
             - file: tutorials/snow-extrapolation/data
