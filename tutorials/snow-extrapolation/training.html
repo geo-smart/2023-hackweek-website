@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Google Earth Engine Sign-Up &#8212; GeoSMART Hackweek</title>
+    <title>Model Training &#8212; GeoSMART Hackweek</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Skills Refresher" href="../skills_refresher_index.html" />
-    <link rel="prev" title="Earthdata Login" href="earthdata.html" />
+    <link rel="next" title="Performance Evaluation" href="evaluation.html" />
+    <link rel="prev" title="Data Preparation and Feature Engineering" href="data.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -156,46 +156,46 @@ const thebe_selector_output = ".output, .cell_output"
   Preparation
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../checklist_index.html">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../preliminary/checklist_index.html">
    Checklist
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="github.html">
+    <a class="reference internal" href="../../preliminary/checklist/github.html">
      GitHub
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="jupyterhub.html">
+    <a class="reference internal" href="../../preliminary/checklist/jupyterhub.html">
      JupyterHub
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="git.html">
+    <a class="reference internal" href="../../preliminary/checklist/git.html">
      Git
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="earthdata.html">
+    <a class="reference internal" href="../../preliminary/checklist/earthdata.html">
      Earthdata Login
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/checklist/earthengine.html">
      Google Earth Engine Sign-Up
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../skills_refresher_index.html">
+  <a class="reference internal" href="../../preliminary/skills_refresher_index.html">
    Skills Refresher
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -205,7 +205,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../skills-refresher/swc.html">
+    <a class="reference internal" href="../../preliminary/skills-refresher/swc.html">
      Software Carpentry Training
     </a>
    </li>
@@ -217,34 +217,34 @@ const thebe_selector_output = ".output, .cell_output"
   Tutorials
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../tutorials/index.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
    Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/example/tutorial-notebook.html">
+    <a class="reference internal" href="../example/tutorial-notebook.html">
      Example tutorial notebook
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/cryocloud_demo/CryoCloud_demo.html">
+    <a class="reference internal" href="../cryocloud_demo/CryoCloud_demo.html">
      Demo CryoCloud
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/computing.html">
+    <a class="reference internal" href="../computing.html">
      Cloud computing
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/snow-extrapolation/Introduction.html">
+    <a class="reference internal" href="Introduction.html">
      Introduction: GeoSMART Hackweek Snow Extrapolation Project
     </a>
    </li>
@@ -394,6 +394,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/geo-smart/2023-hackweek-website/main?urlpath=lab/tree/book/tutorials/snow-extrapolation/training.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -433,7 +462,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/geo-smart/2023-hackweek-website/issues/new?title=Issue%20on%20page%20%2Fpreliminary/checklist/earthengine.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/geo-smart/2023-hackweek-website/issues/new?title=Issue%20on%20page%20%2Ftutorials/snow-extrapolation/training.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -450,7 +479,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/geo-smart/2023-hackweek-website/edit/main/book/preliminary/checklist/earthengine.md"
+        <a href="https://github.com/geo-smart/2023-hackweek-website/edit/main/book/tutorials/snow-extrapolation/training.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -478,7 +507,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/preliminary/checklist/earthengine.md"
+        <a href="../../_sources/tutorials/snow-extrapolation/training.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -489,7 +518,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -538,19 +567,31 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+  <a class="reference internal nav-link" href="#model-training-and-testing-schema">
+   Model Training and Testing Schema
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#do-i-need-to-register-for-a-google-earth-engine-account">
-   Do I need to register for a Google Earth Engine account?
+  <a class="reference internal nav-link" href="#multilayered-precepton-network-mlp">
+   Multilayered Precepton Network (MLP)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#registering-for-an-earth-engine-account">
-   Registering for an Earth Engine account
+  <a class="reference internal nav-link" href="#make-predictions-on-the-random-sample-of-testing-data">
+   Make predictions on the random sample of testing data
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perform-preliminary-model-evaluation">
+   Perform Preliminary Model Evaluation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-evaluation">
+     Model Evaluation
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -561,7 +602,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Google Earth Engine Sign-Up</h1>
+                <h1>Model Training</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -572,19 +613,31 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+  <a class="reference internal nav-link" href="#model-training-and-testing-schema">
+   Model Training and Testing Schema
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#do-i-need-to-register-for-a-google-earth-engine-account">
-   Do I need to register for a Google Earth Engine account?
+  <a class="reference internal nav-link" href="#multilayered-precepton-network-mlp">
+   Multilayered Precepton Network (MLP)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#registering-for-an-earth-engine-account">
-   Registering for an Earth Engine account
+  <a class="reference internal nav-link" href="#make-predictions-on-the-random-sample-of-testing-data">
+   Make predictions on the random sample of testing data
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perform-preliminary-model-evaluation">
+   Perform Preliminary Model Evaluation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-evaluation">
+     Model Evaluation
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -596,27 +649,117 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="google-earth-engine-sign-up">
-<h1>Google Earth Engine Sign-Up<a class="headerlink" href="#google-earth-engine-sign-up" title="Permalink to this headline">#</a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://earthengine.google.com/">Google Earth Engine</a> (GEE) combines a multi-petabyte catalog of satellite imagery and geospatial raster datasets with planetary-scale analysis capabilities. It provides an easy, unified way to query for raster data that can help you put GeoSMART data into context. Earth Engine is available for commercial use, but remains free for academic and research use.</p>
+  <p><img alt="ML_SWE-2.jpg" src="../../_images/ML_SWE.jpg" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="model-training">
+<h1>Model Training<a class="headerlink" href="#model-training" title="Permalink to this headline">#</a></h1>
+<p>This notebook exemplifies the Sierra Snow Model (SSM) (a derivation of the National Snow Model (NSM)) data processing (through the <a class="reference external" href="http://DataProcess.py">DataProcess.py</a> script), and model training, predictions, and preliminary evaluation via the MLP_model.py script.
+With the focus of GeoSMART Hack Week to advance machine learning modeling skill sets, the motivation of the SSM project is for participants to modify the MLP_model.py script.
+Suggested modifications include optimizing the current multilayered-perceptron (MLP) neural network algorithm or selecting and optimizing a different ML algorithm (strongly encouraged).
+We encourage advanced modelers to contact Dr. Ryan Johnson (<a class="reference external" href="mailto:rjohnson18&#37;&#52;&#48;ua&#46;edu">rjohnson18<span>&#64;</span>ua<span>&#46;</span>edu</a>) for ideas and methods to optimize the model framework, there are several concepts of interest including feature engineering, domain optimization, feature selection, etc.</p>
+<p>The following workflow exemplifies the steps and python files to process the training data, train a model, produce predictions, and perform preliminary evaluations</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install myst-nb pandas==1.4.3 rioxarray xarray contextily h5py tqdm tables scikit-learn seaborn tensorflow progressbar hydroeval  nbformat==5.7.0   matplotlib basemap numpy rasterio geopandas==0.10.2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">DataProcess</span>
+<span class="c1">#pip install h5py, tables, scikit-learn, seaborn, tensorflow, change pandas to 1.4.3 - %magic lines</span>
+<span class="kn">import</span> <span class="nn">MLP_Model</span>
+<span class="kn">import</span> <span class="nn">warnings</span><span class="p">;</span> <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="c1">#Set working directories</span>
+<span class="c1">#cwd = os.getcwd()</span>
+<span class="c1">#os.chdir(&quot;..&quot;)</span>
+<span class="c1">#os.chdir(&quot;..&quot;)</span>
+<span class="c1">#datapath = os.getcwd()  </span>
+<span class="c1">#cwd = &#39;/home/jovyan/shared/geosmart-hackweek-2023/snow-extrapolation/Predictions/&#39;</span>
+<span class="n">datapath</span> <span class="o">=</span><span class="s1">&#39;/home/jovyan/shared-public/snow-extrapolation-web/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="model-training-and-testing-schema">
+<h2>Model Training and Testing Schema<a class="headerlink" href="#model-training-and-testing-schema" title="Permalink to this headline">#</a></h2>
+<p>The motivation the project is to advance the SSM skill for extrapolating regional SWE dynamics from in-situ observations.
+To develop and test the SSM, we will train the model on NASA Airborne Snow Observatory (ASO) and snow course observations spanning 2013-2018, and some of 2019.
+Within this training dataset, model training will use a random 75-25% train-test data split.
+The random sample function will be 1234 to ensure all participants models use the same training and testing data for this phase of model development - note, this will support an intermodel comparision.</p>
+<p>Model validation will be on water year 2019 and use the <a class="reference internal" href="SSM_Hindcast_2019.html"><span class="doc std std-doc">SSM_2019_Simulation</span></a>.
+This historical simulation will function as a hindcast, and use the 2019 water year NASA ASO and snow course observations to determine model performance.</p>
+<p>Upon the completion of model training, model execution predicts 1-km resolution SWE from data up to the current date of observation provided Latitude, Longitude, corresponding topographic data, and neighboring observation input features. From the sampling of test features, Chapter <a class="reference internal" href="evaluation.html"><span class="doc std std-doc">evaluation notebook</span></a> compares the modeled 1-km grid SWE values to the observed values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define hold out year -need Shard Model folder  </span>
+<span class="n">HOY</span> <span class="o">=</span> <span class="mi">2019</span>
+<span class="c1">#Run data processing script to partition key regional dataframes</span>
+<span class="c1">#note, need to load RegionTrain_SCA.h5,</span>
+<span class="n">RegionTrain</span><span class="p">,</span> <span class="n">RegionTest</span><span class="p">,</span> <span class="n">RegionObs_Train</span><span class="p">,</span> <span class="n">RegionObs_Test</span><span class="p">,</span> <span class="n">RegionTest_notScaled</span> <span class="o">=</span> <span class="n">DataProcess</span><span class="o">.</span><span class="n">DataProcess</span><span class="p">(</span><span class="n">HOY</span><span class="p">,</span> <span class="n">datapath</span><span class="p">,</span> <span class="n">datapath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="do-i-need-to-register-for-a-google-earth-engine-account">
-<h2>Do I need to register for a Google Earth Engine account?<a class="headerlink" href="#do-i-need-to-register-for-a-google-earth-engine-account" title="Permalink to this headline">#</a></h2>
-<p>Our Google Earth Engine (GEE) tutorial will have an interactive component that uses GEE to query for additional data that can help you put your data into context.
-If you would like to follow this part of the tutorial interactively, you will need to have registered for an account so that you can authenticate GEE.</p>
+<section id="multilayered-precepton-network-mlp">
+<h2>Multilayered Precepton Network (MLP)<a class="headerlink" href="#multilayered-precepton-network-mlp" title="Permalink to this headline">#</a></h2>
+<p>Given the identified optimal feature sets using recursive feature elimination (RFE), this step trains your model.
+Here, the model is an ANN multilayer perceptron (MLP) regression model to estimate SWE found in the MLP_Model file.
+This file serves as a template for Hackweek participants to modify and by following the template, participants will be able to streamline model development and evaluation.</p>
+<a class="reference internal image-reference" href="../../_images/MLP_architecture.png"><img alt="image" class="align-left" src="../../_images/MLP_architecture.png" style="width: 450px;" /></a>
+<p>The MLP is a classical type of feedforward ANN, successfully and frequently applied in environmental modeling applications.
+The MLP regression model estimates a target variable by learning a non-linear function to describe the target from an input vector of features.
+It performs learning via a back-propagation algorithm over a series of hidden layers containing interconnected nodes (neurons).
+The neurons connect bordering layers by a summation of weights and an activation function transforms model outputs to predicted values (i.e., SWE (in)).
+The model calculates error and adjusts the weights to minimize the error during model training, supporting the use of
+MLPs to effectively describe a target variable with any function, continuous or discontinuous.</p>
+<p>Model training leveraged the Keras API within the TensorFlow library.
+We selected the popular, open-source TensorFlow and Keras platforms for their wide applicability and capabilities in deep learning.
+The MLP model for the region consists of an input layer containing nodes for each feature in the optimized feature space, 7 dense hidden layers, and an output layer of the target SWE value.
+Model formulation uses the Rectified Linear Unit (ReLu) activation function to transform each hidden layer to non-linearize the solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#model training, each participants model will be different but should follow the prescribed input feature template</span>
+<span class="n">epochs</span><span class="o">=</span> <span class="mi">60</span>
+<span class="n">MLP_Model</span><span class="o">.</span><span class="n">Model_train</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">RegionTrain</span><span class="p">,</span> <span class="n">RegionTest</span><span class="p">,</span> <span class="n">RegionObs_Train</span><span class="p">,</span> <span class="n">RegionObs_Test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="registering-for-an-earth-engine-account">
-<h2>Registering for an Earth Engine account<a class="headerlink" href="#registering-for-an-earth-engine-account" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Go the the <a class="reference external" href="https://signup.earthengine.google.com/">GEE sign up page</a> and enter the email you want to use for your GEE account. A gmail - or an institutional address with an associated google account - is best if you have one.</p></li>
-<li><p>Enter your email, your affiliation and country/region. Where it asks what you want to accomplish, mention you are at ICESat-2 Hackweek at the University of Washington.</p></li>
-<li><p>Review the terms, verify your non-robot identify and click ‘Submit’.</p></li>
-<li><p>Check your email, including your spam folder, for a link from the Google Developer’s Team. The confirmation email will have directions on how to access the Code Editor.</p></li>
-<li><p>Not sure if you have access? Use <a class="reference external" href="https://code.earthengine.google.com/">this link</a> to check. If you didn’t get access you will get an authorization error that says your account isn’t registered. If you do have access, the link will open up the Javascript IDE. This link is your permanent portal to GEE access.</p></li>
-</ul>
-<p><img alt="gee-signup" src="../../_images/gee-signup.jpg" /></p>
+<section id="make-predictions-on-the-random-sample-of-testing-data">
+<h2>Make predictions on the random sample of testing data<a class="headerlink" href="#make-predictions-on-the-random-sample-of-testing-data" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/predictivemodeling.jpg"><img alt="image" class="align-center" src="../../_images/predictivemodeling.jpg" style="width: 600px;" /></a>
+<p>The next phase of model development is to examine model performance on the random sample of testing data.
+Refining model predictions at this phase will ensure the best model performance for the Hold-Out-Year validation set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Need to create Predictions folder if running for the first time</span>
+<span class="n">Predictions</span> <span class="o">=</span> <span class="n">MLP_Model</span><span class="o">.</span><span class="n">Model_predict</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span>  <span class="n">RegionTest</span><span class="p">,</span> <span class="n">RegionObs_Test</span><span class="p">,</span> <span class="n">RegionTest_notScaled</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="perform-preliminary-model-evaluation">
+<h2>Perform Preliminary Model Evaluation<a class="headerlink" href="#perform-preliminary-model-evaluation" title="Permalink to this headline">#</a></h2>
+<p>How does your model performance?
+We are using simple model evaluation metrics of R2 and RMSE to guage model performance.
+You will perform a more exhaustive model evaluation in the <a class="reference internal" href="evaluation.html"><span class="doc std std-doc">Evaluation</span></a> chapter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Performance</span> <span class="o">=</span> <span class="n">MLP_Model</span><span class="o">.</span><span class="n">Prelim_Eval</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="n">Predictions</span><span class="p">)</span>
+<span class="n">Performance</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="model-evaluation">
+<h3>Model Evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this headline">#</a></h3>
+<p>Now that we have a trained model producing acceptable performance, it is time to more rigorously evaluate its performance within an interactive <a class="reference internal" href="evaluation.html"><span class="doc std std-doc">evaluation notebook</span></a>.</p>
+</section>
 </section>
 </section>
 
@@ -629,16 +772,16 @@ If you would like to follow this part of the tutorial interactively, you will ne
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "hackweek"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./preliminary/checklist"
+            kernelName: "hackweek",
+            path: "./tutorials/snow-extrapolation"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'hackweek'</script>
 
               </div>
               
@@ -647,17 +790,17 @@ If you would like to follow this part of the tutorial interactively, you will ne
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="earthdata.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="data.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Earthdata Login</p>
+            <p class="prev-next-title">Data Preparation and Feature Engineering</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../skills_refresher_index.html" title="next page">
+    <a class='right-next' id="next-link" href="evaluation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Skills Refresher</p>
+        <p class="prev-next-title">Performance Evaluation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

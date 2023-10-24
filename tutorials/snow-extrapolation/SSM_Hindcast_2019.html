@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Google Earth Engine Sign-Up &#8212; GeoSMART Hackweek</title>
+    <title>Prediction Simulation for Water Year 2019 &#8212; GeoSMART Hackweek</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Skills Refresher" href="../skills_refresher_index.html" />
-    <link rel="prev" title="Earthdata Login" href="earthdata.html" />
+    <link rel="next" title="Performance Evaluation" href="Hindcast_Evaluation.html" />
+    <link rel="prev" title="Performance Evaluation" href="evaluation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -156,46 +156,46 @@ const thebe_selector_output = ".output, .cell_output"
   Preparation
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../checklist_index.html">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../preliminary/checklist_index.html">
    Checklist
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="github.html">
+    <a class="reference internal" href="../../preliminary/checklist/github.html">
      GitHub
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="jupyterhub.html">
+    <a class="reference internal" href="../../preliminary/checklist/jupyterhub.html">
      JupyterHub
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="git.html">
+    <a class="reference internal" href="../../preliminary/checklist/git.html">
      Git
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="earthdata.html">
+    <a class="reference internal" href="../../preliminary/checklist/earthdata.html">
      Earthdata Login
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/checklist/earthengine.html">
      Google Earth Engine Sign-Up
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../skills_refresher_index.html">
+  <a class="reference internal" href="../../preliminary/skills_refresher_index.html">
    Skills Refresher
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -205,7 +205,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../skills-refresher/swc.html">
+    <a class="reference internal" href="../../preliminary/skills-refresher/swc.html">
      Software Carpentry Training
     </a>
    </li>
@@ -217,34 +217,34 @@ const thebe_selector_output = ".output, .cell_output"
   Tutorials
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../tutorials/index.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
    Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/example/tutorial-notebook.html">
+    <a class="reference internal" href="../example/tutorial-notebook.html">
      Example tutorial notebook
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/cryocloud_demo/CryoCloud_demo.html">
+    <a class="reference internal" href="../cryocloud_demo/CryoCloud_demo.html">
      Demo CryoCloud
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/computing.html">
+    <a class="reference internal" href="../computing.html">
      Cloud computing
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/snow-extrapolation/Introduction.html">
+    <a class="reference internal" href="Introduction.html">
      Introduction: GeoSMART Hackweek Snow Extrapolation Project
     </a>
    </li>
@@ -394,6 +394,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/geo-smart/2023-hackweek-website/main?urlpath=lab/tree/book/tutorials/snow-extrapolation/SSM_Hindcast_2019.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -433,7 +462,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/geo-smart/2023-hackweek-website/issues/new?title=Issue%20on%20page%20%2Fpreliminary/checklist/earthengine.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/geo-smart/2023-hackweek-website/issues/new?title=Issue%20on%20page%20%2Ftutorials/snow-extrapolation/SSM_Hindcast_2019.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -450,7 +479,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/geo-smart/2023-hackweek-website/edit/main/book/preliminary/checklist/earthengine.md"
+        <a href="https://github.com/geo-smart/2023-hackweek-website/edit/main/book/tutorials/snow-extrapolation/SSM_Hindcast_2019.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -478,7 +507,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/preliminary/checklist/earthengine.md"
+        <a href="../../_sources/tutorials/snow-extrapolation/SSM_Hindcast_2019.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -489,7 +518,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -538,18 +567,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+  <a class="reference internal nav-link" href="#model-training-testing-influence-on-model-results">
+   Model Training/Testing influence on Model Results.
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#do-i-need-to-register-for-a-google-earth-engine-account">
-   Do I need to register for a Google Earth Engine account?
+  <a class="reference internal nav-link" href="#run-your-ssm-in-hindcast-mode-to-evaluate-operational-capacity">
+   Run your SSM in hindcast mode to evaluate operational capacity.
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#registering-for-an-earth-engine-account">
-   Registering for an Earth Engine account
+  <a class="reference internal nav-link" href="#model-hindcast-complete">
+   Model Hindcast complete
   </a>
  </li>
 </ul>
@@ -561,7 +590,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Google Earth Engine Sign-Up</h1>
+                <h1>Prediction Simulation for Water Year 2019</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -572,18 +601,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+  <a class="reference internal nav-link" href="#model-training-testing-influence-on-model-results">
+   Model Training/Testing influence on Model Results.
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#do-i-need-to-register-for-a-google-earth-engine-account">
-   Do I need to register for a Google Earth Engine account?
+  <a class="reference internal nav-link" href="#run-your-ssm-in-hindcast-mode-to-evaluate-operational-capacity">
+   Run your SSM in hindcast mode to evaluate operational capacity.
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#registering-for-an-earth-engine-account">
-   Registering for an Earth Engine account
+  <a class="reference internal nav-link" href="#model-hindcast-complete">
+   Model Hindcast complete
   </a>
  </li>
 </ul>
@@ -596,27 +625,96 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="google-earth-engine-sign-up">
-<h1>Google Earth Engine Sign-Up<a class="headerlink" href="#google-earth-engine-sign-up" title="Permalink to this headline">#</a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://earthengine.google.com/">Google Earth Engine</a> (GEE) combines a multi-petabyte catalog of satellite imagery and geospatial raster datasets with planetary-scale analysis capabilities. It provides an easy, unified way to query for raster data that can help you put GeoSMART data into context. Earth Engine is available for commercial use, but remains free for academic and research use.</p>
+  <p><img alt="ML_SWE-2.jpg" src="../../_images/ML_SWE.jpg" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="prediction-simulation-for-water-year-2019">
+<h1>Prediction Simulation for Water Year 2019<a class="headerlink" href="#prediction-simulation-for-water-year-2019" title="Permalink to this headline">#</a></h1>
+<p>We will be testing and evaluating the performance of the model over the 2019 WY at select locations</p>
+<p>For example, the operational capacity of the model should begin at the beginning of the water year (WY week 1) with a previous SWE value of 0-in for each 1-km grid.
+Model evaluation could then assess the forecasting skill on a hold-out dataset of an entire year in which known neighboring values do not control predictions, but rather driving to-date predictions from the predicted previous SWE values.
+Due to the high model performance, future work will target the assessment of model skill with an operational motivation</p>
+<section id="model-training-testing-influence-on-model-results">
+<h2>Model Training/Testing influence on Model Results.<a class="headerlink" href="#model-training-testing-influence-on-model-results" title="Permalink to this headline">#</a></h2>
+<p>The model training/testing partitioning methodology has a strong influence on model performance and the goal of model evaluation.
+The objective of the modeling effort was to examine the spatial extrapolation capacity of the model from selected monitoring stations to the overall region, best suited to a 75/25% training/testing split, respectively.
+While it is critical to address the strong serial correlation in SWE accumulation and melt throughout the season, the high correlation between weeks has the potential to inflate model skill when using a 75/25% training/testing split due to the previous SWE feature being known.
+An assessment of the operational capacity of the model is different than assessing the ability to extrapolate regional SWE from in-situ monitoring stations.
+For example, the operational capacity of the model should begin at the beginning of the water year (WY week 1) with a previous SWE value of 0-in for each 1-km grid.
+Model evaluation could then assess the forecasting skill on a hold-out dataset of an entire year in which known neighboring values do not control predictions, but rather driving to-date predictions from the predicted previous SWE values.
+Due to the high model performance, future work will target the assessment of model skill with an operational motivation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install myst-nb pandas==1.4.3 xarray rioxarray contextily rasterio geopandas==0.10.2 h5py tqdm tables scikit-learn seaborn tensorflow progressbar hydroeval folium==0.12.1.post1 vincent hvplot==0.8.0   nbformat==5.7.0   matplotlib basemap numpy 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">NSM_SCA</span> <span class="c1">#pip install progressbar</span>
+<span class="kn">import</span> <span class="nn">Hindcast_Initialization</span> <span class="c1">#pip install contextily</span>
+
+<span class="c1">#Set working directories</span>
+<span class="c1">#cwd = os.getcwd()</span>
+<span class="c1">#os.chdir(&quot;..&quot;)</span>
+<span class="c1">#os.chdir(&quot;..&quot;)</span>
+<span class="c1">#datapath = os.getcwd() </span>
+<span class="n">cwd</span> <span class="o">=</span><span class="s1">&#39;/home/jovyan/shared-public/snow-extrapolation-web/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_year</span> <span class="o">=</span> <span class="s1">&#39;2019&#39;</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="s1">&#39;20.0&#39;</span> <span class="c1">#This threshold is standardized for now, to recalculate see Dr. Johnson</span>
+<span class="n">Region_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;N_Sierras&#39;</span><span class="p">,</span><span class="s1">&#39;S_Sierras_High&#39;</span><span class="p">,</span> <span class="s1">&#39;S_Sierras_Low&#39;</span><span class="p">]</span>
+
+<span class="n">datelist</span> <span class="o">=</span> <span class="n">Hindcast_Initialization</span><span class="o">.</span><span class="n">Hindcast_Initialization</span><span class="p">(</span><span class="n">cwd</span><span class="p">,</span> <span class="n">cwd</span><span class="p">,</span> <span class="n">new_year</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">Region_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="do-i-need-to-register-for-a-google-earth-engine-account">
-<h2>Do I need to register for a Google Earth Engine account?<a class="headerlink" href="#do-i-need-to-register-for-a-google-earth-engine-account" title="Permalink to this headline">#</a></h2>
-<p>Our Google Earth Engine (GEE) tutorial will have an interactive component that uses GEE to query for additional data that can help you put your data into context.
-If you would like to follow this part of the tutorial interactively, you will need to have registered for an account so that you can authenticate GEE.</p>
+<section id="run-your-ssm-in-hindcast-mode-to-evaluate-operational-capacity">
+<h2>Run your SSM in hindcast mode to evaluate operational capacity.<a class="headerlink" href="#run-your-ssm-in-hindcast-mode-to-evaluate-operational-capacity" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#run the model through all time (data acqusition already completed)</span>
+<span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="n">datelist</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Updating SWE predictions for &#39;</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+    <span class="c1">#connect interactive script to Wasatch Snow module</span>
+    <span class="n">Snow</span> <span class="o">=</span> <span class="n">NSM_SCA</span><span class="o">.</span><span class="n">NSM_SCA</span><span class="p">(</span><span class="n">cwd</span><span class="p">,</span> <span class="n">cwd</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span> <span class="n">Regions</span> <span class="o">=</span> <span class="n">Region_list</span><span class="p">)</span>
+    
+    <span class="c1">#Go get SNOTEL observations - all data currently loaded, set to True to download</span>
+    <span class="c1">#Snow.Get_Monitoring_Data_Threaded(getdata = False)</span>
+
+    <span class="c1">#Initialize/Download the granules, all data preprocessed for the SSM activity, change to True to use the functions.</span>
+    <span class="c1">#Snow.initializeGranules(getdata = False)</span>
+
+    <span class="c1">#Process observations into Model prediction ready format,</span>
+    <span class="c1">#Snow.Data_Processing()</span>
+
+    <span class="c1">#Agument with SCA</span>
+    <span class="c1">#Snow.augmentPredictionDFs()</span>
+
+    <span class="c1">#Make predictions</span>
+    <span class="n">Snow</span><span class="o">.</span><span class="n">SWE_Predict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Hindcast_Initialization</span><span class="o">.</span><span class="n">Snowgif</span><span class="p">(</span><span class="n">cwd</span><span class="p">,</span> <span class="n">datelist</span><span class="p">,</span> <span class="n">Region_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="registering-for-an-earth-engine-account">
-<h2>Registering for an Earth Engine account<a class="headerlink" href="#registering-for-an-earth-engine-account" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Go the the <a class="reference external" href="https://signup.earthengine.google.com/">GEE sign up page</a> and enter the email you want to use for your GEE account. A gmail - or an institutional address with an associated google account - is best if you have one.</p></li>
-<li><p>Enter your email, your affiliation and country/region. Where it asks what you want to accomplish, mention you are at ICESat-2 Hackweek at the University of Washington.</p></li>
-<li><p>Review the terms, verify your non-robot identify and click ‘Submit’.</p></li>
-<li><p>Check your email, including your spam folder, for a link from the Google Developer’s Team. The confirmation email will have directions on how to access the Code Editor.</p></li>
-<li><p>Not sure if you have access? Use <a class="reference external" href="https://code.earthengine.google.com/">this link</a> to check. If you didn’t get access you will get an authorization error that says your account isn’t registered. If you do have access, the link will open up the Javascript IDE. This link is your permanent portal to GEE access.</p></li>
-</ul>
-<p><img alt="gee-signup" src="../../_images/gee-signup.jpg" /></p>
+<section id="model-hindcast-complete">
+<h2>Model Hindcast complete<a class="headerlink" href="#model-hindcast-complete" title="Permalink to this headline">#</a></h2>
+<p>Lets see how your model performs within SSWEET in the <a class="reference internal" href="Hindcast_Evaluation.html"><span class="doc std std-doc">Hindcast_Evaluation</span></a> notebook.</p>
 </section>
 </section>
 
@@ -629,16 +727,16 @@ If you would like to follow this part of the tutorial interactively, you will ne
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "hackweek"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./preliminary/checklist"
+            kernelName: "hackweek",
+            path: "./tutorials/snow-extrapolation"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'hackweek'</script>
 
               </div>
               
@@ -647,17 +745,17 @@ If you would like to follow this part of the tutorial interactively, you will ne
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="earthdata.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="evaluation.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Earthdata Login</p>
+            <p class="prev-next-title">Performance Evaluation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../skills_refresher_index.html" title="next page">
+    <a class='right-next' id="next-link" href="Hindcast_Evaluation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Skills Refresher</p>
+        <p class="prev-next-title">Performance Evaluation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

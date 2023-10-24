@@ -1,0 +1,1979 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Data Preparation and Feature Engineering &#8212; GeoSMART Hackweek</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Model Training" href="training.html" />
+    <link rel="prev" title="Modeling Approach" href="methods.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">GeoSMART Hackweek</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to GeoSmart Hackweek!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Details
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../application.html">
+   Application
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../logistics.html">
+   Event Logistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://geosmart.hackweek.io/index.html?jump_to=schedule">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://geosmart.hackweek.io/index.html?jump_to=team">
+   Team
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mission.html">
+   Hackweek Mission
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../CoC.html">
+   Event Code of Conduct
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preparation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../preliminary/checklist_index.html">
+   Checklist
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/checklist/github.html">
+     GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/checklist/jupyterhub.html">
+     JupyterHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/checklist/git.html">
+     Git
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/checklist/earthdata.html">
+     Earthdata Login
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/checklist/earthengine.html">
+     Google Earth Engine Sign-Up
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../preliminary/skills_refresher_index.html">
+   Skills Refresher
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/skills-refresher/swc.html">
+     Software Carpentry Training
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
+   Tutorials
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../example/tutorial-notebook.html">
+     Example tutorial notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cryocloud_demo/CryoCloud_demo.html">
+     Demo CryoCloud
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computing.html">
+     Cloud computing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Introduction.html">
+     Introduction: GeoSMART Hackweek Snow Extrapolation Project
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../projects/index.html">
+   Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../projects/project_roadmap.html">
+     Project Roadmap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../projects/project_initialization.html">
+     Project Initialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../projects/list_of_projects.html">
+     List of Projects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/glossary.html">
+   Glossaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/bibliography.html">
+   Bibliography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/open_science.html">
+   Open Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/open_source_software.html">
+   Open-source Software
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/questions.html">
+   How to Get Help
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../reference/social.html">
+   Things to do in Seattle
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../reference/supplemental_index.html">
+   Supplemental Material
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reference/supplemental/python.html">
+     Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reference/supplemental/conda.html">
+     Conda
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/geo-smart/2023-hackweek-website/main?urlpath=lab/tree/book/tutorials/snow-extrapolation/data.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/geo-smart/2023-hackweek-website"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/geo-smart/2023-hackweek-website/issues/new?title=Issue%20on%20page%20%2Ftutorials/snow-extrapolation/data.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/geo-smart/2023-hackweek-website/edit/main/book/tutorials/snow-extrapolation/data.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/tutorials/snow-extrapolation/data.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-processing-retrievel-overview">
+   Data Processing/Retrievel Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering-overview">
+   Feature Engineering Overview
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#below-are-simple-data-access-and-processing-examples-please-see-the-national-snow-model-github-for-complete-examples">
+     Below are simple data access and processing examples, please see the National Snow Model Github for complete examples.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-provided-swe-observations-from-snowcast-showdown">
+   Loading Provided SWE Observations from Snowcast Showdown
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selecting-the-sierra-nevada-mountains-as-a-demonstration-region-for-the-tutorial">
+   Selecting the Sierra Nevada Mountains as a demonstration region for the tutorial
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-copernicus-geospatial-data-90-m-dem">
+   Getting Copernicus Geospatial Data - 90 m DEM
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-ground-measurements">
+   Prepare Ground Measurements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-dataframe-and-engineer-features">
+   Build DataFrame and Engineer Features
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#divide-modeling-domain-into-sub-domains">
+   Divide Modeling Domain into Sub-domains
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-for-slicing-regions-into-regional-dataframes">
+   Code for slicing regions into regional DataFrames
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-the-nasa-aso-and-snotel-sites">
+   Plot the NASA ASO and SNOTEL sites
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#merge-geospatial-data-to-swe-observations">
+     Merge Geospatial data to SWE observations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make-the-northness-feature">
+   Make the Northness Feature
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering-previous-week-s-snotel-swe">
+   Feature Engineering: Previous Week’s SNOTEL SWE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering-delta-snotel-swe">
+   Feature Engineering: Delta SNOTEL SWE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connect-snotel-observations-to-nasa-aso">
+   Connect Snotel Observations to NASA ASO
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#target-site-s-previous-swe">
+   Target Site’s Previous SWE
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Data Preparation and Feature Engineering</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-processing-retrievel-overview">
+   Data Processing/Retrievel Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering-overview">
+   Feature Engineering Overview
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#below-are-simple-data-access-and-processing-examples-please-see-the-national-snow-model-github-for-complete-examples">
+     Below are simple data access and processing examples, please see the National Snow Model Github for complete examples.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-provided-swe-observations-from-snowcast-showdown">
+   Loading Provided SWE Observations from Snowcast Showdown
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selecting-the-sierra-nevada-mountains-as-a-demonstration-region-for-the-tutorial">
+   Selecting the Sierra Nevada Mountains as a demonstration region for the tutorial
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-copernicus-geospatial-data-90-m-dem">
+   Getting Copernicus Geospatial Data - 90 m DEM
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-ground-measurements">
+   Prepare Ground Measurements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-dataframe-and-engineer-features">
+   Build DataFrame and Engineer Features
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#divide-modeling-domain-into-sub-domains">
+   Divide Modeling Domain into Sub-domains
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-for-slicing-regions-into-regional-dataframes">
+   Code for slicing regions into regional DataFrames
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-the-nasa-aso-and-snotel-sites">
+   Plot the NASA ASO and SNOTEL sites
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#merge-geospatial-data-to-swe-observations">
+     Merge Geospatial data to SWE observations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make-the-northness-feature">
+   Make the Northness Feature
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering-previous-week-s-snotel-swe">
+   Feature Engineering: Previous Week’s SNOTEL SWE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering-delta-snotel-swe">
+   Feature Engineering: Delta SNOTEL SWE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connect-snotel-observations-to-nasa-aso">
+   Connect Snotel Observations to NASA ASO
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#target-site-s-previous-swe">
+   Target Site’s Previous SWE
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><img alt="ML_SWE-2.jpg" src="../../_images/ML_SWE.jpg" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="data-preparation-and-feature-engineering">
+<h1>Data Preparation and Feature Engineering<a class="headerlink" href="#data-preparation-and-feature-engineering" title="Permalink to this headline">#</a></h1>
+<p>Model data comes from the following sources National Resource Conservation Service (NRCS) Snow Telemetry (SNOTEL), California Data Exchange Center (CDEC), Copernicus 90-m DEM, and the NASA Airborne Snow Observatory (ASO).
+Feature engineering creates new features to capture the influences of the time of year, latitude, longitude, and elevation on SWE dynamics.
+Below is a generalized workflow for retrieving the data and engineering the following features for input into the machine learning models.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Feature id</p></th>
+<th class="text-align:center head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>WY Week</p></td>
+<td class="text-align:center"><p>Numerical ID of the week of the water year</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Latitude</p></td>
+<td class="text-align:center"><p>Center latitude of the training grid cell</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Longitude</p></td>
+<td class="text-align:center"><p>Center longitude of the training grid cell</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Elevation</p></td>
+<td class="text-align:center"><p>DEM elevation of the training grid cell</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Northness</p></td>
+<td class="text-align:center"><p>Calculated northness of the training cell</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>SNOTEL SWE</p></td>
+<td class="text-align:center"><p>Current week’s observed SWE from SNOTEL</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Prev SNOTEL SWE</p></td>
+<td class="text-align:center"><p>Previous week’s observed SWE from SNOTEL</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Delta SNOTEL SWE</p></td>
+<td class="text-align:center"><p>Difference between Previous week’s and current week’s observed SWE from SNOTEL</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Previous SWE</p></td>
+<td class="text-align:center"><p>Observed SWE from previous week</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Note, the Previous SWE feature is an observation for model training and testing but will be predicted when forecating.</em></p>
+<section id="data-processing-retrievel-overview">
+<h2>Data Processing/Retrievel Overview<a class="headerlink" href="#data-processing-retrievel-overview" title="Permalink to this headline">#</a></h2>
+<p>Data processing is likley the most tedious part of the model development pipeline and uses the elevation, slope, and aspect derived from DEM data through nearest-neighbor interpolation to produce values for all training, testing, and inference locations based on the four latitude and longitude corners of each grid cell.</p>
+</section>
+<section id="feature-engineering-overview">
+<h2>Feature Engineering Overview<a class="headerlink" href="#feature-engineering-overview" title="Permalink to this headline">#</a></h2>
+<p>Feature engineering consists of creating terrain (i.e., northness), temporal, and snow features.</p>
+<p>The calculation of the <strong>northness metric</strong> uses the slope and aspect values of each grid cell, using the embedded slope and aspect information within the metric to aid in ML model training and reducing the model dimensionality.</p>
+<a class="reference internal image-reference" href="../../_images/northness.jpg"><img alt="drawing" class="align-center" src="../../_images/northness.jpg" style="width: 300px;" /></a>
+<p><strong>Temporal features</strong> support model training relative to seasonal snow accumulation and melt phases, consisting of a week-id as an integer from the beginning of the water year (WY) on October 1st.</p>
+<p><strong>Snow observation features</strong> utilize in-situ station SWE observations, using the values observed from the current (Snotel/CDEC SWE) and the previous observation (Previous Snotel/CDEC SWE) as inputs.
+from current and previous observations, Delta SWE highlights the difference to capture the trend, either positive or negative, in SWE dynamics (i.e, melt or accumulation) with respect to each monitoring station ( <span class="math notranslate nohighlight">\(\Delta\)</span> SWE).</p>
+<p><strong>Grid cell previous observation features</strong> capture the strong serial correlation of snow accumulation and melt on the SWE estimate, the model uses the SWE estimate of the previous week as a feature (Previous SWE).
+For model training and testing, the Previous SWE input is from NASA ASO datasets while the hindcast uses the previous model SWE estimate.</p>
+<section id="below-are-simple-data-access-and-processing-examples-please-see-the-national-snow-model-github-for-complete-examples">
+<h3>Below are simple data access and processing examples, please see the <a class="reference external" href="https://github.com/whitelightning450/National-Snow-Model">National Snow Model Github</a> for complete examples.<a class="headerlink" href="#below-are-simple-data-access-and-processing-examples-please-see-the-national-snow-model-github-for-complete-examples" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="loading-provided-swe-observations-from-snowcast-showdown">
+<h2>Loading Provided SWE Observations from Snowcast Showdown<a class="headerlink" href="#loading-provided-swe-observations-from-snowcast-showdown" title="Permalink to this headline">#</a></h2>
+<p>The project supported the participation of the Snowcast Showdown, and while we shared useful code for SNOTEL and CDEC data retrievel (needed for forecasting), the information was provided by the United State Bureau of Reclaimation.
+We provide the supported modeling materials and provide the respective data processing and feature engineering steps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install myst-nb pandas==1.4.3 h5py tqdm tables scikit-learn seaborn tensorflow progressbar contextily hydroeval geopandas==0.10.2  nbformat==5.7.0 pystac_client planetary_computer rioxarray matplotlib basemap numpy richdem
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1">#need to pip install 1.4.3</span>
+<span class="kn">import</span> <span class="nn">json</span> 
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span> <span class="c1">#need to pip install</span>
+<span class="kn">import</span> <span class="nn">warnings</span><span class="p">;</span> <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datapath</span> <span class="o">=</span><span class="s1">&#39;/home/jovyan/shared-public/snow-extrapolation-web/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Set up training DF with key metadata per site</span>
+<span class="c1">#All coordinates of 1 km polygon used to develop ave elevation, ave slope, ave aspect</span>
+
+<span class="n">colnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cell_id&#39;</span><span class="p">,</span> <span class="s1">&#39;Region&#39;</span><span class="p">,</span> <span class="s1">&#39;BR_Coord&#39;</span><span class="p">,</span> <span class="s1">&#39;UR_Coord&#39;</span><span class="p">,</span> <span class="s1">&#39;UL_Coord&#39;</span><span class="p">,</span> <span class="s1">&#39;BL_Coord&#39;</span><span class="p">]</span>
+<span class="n">SWEdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">colnames</span><span class="p">)</span>
+
+<span class="c1">#Load training SWE data</span>
+<span class="n">TrainSWE</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">datapath</span><span class="si">}</span><span class="s2">/data/Prediction_Location_Observations.csv&quot;</span><span class="p">)</span>
+<span class="c1">#drop na and put into modeling df format</span>
+<span class="n">TrainSWE</span> <span class="o">=</span> <span class="n">TrainSWE</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cell_id&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1">#Load  SWE location data</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">datapath</span><span class="si">}</span><span class="s2">/data/grid_cells.geojson&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    
+<span class="c1">#load ground truth values(SNOTEL): training</span>
+<span class="n">GM_Train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">datapath</span><span class="si">}</span><span class="s2">/data/ground_measures_train_features.csv&quot;</span><span class="p">)</span>
+<span class="c1">#drop na and put into modeling df format</span>
+<span class="n">GM_Train</span> <span class="o">=</span> <span class="n">GM_Train</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;station_id&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1">#load ground truth values (SNOTEL): Testing</span>
+<span class="n">GM_Test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">datapath</span><span class="si">}</span><span class="s2">/data/ground_measures_test_features.csv&quot;</span><span class="p">)</span>
+<span class="c1">#drop na and put into modeling df format</span>
+<span class="n">GM_Test</span> <span class="o">=</span> <span class="n">GM_Test</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;station_id&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1">#load ground truth meta</span>
+<span class="n">GM_Meta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">datapath</span><span class="si">}</span><span class="s2">/data/ground_measures_metadata.csv&quot;</span><span class="p">)</span>
+
+<span class="c1">#merge training ground truth location metadata with snotel data</span>
+<span class="n">GM_Train</span> <span class="o">=</span> <span class="n">GM_Meta</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">GM_Train</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;station_id&#39;</span><span class="p">)</span>
+<span class="n">GM_Train</span> <span class="o">=</span> <span class="n">GM_Train</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;station_id&#39;</span><span class="p">)</span>
+<span class="n">GM_Train</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="s1">&#39;Lat&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="s1">&#39;Long&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;SWE&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="c1">#merge testing ground truth location metadata with snotel data</span>
+<span class="n">GM_Test</span> <span class="o">=</span> <span class="n">GM_Meta</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">GM_Test</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;station_id&#39;</span><span class="p">)</span>
+<span class="n">GM_Test</span> <span class="o">=</span> <span class="n">GM_Test</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;station_id&#39;</span><span class="p">)</span>
+<span class="n">GM_Test</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="s1">&#39;Lat&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="s1">&#39;Long&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;SWE&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#Make a SWE Grid location DF</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">]))):</span>
+    <span class="n">properties</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;properties&quot;</span><span class="p">]</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span>
+    <span class="n">DFdata</span> <span class="o">=</span> <span class="p">[</span><span class="n">properties</span> <span class="p">[</span><span class="s2">&quot;cell_id&quot;</span><span class="p">],</span>  <span class="n">properties</span> <span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">],</span><span class="n">location</span> <span class="p">[</span><span class="s2">&quot;coordinates&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="p">,</span>
+             <span class="n">location</span> <span class="p">[</span><span class="s2">&quot;coordinates&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">location</span> <span class="p">[</span><span class="s2">&quot;coordinates&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="n">location</span> <span class="p">[</span><span class="s2">&quot;coordinates&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="p">]</span>
+    <span class="n">df_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">SWEdata</span><span class="p">)</span>
+    <span class="n">SWEdata</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_length</span><span class="p">]</span> <span class="o">=</span> <span class="n">DFdata</span>
+    
+<span class="c1">#Make SWE location and observation DF</span>
+<span class="c1">#Training</span>
+<span class="c1">#merge site location metadata with observations</span>
+<span class="n">TrainSWE</span> <span class="o">=</span> <span class="n">TrainSWE</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">SWEdata</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;cell_id&#39;</span><span class="p">)</span>
+<span class="n">TrainSWE</span> <span class="o">=</span> <span class="n">TrainSWE</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;cell_id&#39;</span><span class="p">)</span>
+<span class="n">TrainSWE</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;SWE&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#Make sure Date is in datetime data type</span>
+<span class="n">TrainSWE</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">TrainSWE</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="selecting-the-sierra-nevada-mountains-as-a-demonstration-region-for-the-tutorial">
+<h2>Selecting the Sierra Nevada Mountains as a demonstration region for the tutorial<a class="headerlink" href="#selecting-the-sierra-nevada-mountains-as-a-demonstration-region-for-the-tutorial" title="Permalink to this headline">#</a></h2>
+<p>For the tutorial, we select a subset of the region to reduce the computational burden on the end user which speeds up model development.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#For model tutorial, selecting the Northern Rockies (UCOL)</span>
+<span class="n">TrainSWE</span> <span class="o">=</span> <span class="n">TrainSWE</span><span class="p">[</span><span class="n">TrainSWE</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span><span class="s1">&#39;sierras&#39;</span><span class="p">]</span>
+<span class="n">SWEdata</span> <span class="o">=</span> <span class="n">SWEdata</span><span class="p">[</span><span class="n">SWEdata</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span><span class="s1">&#39;sierras&#39;</span><span class="p">]</span>
+<span class="n">GM_Train</span> <span class="o">=</span> <span class="n">GM_Train</span><span class="p">[</span><span class="n">GM_Train</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span><span class="s1">&#39;California&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">TrainSWE</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There are: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">TrainSWE</span><span class="p">),</span> <span class="s1">&#39; training points in the Sierra dataset at &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">TrainSWE</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="s1">&#39; locations&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">GM_Train</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There are: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">GM_Train</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="s1">&#39; monitoring stations in the Sierra dataset providing &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">GM_Train</span><span class="p">),</span> <span class="s1">&#39; observations&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Get Lat Long information</span>
+<span class="c1">#Bottom right coord</span>
+<span class="n">TrainSWE</span><span class="p">[[</span><span class="s1">&#39;BR_Coord_Long&#39;</span><span class="p">,</span><span class="s1">&#39;BR_Coord_Lat&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">TrainSWE</span><span class="o">.</span><span class="n">BR_Coord</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span> <span class="n">TrainSWE</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="c1">#Upper right coord</span>
+<span class="n">TrainSWE</span><span class="p">[[</span><span class="s1">&#39;UR_Coord_Long&#39;</span><span class="p">,</span><span class="s1">&#39;UR_Coord_Lat&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">TrainSWE</span><span class="o">.</span><span class="n">UR_Coord</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span> <span class="n">TrainSWE</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="c1">#Upper left coord</span>
+<span class="n">TrainSWE</span><span class="p">[[</span><span class="s1">&#39;UL_Coord_Long&#39;</span><span class="p">,</span><span class="s1">&#39;UL_Coord_Lat&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">TrainSWE</span><span class="o">.</span><span class="n">UL_Coord</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span> <span class="n">TrainSWE</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="c1">#Bottom Left coord</span>
+<span class="n">TrainSWE</span><span class="p">[[</span><span class="s1">&#39;BL_Coord_Long&#39;</span><span class="p">,</span><span class="s1">&#39;BL_Coord_Lat&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">TrainSWE</span><span class="o">.</span><span class="n">BL_Coord</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span> <span class="n">TrainSWE</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-copernicus-geospatial-data-90-m-dem">
+<h2>Getting Copernicus Geospatial Data - 90 m DEM<a class="headerlink" href="#getting-copernicus-geospatial-data-90-m-dem" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/DEM.jpg"><img alt="drawing" class="align-right" src="../../_images/DEM.jpg" style="width: 600px;" /></a>
+<p>We use the copernicus 90 m DEM hosted by <a class="reference external" href="https://planetarycomputer.microsoft.com">Microsoft</a> to provide the geospatial information for each training and testing location.
+For each corner of each grid, we get the slope, elevation, and aspect, and calculate the average value to form as average 1-km geospatial information.
+We use the following code to access the DEM:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Develop a DF to get each site&#39;s geospatial information </span>
+<span class="n">geocols</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;BR_Coord_Long&#39;</span><span class="p">,</span> <span class="s1">&#39;BR_Coord_Lat&#39;</span><span class="p">,</span> <span class="s1">&#39;UR_Coord_Long&#39;</span><span class="p">,</span> <span class="s1">&#39;UR_Coord_Lat&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;UL_Coord_Long&#39;</span><span class="p">,</span> <span class="s1">&#39;UL_Coord_Lat&#39;</span><span class="p">,</span> <span class="s1">&#39;BL_Coord_Long&#39;</span><span class="p">,</span> <span class="s1">&#39;BL_Coord_Lat&#39;</span><span class="p">]</span>
+
+
+<span class="n">Geospatial_df</span> <span class="o">=</span> <span class="n">TrainSWE</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;rowid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Geospatial_df</span><span class="o">.</span><span class="n">index</span>
+<span class="n">Geospatial_df</span> <span class="o">=</span> <span class="n">Geospatial_df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="s1">&#39;rowid&#39;</span><span class="p">)</span>
+<span class="n">Geospatial_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Geospatial_df</span><span class="p">[</span><span class="n">geocols</span><span class="p">])</span>
+
+<span class="c1">#for the tutorial, we will just use a few sites for demonstration purposes</span>
+<span class="n">Geospatial_df</span> <span class="o">=</span> <span class="n">Geospatial_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1">#Define the AOI around the cell locations from clockwise</span>
+
+<span class="n">area_of_interest</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="c1">#lower left</span>
+            <span class="p">[</span><span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;BL_Coord_Long&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;BL_Coord_Lat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()],</span>
+            <span class="c1">#upper left</span>
+            <span class="p">[</span><span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;UL_Coord_Long&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;UL_Coord_Lat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
+            <span class="c1">#upper right</span>
+            <span class="p">[</span><span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;UR_Coord_Long&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;UR_Coord_Lat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
+            <span class="c1">#lower right</span>
+            <span class="p">[</span><span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;UR_Coord_Long&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;BR_Coord_Lat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()],</span>
+            <span class="c1">#lower left</span>
+            <span class="p">[</span><span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;BL_Coord_Long&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;BL_Coord_Lat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()],</span>
+        <span class="p">]</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area_of_interest</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Geospatial_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Make a connection to get 90m Copernicus Digital Elevation Model (DEM) data with the Planetary Computer STAC API</span>
+<span class="kn">from</span> <span class="nn">pystac_client</span> <span class="kn">import</span> <span class="n">Client</span> <span class="c1">#need to pip install</span>
+<span class="kn">import</span> <span class="nn">planetary_computer</span> <span class="c1">#need to pip install</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+    <span class="s2">&quot;https://planetarycomputer.microsoft.com/api/stac/v1&quot;</span><span class="p">,</span>
+    <span class="n">ignore_conformance</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="n">search</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+    <span class="n">collections</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cop-dem-glo-90&quot;</span><span class="p">],</span>
+    <span class="n">intersects</span><span class="o">=</span><span class="n">area_of_interest</span>
+<span class="p">)</span>
+
+<span class="n">tiles</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">get_items</span><span class="p">())</span>
+
+<span class="c1">#Make a DF to connect locations with the larger data tile, and then extract elevations</span>
+<span class="n">regions</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tiles</span><span class="p">))):</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">tiles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>
+    <span class="n">regions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="n">regions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sliceID&#39;</span><span class="p">,</span> <span class="s1">&#39;tileID&#39;</span><span class="p">],</span> <span class="n">data</span> <span class="o">=</span> <span class="n">regions</span><span class="p">)</span>
+<span class="n">regions</span> <span class="o">=</span> <span class="n">regions</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">regions</span><span class="p">[</span><span class="s1">&#39;tileID&#39;</span><span class="p">])</span>
+<span class="k">del</span> <span class="n">regions</span><span class="p">[</span><span class="s1">&#39;tileID&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regions</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following codes blocks can take some time as we are connecting the geospatial attributes of each corner of each grid, and then taking the average to get averaged grid geospatial attributes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#added Long,Lat to get polygon points</span>
+<span class="k">def</span> <span class="nf">GeoStat_func</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Geospatial_df</span><span class="p">,</span> <span class="n">regions</span><span class="p">,</span> <span class="n">elev_L</span><span class="p">,</span> <span class="n">slope_L</span><span class="p">,</span> <span class="n">aspect_L</span><span class="p">,</span> <span class="n">Long</span><span class="p">,</span> <span class="n">Lat</span><span class="p">,</span> <span class="n">tile</span><span class="p">):</span>
+
+    <span class="c1"># convert coordinate to raster value</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">Geospatial_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">Long</span><span class="p">]</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">Geospatial_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">Lat</span><span class="p">]</span>
+
+    
+    
+    <span class="c1">#connect point location to geotile</span>
+    <span class="n">tileid</span> <span class="o">=</span> <span class="s1">&#39;Copernicus_DSM_COG_30_N&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;_00_W&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">lon</span><span class="p">)))</span> <span class="o">+</span><span class="s1">&#39;_00_DEM&#39;</span>
+    
+    <span class="n">indexid</span> <span class="o">=</span> <span class="n">regions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tileid</span><span class="p">][</span><span class="s1">&#39;sliceID&#39;</span><span class="p">]</span>
+    
+
+   <span class="c1">#Assing region</span>
+    <span class="n">signed_asset</span> <span class="o">=</span> <span class="n">planetary_computer</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">tiles</span><span class="p">[</span><span class="n">indexid</span><span class="p">]</span><span class="o">.</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+    <span class="c1">#get elevation data in xarray object</span>
+    <span class="n">elevation</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">signed_asset</span><span class="o">.</span><span class="n">href</span><span class="p">)</span>
+
+    <span class="c1">#create copies to extract other geopysical information</span>
+    <span class="c1">#Create Duplicate DF&#39;s</span>
+    <span class="n">slope</span> <span class="o">=</span> <span class="n">elevation</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">aspect</span> <span class="o">=</span> <span class="n">elevation</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        
+    
+    <span class="c1">#transform projection</span>
+    <span class="n">transformer</span> <span class="o">=</span> <span class="n">Transformer</span><span class="o">.</span><span class="n">from_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span> <span class="n">elevation</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">always_xy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+    
+    <span class="c1">#extract elevation values into numpy array</span>
+    <span class="n">tilearray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">elevation</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1">#set tile geo to get slope and set at rdarray</span>
+    <span class="n">geo</span> <span class="o">=</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">lon</span><span class="p">)),</span> <span class="mi">90</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">lat</span><span class="p">)),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">tilearray</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">rdarray</span><span class="p">(</span><span class="n">tilearray</span><span class="p">,</span> <span class="n">no_data</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+    <span class="n">tilearray</span><span class="o">.</span><span class="n">projection</span> <span class="o">=</span> <span class="s1">&#39;EPSG:4326&#39;</span>
+    <span class="n">tilearray</span><span class="o">.</span><span class="n">geotransform</span> <span class="o">=</span> <span class="n">geo</span>
+
+    <span class="c1">#get slope, note that slope needs to be fixed, way too high</span>
+    <span class="c1">#get aspect value</span>
+    <span class="n">slope_arr</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">TerrainAttribute</span><span class="p">(</span><span class="n">tilearray</span><span class="p">,</span> <span class="n">attrib</span><span class="o">=</span><span class="s1">&#39;slope_degrees&#39;</span><span class="p">)</span>
+    <span class="n">aspect_arr</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">TerrainAttribute</span><span class="p">(</span><span class="n">tilearray</span><span class="p">,</span> <span class="n">attrib</span><span class="o">=</span><span class="s1">&#39;aspect&#39;</span><span class="p">)</span>
+
+    <span class="c1">#save slope and aspect information </span>
+    <span class="n">slope</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">slope_arr</span>
+    <span class="n">aspect</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">aspect_arr</span>
+
+    <span class="n">elev</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">elevation</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">yy</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">slop</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">slope</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">yy</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">asp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">aspect</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">yy</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    
+    
+    <span class="c1">#add point values to list</span>
+    <span class="n">elev_L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elev</span><span class="p">)</span>
+    <span class="n">slope_L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slop</span><span class="p">)</span>
+    <span class="n">aspect_L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">asp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">rioxarray</span> <span class="c1">#need to pip install</span>
+<span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Transformer</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">richdem</span> <span class="k">as</span> <span class="nn">rd</span> <span class="c1">#mamba install richdem -c conda-forge</span>
+
+<span class="n">BLelev_L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">BLslope_L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">BLaspect_L</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">#run the elevation function, added tqdm to show progress</span>
+<span class="p">[</span><span class="n">GeoStat_func</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Geospatial_df</span><span class="p">,</span> <span class="n">regions</span><span class="p">,</span> <span class="n">BLelev_L</span><span class="p">,</span> <span class="n">BLslope_L</span><span class="p">,</span> <span class="n">BLaspect_L</span><span class="p">,</span>
+                <span class="s1">&#39;BL_Coord_Long&#39;</span><span class="p">,</span> <span class="s1">&#39;BL_Coord_Lat&#39;</span><span class="p">,</span> <span class="n">tiles</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">Geospatial_df</span><span class="p">)))]</span>
+
+
+<span class="c1">#Save each points elevation in DF</span>
+<span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;BL_Elevation_m&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">BLelev_L</span>
+<span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;BL_slope_Deg&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">BLslope_L</span>
+<span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;BLaspect_L&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">BLaspect_L</span>
+
+
+<span class="n">ULelev_L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ULslope_L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ULaspect_L</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">#run the elevation function, added tqdm to show progress</span>
+<span class="p">[</span><span class="n">GeoStat_func</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Geospatial_df</span><span class="p">,</span> <span class="n">regions</span><span class="p">,</span> <span class="n">ULelev_L</span><span class="p">,</span> <span class="n">ULslope_L</span><span class="p">,</span> <span class="n">ULaspect_L</span><span class="p">,</span>
+                <span class="s1">&#39;UL_Coord_Long&#39;</span><span class="p">,</span> <span class="s1">&#39;UL_Coord_Lat&#39;</span><span class="p">,</span> <span class="n">tiles</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">Geospatial_df</span><span class="p">)))]</span>
+
+
+<span class="c1">#Save each points elevation in DF</span>
+<span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;UL_Elevation_m&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ULelev_L</span>
+<span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;UL_slope_Deg&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ULslope_L</span>
+<span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;ULaspect_L&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ULaspect_L</span>
+
+
+<span class="n">URelev_L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">URslope_L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">URaspect_L</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">#run the elevation function, added tqdm to show progress</span>
+<span class="p">[</span><span class="n">GeoStat_func</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Geospatial_df</span><span class="p">,</span> <span class="n">regions</span><span class="p">,</span> <span class="n">URelev_L</span><span class="p">,</span> <span class="n">URslope_L</span><span class="p">,</span> <span class="n">URaspect_L</span><span class="p">,</span>
+                <span class="s1">&#39;UR_Coord_Long&#39;</span><span class="p">,</span> <span class="s1">&#39;UR_Coord_Lat&#39;</span><span class="p">,</span> <span class="n">tiles</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">Geospatial_df</span><span class="p">)))]</span>
+
+
+<span class="c1">#Save each points elevation in DF</span>
+<span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;UR_Elevation_m&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">URelev_L</span>
+<span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;UR_slope_Deg&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">URslope_L</span>
+<span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;URaspect_L&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">URaspect_L</span>
+
+
+<span class="n">BRelev_L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">BRslope_L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">BRaspect_L</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">#run the elevation function, added tqdm to show progress</span>
+<span class="p">[</span><span class="n">GeoStat_func</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Geospatial_df</span><span class="p">,</span> <span class="n">regions</span><span class="p">,</span> <span class="n">BRelev_L</span><span class="p">,</span> <span class="n">BRslope_L</span><span class="p">,</span> <span class="n">BRaspect_L</span><span class="p">,</span>
+                <span class="s1">&#39;BR_Coord_Long&#39;</span><span class="p">,</span> <span class="s1">&#39;BR_Coord_Lat&#39;</span><span class="p">,</span> <span class="n">tiles</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">Geospatial_df</span><span class="p">)))]</span>
+
+
+<span class="c1">#Save each points elevation in DF</span>
+<span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;BR_Elevation_m&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">BRelev_L</span>
+<span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;BR_slope_Deg&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">BRslope_L</span>
+<span class="n">Geospatial_df</span><span class="p">[</span><span class="s1">&#39;BRaspect_L&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">BRaspect_L</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Geospatial_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prepare-ground-measurements">
+<h2>Prepare Ground Measurements<a class="headerlink" href="#prepare-ground-measurements" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Get all unique Snotel sites</span>
+<span class="n">Snotel</span> <span class="o">=</span> <span class="n">GM_Train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">Snotel</span> <span class="o">=</span> <span class="n">Snotel</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">Snotel</span> <span class="o">=</span> <span class="n">Snotel</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;station_id&#39;</span><span class="p">])</span>
+<span class="n">Snotel</span> <span class="o">=</span> <span class="n">Snotel</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> 
+<span class="n">Snotel</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;other&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="build-dataframe-and-engineer-features">
+<h2>Build DataFrame and Engineer Features<a class="headerlink" href="#build-dataframe-and-engineer-features" title="Permalink to this headline">#</a></h2>
+<p>In this section, we begin building the DataFrames’s, connect geospatial information, and process geospatial information via feature engineering.
+Essentially, the section connect geospatial information to training and testing data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#get mean Geospatial data</span>
+<span class="k">def</span> <span class="nf">mean_Geo</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">geo</span><span class="p">):</span>
+    <span class="n">BL</span> <span class="o">=</span> <span class="s1">&#39;BL&#39;</span><span class="o">+</span><span class="n">geo</span>
+    <span class="n">UL</span> <span class="o">=</span> <span class="s1">&#39;UL&#39;</span><span class="o">+</span><span class="n">geo</span>
+    <span class="n">UR</span> <span class="o">=</span> <span class="s1">&#39;UR&#39;</span><span class="o">+</span><span class="n">geo</span>
+    <span class="n">BR</span> <span class="o">=</span> <span class="s1">&#39;BR&#39;</span><span class="o">+</span><span class="n">geo</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="n">geo</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">BL</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="n">UL</span><span class="p">]</span><span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="n">UR</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="n">BR</span><span class="p">])</span> <span class="o">/</span><span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Get geaspatial means</span>
+<span class="n">geospatialcols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_Coord_Long&#39;</span><span class="p">,</span> <span class="s1">&#39;_Coord_Lat&#39;</span><span class="p">,</span> <span class="s1">&#39;_Elevation_m&#39;</span><span class="p">,</span> <span class="s1">&#39;_slope_Deg&#39;</span> <span class="p">,</span> <span class="s1">&#39;aspect_L&#39;</span><span class="p">]</span>
+
+<span class="c1">#Training data</span>
+<span class="p">[</span><span class="n">mean_Geo</span><span class="p">(</span><span class="n">Geospatial_df</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">geospatialcols</span><span class="p">]</span>
+
+<span class="c1">#list of key geospatial component means</span>
+<span class="n">geocol</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_Coord_Long&#39;</span><span class="p">,</span><span class="s1">&#39;_Coord_Lat&#39;</span><span class="p">,</span><span class="s1">&#39;_Elevation_m&#39;</span><span class="p">,</span><span class="s1">&#39;_slope_Deg&#39;</span><span class="p">,</span><span class="s1">&#39;aspect_L&#39;</span><span class="p">]</span>
+<span class="n">TrainGeo_df</span> <span class="o">=</span> <span class="n">Geospatial_df</span><span class="p">[</span><span class="n">geocol</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1">#adjust column names to be consistent with snotel</span>
+<span class="n">TrainGeo_df</span> <span class="o">=</span> <span class="n">TrainGeo_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;_Coord_Long&#39;</span><span class="p">:</span><span class="s1">&#39;Long&#39;</span><span class="p">,</span> <span class="s1">&#39;_Coord_Lat&#39;</span><span class="p">:</span><span class="s1">&#39;Lat&#39;</span><span class="p">,</span> <span class="s1">&#39;_Elevation_m&#39;</span><span class="p">:</span> <span class="s1">&#39;elevation_m&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;_slope_Deg&#39;</span><span class="p">:</span><span class="s1">&#39;slope_deg&#39;</span> <span class="p">,</span> <span class="s1">&#39;aspect_L&#39;</span><span class="p">:</span> <span class="s1">&#39;aspect&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TrainGeo_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="divide-modeling-domain-into-sub-domains">
+<h2>Divide Modeling Domain into Sub-domains<a class="headerlink" href="#divide-modeling-domain-into-sub-domains" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/CONUSsnow.jpg"><img alt="drawing" class="align-right" src="../../_images/CONUSsnow.jpg" style="width: 300px;" /></a>
+<p>The Snowcast Showdown modeling domain covered the entire western US.
+Thus, because of differnces in snowpack characteristics (maritime, coastal transitional, intermountain, and continental) and regional climate patterns, we divided the original domain into 23 sub-domains.
+The figure is from Haegeli, P (2004), <em>Scale Analysis of avalanche activity on persistent snowpack weakness with respect to large-scale backcountry avalance forecasting.</em>
+For the the tutorial, we still need to perform the Region_id() function.
+However, we will focus on the Norther Colorado Rockies region, also refered to as the Upper Colorado River Basin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#make Region identifier. The data already includes Region, but too many &#39;other&#39; labels</span>
+
+<span class="k">def</span> <span class="nf">Region_id</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))):</span>
+        <span class="c1"># Sierras</span>
+        <span class="c1"># Northern Sierras</span>
+        <span class="k">if</span> <span class="o">-</span><span class="mf">122.5</span> <span class="o">&lt;=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Long&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">119</span> <span class="ow">and</span> <span class="mi">39</span> <span class="o">&lt;=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Lat&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">42</span><span class="p">:</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;N_Sierras&#39;</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">loc</span>
+
+        <span class="c1"># Southern Sierras</span>
+        <span class="k">if</span> <span class="o">-</span><span class="mf">122.5</span> <span class="o">&lt;=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Long&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">117</span> <span class="ow">and</span> <span class="mi">35</span> <span class="o">&lt;=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Lat&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">39</span><span class="p">:</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;S_Sierras&#39;</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">loc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Attach a region id for each location</span>
+<span class="n">TrainGeo_df</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;other&#39;</span>
+<span class="n">Snotel</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;other&#39;</span>
+<span class="n">GM_Train</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;other&#39;</span>
+<span class="c1">#Fix date variable</span>
+<span class="n">GM_Train</span> <span class="o">=</span> <span class="n">GM_Train</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;variable&#39;</span><span class="p">:</span><span class="s1">&#39;Date&#39;</span><span class="p">})</span>
+
+<span class="c1">#Assign region to dataframes</span>
+<span class="n">Region_id</span><span class="p">(</span><span class="n">TrainGeo_df</span><span class="p">)</span>
+<span class="n">Region_id</span><span class="p">(</span><span class="n">Snotel</span><span class="p">)</span>
+<span class="n">Region_id</span><span class="p">(</span><span class="n">GM_Train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TrainGeo_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Snotel</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GM_Train</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="code-for-slicing-regions-into-regional-dataframes">
+<h2>Code for slicing regions into regional DataFrames<a class="headerlink" href="#code-for-slicing-regions-into-regional-dataframes" title="Permalink to this headline">#</a></h2>
+<p>While this step is not needed for the tutorial, it supports the scaling to a larger doamain to ensure different regions are correctly classified.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#subset data by each region into dictionary</span>
+<span class="n">RegionTrain</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">TrainGeo_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">TrainGeo_df</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">TrainGeo_df</span><span class="o">.</span><span class="n">Region</span><span class="o">.</span><span class="n">unique</span><span class="p">()}</span>
+<span class="n">RegionSnotel</span>  <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">Snotel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">Snotel</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">Snotel</span><span class="o">.</span><span class="n">Region</span><span class="o">.</span><span class="n">unique</span><span class="p">()}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RegionTrain</span><span class="p">[</span><span class="s1">&#39;N_Sierras&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RegionTrain</span><span class="p">[</span><span class="s1">&#39;S_Sierras&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RegionSnotel</span><span class="p">[</span><span class="s1">&#39;N_Sierras&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RegionSnotel</span><span class="p">[</span><span class="s1">&#39;S_Sierras&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#check to make sure no test locations classified as other</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Training&#39;</span><span class="p">)</span> 
+<span class="c1">#look at region training sites</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">RegionTrain</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There are&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">RegionTrain</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="s1">&#39; training locations in &#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;         &#39;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SNOTEL&#39;</span><span class="p">)</span> 
+<span class="c1">#look at region training sites</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">RegionSnotel</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There are&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">RegionSnotel</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="s1">&#39; Snotel locations in &#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-the-nasa-aso-and-snotel-sites">
+<h2>Plot the NASA ASO and SNOTEL sites<a class="headerlink" href="#plot-the-nasa-aso-and-snotel-sites" title="Permalink to this headline">#</a></h2>
+<p>It is important for any modeling exercise to ensure your data is in the location that you expect.
+The GeoPlot() function plots the respective observations over a map of the Rocky mountains to visualize the modeling domain.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#This plots the location of all df data points</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1">#need to pip install</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span> <span class="c1">#pip install basemap</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+
+<span class="k">def</span> <span class="nf">GeoPlot</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+    <span class="c1">#merc also works for projection # Cylindrical Equal Area. https://matplotlib.org/basemap/api/basemap_api.html#module-mpl_toolkits.basemap</span>
+
+    <span class="n">m</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;cea&#39;</span><span class="p">,</span> \
+                <span class="n">llcrnrlat</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">urcrnrlat</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> \
+                <span class="n">llcrnrlon</span><span class="o">=-</span><span class="mi">125</span><span class="p">,</span> <span class="n">urcrnrlon</span><span class="o">=-</span><span class="mi">115</span><span class="p">,</span> \
+                <span class="n">lat_ts</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> \
+                <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+
+    <span class="n">m</span><span class="o">.</span><span class="n">bluemarble</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># full scale will be overkill</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>  <span class="c1"># add coastlines</span>
+
+
+    <span class="c1"># draw coastlines, meridians and parallels.</span>
+
+    <span class="n">m</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">drawstates</span><span class="p">()</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+
+    <span class="c1">#Make unique color for each regions</span>
+    <span class="n">number_of_colors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#&quot;</span><span class="o">+</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s1">&#39;0123456789ABCDEF&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)])</span>
+                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_colors</span><span class="p">)]</span>
+
+    <span class="n">Location</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">colordict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">Location</span><span class="p">,</span> <span class="n">color</span><span class="p">)}</span>
+
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;Long&#39;</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;Lat&#39;</span><span class="p">]))</span> 
+        <span class="n">m</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colordict</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> 
+
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Locations&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GeoPlot</span><span class="p">(</span><span class="n">RegionTrain</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GeoPlot</span><span class="p">(</span><span class="n">RegionSnotel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="merge-geospatial-data-to-swe-observations">
+<h3>Merge Geospatial data to SWE observations<a class="headerlink" href="#merge-geospatial-data-to-swe-observations" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#This function connects stationary geospatial information to observations</span>
+<span class="k">def</span> <span class="nf">Geo_to_Data</span><span class="p">(</span><span class="n">geodf</span><span class="p">,</span> <span class="n">SWE</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+    <span class="n">dfcols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Long&#39;</span><span class="p">,</span><span class="s1">&#39;Lat&#39;</span><span class="p">,</span><span class="s1">&#39;elevation_m&#39;</span><span class="p">,</span><span class="s1">&#39;slope_deg&#39;</span><span class="p">,</span><span class="s1">&#39;aspect&#39;</span><span class="p">,</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span><span class="s1">&#39;SWE&#39;</span><span class="p">,</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">SWE</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Region&#39;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="n">geodf</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">SWE</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">datadf</span> <span class="o">=</span> <span class="n">SWE</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">geodf</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="nb">id</span><span class="p">)</span>
+    <span class="n">datadf</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">datadf</span><span class="o">=</span><span class="n">datadf</span><span class="p">[</span><span class="n">dfcols</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">datadf</span>
+
+<span class="c1">#Create a temporal attribute, week_num(), that reflect the week id of the water year, beginning October 1st</span>
+<span class="k">def</span> <span class="nf">week_num</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+        <span class="c1">#week of water year</span>
+    <span class="n">weeklist</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))):</span>
+        <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">month</span><span class="o">&lt;</span><span class="mi">11</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">year</span>
+            
+        <span class="n">WY_start</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-10-01&#39;</span><span class="p">)</span>
+        <span class="n">deltaday</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">WY_start</span>
+        <span class="n">deltaweek</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">deltaday</span><span class="o">.</span><span class="n">days</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span>
+        <span class="n">weeklist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">deltaweek</span><span class="p">)</span>
+
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;WYWeek&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weeklist</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Merge Geospatial data to SWE observations</span>
+<span class="n">Snotel</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;station_id&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#Connect location geospatial attributes to observations</span>
+<span class="n">Training</span> <span class="o">=</span> <span class="n">Geo_to_Data</span><span class="p">(</span><span class="n">TrainGeo_df</span><span class="p">,</span> <span class="n">TrainSWE</span><span class="p">,</span> <span class="s1">&#39;cell_id&#39;</span><span class="p">)</span>
+
+<span class="c1"># get snotel station id, region, slope, and aspect to merge with obervations</span>
+<span class="n">GM_Snotel_train</span> <span class="o">=</span> <span class="n">GM_Train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1">#Make Date in datetime dtype</span>
+<span class="n">Training</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">Training</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
+<span class="n">GM_Snotel_train</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">GM_Snotel_train</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
+
+<span class="c1">#add week number to observations</span>
+<span class="n">week_num</span><span class="p">(</span><span class="n">Training</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Training</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GM_Snotel_train</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Connect observations to regional data</span>
+<span class="c1">#subset data by each region into dictionary</span>
+<span class="n">RegionTrain</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">Training</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">Training</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">Training</span><span class="o">.</span><span class="n">Region</span><span class="o">.</span><span class="n">unique</span><span class="p">()}</span>
+<span class="n">RegionSnotel_Train</span>  <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">GM_Snotel_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">GM_Snotel_train</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">GM_Snotel_train</span><span class="o">.</span><span class="n">Region</span><span class="o">.</span><span class="n">unique</span><span class="p">()}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RegionSnotel_Train</span><span class="p">[</span><span class="s1">&#39;N_Sierras&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="make-the-northness-feature">
+<h2>Make the Northness Feature<a class="headerlink" href="#make-the-northness-feature" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/northness.jpg"><img alt="drawing" class="align-center" src="../../_images/northness.jpg" style="width: 300px;" /></a>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#This function defines northness: :  sine(Slope) * cosine(Aspect). this gives you a northness range of -1 to 1.</span>
+<span class="c1">#Note you&#39;ll need to first convert to radians. </span>
+<span class="c1">#Some additional if else statements to get around sites with low obervations</span>
+<span class="k">def</span> <span class="nf">northness</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>    
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span> <span class="c1">#This removes single value observations, need to go over and remove these locations from training too</span>
+        <span class="c1">#Determine northness for site</span>
+        <span class="c1">#convert to radians</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;aspect_rad&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;aspect&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">0.0174533</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;slope_rad&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;slope_deg&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">0.0174533</span>
+        
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;northness&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;northness&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;slope_rad&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;aspect_rad&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+        <span class="c1">#remove slope and aspects to clean df up</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aspect&#39;</span><span class="p">,</span> <span class="s1">&#39;slope_deg&#39;</span><span class="p">,</span> <span class="s1">&#39;aspect_rad&#39;</span><span class="p">,</span> <span class="s1">&#39;slope_rad&#39;</span><span class="p">,</span> <span class="s1">&#39;Region&#39;</span><span class="p">])</span>
+        
+        <span class="k">return</span> <span class="n">df</span>
+        
+    <span class="k">else</span><span class="p">:</span>
+         <span class="c1">#convert to radians</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;aspect_rad&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;aspect&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">0.0174533</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;slope_rad&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;slope_deg&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">0.0174533</span>
+        
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;northness&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;northness&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;slope_rad&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;aspect_rad&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+        
+         <span class="c1">#remove slope and aspects to clean df up</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aspect&#39;</span><span class="p">,</span> <span class="s1">&#39;slope_deg&#39;</span><span class="p">,</span> <span class="s1">&#39;aspect_rad&#39;</span><span class="p">,</span> <span class="s1">&#39;slope_rad&#39;</span><span class="p">,</span> <span class="s1">&#39;Region&#39;</span><span class="p">])</span>
+        
+        <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#make northness feature and delete regions, slope, aspect features for each training and testing cell</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">RegionTrain</span><span class="p">):</span>
+    <span class="n">RegionTrain</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">northness</span><span class="p">(</span><span class="n">RegionTrain</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    
+<span class="c1">#Make dictionary in Regions dict for each region&#39;s dictionary of Snotel sites</span>
+<span class="n">Regions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">RegionTrain</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1">#Make northness for all Snotel observations</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">Regions</span><span class="p">):</span>
+    
+    <span class="n">snotel</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="s1">&#39;_Snotel&#39;</span>
+    <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">site</span><span class="p">:</span> <span class="n">RegionSnotel_Train</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">site</span><span class="p">]</span> <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">RegionSnotel_Train</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">unique</span><span class="p">()}</span>
+    
+    <span class="c1">#get training and testing sites that are the same</span>
+    <span class="n">train</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    
+    <span class="c1">#make Northing metric</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">train</span><span class="p">):</span>
+  
+    <span class="c1">#remove items we do not need</span>
+        <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Long&#39;</span><span class="p">,</span> <span class="s1">&#39;Lat&#39;</span><span class="p">])</span>
+    <span class="c1">#make date index</span>
+        <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+        
+    <span class="c1">#rename columns to represent site info</span>
+        <span class="n">colnames</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span>
+        <span class="n">sitecolnames</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span> <span class="n">j</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">colnames</span><span class="p">]</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">colnames</span><span class="p">,</span> <span class="n">sitecolnames</span><span class="p">))</span>
+        <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">names</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">Regions</span><span class="p">):</span>
+    
+    <span class="n">snotel</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="s1">&#39;_Snotel&#39;</span>
+    <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">site</span><span class="p">:</span> <span class="n">RegionSnotel_Train</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">site</span><span class="p">]</span> <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">RegionSnotel_Train</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">unique</span><span class="p">()}</span>
+    
+    <span class="c1">#get training and testing sites that are the same</span>
+    <span class="n">train</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+    
+    <span class="c1">#get obs</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">train</span><span class="p">):</span>
+   
+    <span class="c1">#remove items we do not need</span>
+        <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Long&#39;</span><span class="p">,</span> <span class="s1">&#39;Lat&#39;</span><span class="p">,</span> <span class="s1">&#39;elevation_m&#39;</span><span class="p">,</span> <span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span> <span class="p">,</span> <span class="s1">&#39;Region&#39;</span><span class="p">])</span>
+    <span class="c1">#make date index</span>
+        <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+        
+    <span class="c1">#rename columns to represent site info</span>
+        <span class="n">colnames</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span>
+        <span class="n">sitecolnames</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span> <span class="n">j</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">colnames</span><span class="p">]</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">colnames</span><span class="p">,</span> <span class="n">sitecolnames</span><span class="p">))</span>
+        <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">names</span><span class="p">)</span>
+    
+    <span class="c1">#Remove unused columns</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">4</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotel</span><span class="p">][</span><span class="n">col</span><span class="p">]</span>
+
+            
+<span class="c1">#make a df for training each region, </span>
+<span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">Regions</span><span class="p">):</span>
+    <span class="n">snotels</span> <span class="o">=</span> <span class="n">R</span><span class="o">+</span><span class="s1">&#39;_Snotel&#39;</span>
+    <span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+      
+    <span class="k">for</span> <span class="n">S</span> <span class="ow">in</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotels</span><span class="p">]:</span>
+        <span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">],</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotels</span><span class="p">][</span><span class="n">S</span><span class="p">]</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RegionTrain</span><span class="p">[</span><span class="s1">&#39;N_Sierras&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="feature-engineering-previous-week-s-snotel-swe">
+<h2>Feature Engineering: Previous Week’s SNOTEL SWE<a class="headerlink" href="#feature-engineering-previous-week-s-snotel-swe" title="Permalink to this headline">#</a></h2>
+<p>We use in-situ station SWE observations as features, using the values observed from the current (Snotel/CDEC SWE) and the previous week (Previous Snotel/CDEC SWE) as inputs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Prev_SWE_Snotel_Dict</span><span class="p">(</span><span class="n">DF</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+    
+    <span class="n">regionsnotel</span> <span class="o">=</span> <span class="n">region</span><span class="o">+</span><span class="s1">&#39;_Snotel&#39;</span>
+    
+    <span class="n">sites</span> <span class="o">=</span> <span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    
+    <span class="c1">#week delta  </span>
+    <span class="n">weekdelta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">sites</span><span class="p">):</span>
+        <span class="c1">#print(i)</span>
+        <span class="n">prevSWE</span> <span class="o">=</span> <span class="s1">&#39;Prev_SWE_&#39;</span> <span class="o">+</span> <span class="n">i</span>
+        <span class="n">SWE</span> <span class="o">=</span> <span class="s1">&#39;SWE_&#39;</span><span class="o">+</span><span class="n">i</span>
+        
+        <span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">prevSWE</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9999.99</span>
+        
+        <span class="c1">#need to find the number of columns for ifelse</span>
+        <span class="n">dfcols</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+    
+
+        <span class="c1">#if only one observation need to fix</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">])):</span>
+
+            <span class="k">if</span> <span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">cell</span><span class="p">]</span> <span class="o">-</span> <span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">cell</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">weekdelta</span><span class="p">:</span>     
+                <span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">prevSWE</span><span class="p">][</span><span class="n">cell</span><span class="p">]</span> <span class="o">=</span> <span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">SWE</span><span class="p">][</span><span class="n">cell</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">Regions</span><span class="p">:</span>
+    <span class="n">Prev_SWE_Snotel_Dict</span><span class="p">(</span><span class="n">RegionTrain</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RegionTrain</span><span class="p">[</span><span class="s1">&#39;N_Sierras_Snotel&#39;</span><span class="p">][</span><span class="s1">&#39;CDEC:ADM&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="feature-engineering-delta-snotel-swe">
+<h2>Feature Engineering: Delta SNOTEL SWE<a class="headerlink" href="#feature-engineering-delta-snotel-swe" title="Permalink to this headline">#</a></h2>
+<p>Using the observations from the current and previous week, we calculate the difference to capture the trend, either positive or negative, in SWE dynamics (i.e, melt or accumulation) with respect to each monitoring station ( <span class="math notranslate nohighlight">\(\Delta\)</span> SWE).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Delta_SWE_Snotel_Dict</span><span class="p">(</span><span class="n">DF</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
+    <span class="c1"># print(region)</span>
+    
+    <span class="n">regionsnotel</span> <span class="o">=</span> <span class="n">region</span><span class="o">+</span><span class="s1">&#39;_Snotel&#39;</span>
+    
+    <span class="n">sites</span> <span class="o">=</span> <span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">sites</span><span class="p">):</span>
+      <span class="c1">#  print(i)</span>
+        <span class="n">prevSWE</span> <span class="o">=</span> <span class="s1">&#39;Prev_SWE_&#39;</span> <span class="o">+</span> <span class="n">i</span>
+        <span class="n">SWE</span> <span class="o">=</span> <span class="s1">&#39;SWE_&#39;</span><span class="o">+</span><span class="n">i</span>
+        <span class="n">Delta_SWE</span> <span class="o">=</span> <span class="s1">&#39;Delta_&#39;</span><span class="o">+</span><span class="n">SWE</span>
+        
+        <span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">Delta_SWE</span><span class="p">]</span> <span class="o">=</span> <span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">SWE</span><span class="p">]</span> <span class="o">-</span> <span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">prevSWE</span><span class="p">]</span>
+        <span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">DF</span><span class="p">[</span><span class="n">regionsnotel</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">Delta_SWE</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">150</span><span class="p">,</span> <span class="n">Delta_SWE</span><span class="p">]</span> <span class="o">=-</span><span class="mf">9999.99</span>
+    
+        
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Add Delta SWE feature</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">Regions</span><span class="p">:</span>
+    <span class="n">Delta_SWE_Snotel_Dict</span><span class="p">(</span><span class="n">RegionTrain</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RegionTrain</span><span class="p">[</span><span class="s1">&#39;N_Sierras_Snotel&#39;</span><span class="p">][</span><span class="s1">&#39;CDEC:ADM&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="connect-snotel-observations-to-nasa-aso">
+<h2>Connect Snotel Observations to NASA ASO<a class="headerlink" href="#connect-snotel-observations-to-nasa-aso" title="Permalink to this headline">#</a></h2>
+<p>Connect dataframe of NASA ASO with snotel observations</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#make a df for training each region, </span>
+<span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">Regions</span><span class="p">):</span>
+    <span class="n">snotels</span> <span class="o">=</span> <span class="n">R</span><span class="o">+</span><span class="s1">&#39;_Snotel&#39;</span>
+    <span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">S</span> <span class="ow">in</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotels</span><span class="p">]:</span>
+        <span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">],</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">snotels</span><span class="p">][</span><span class="n">S</span><span class="p">]</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">R</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+
+<span class="c1">#Remove unnecessary features</span>
+<span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">Regions</span><span class="p">:</span>
+    <span class="n">RegionTrain</span><span class="p">[</span><span class="n">region</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">region</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">region</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="s1">&#39;elevation_m_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">RegionTrain</span><span class="p">[</span><span class="n">region</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">region</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">region</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="s1">&#39;northness_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">RegionTrain</span><span class="p">[</span><span class="n">region</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegionTrain</span><span class="p">[</span><span class="n">region</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="target-site-s-previous-swe">
+<h2>Target Site’s Previous SWE<a class="headerlink" href="#target-site-s-previous-swe" title="Permalink to this headline">#</a></h2>
+<p>Because of the serial correlation of snow accumulation and melt on the current timesteps SWE prediction, the model uses the SWE estimate of the previous week as a feature (Previous SWE).
+For model training and testing, the Previous SWE input is from NASA ASO datasets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Prev_SWE</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>    
+    <span class="nb">print</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">region</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;cell_id&#39;</span><span class="p">)</span>
+    
+    <span class="c1">#week delta  </span>
+    <span class="n">weekdelta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">)</span>
+
+    <span class="c1">#set up column for previous weeks SWE</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;prev_SWE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9999.99</span>
+    
+    <span class="c1">#need to find the number of columns for ifelse</span>
+    <span class="n">dfcols</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+    
+    <span class="c1">#Run through each uniqe site/cell id to calculate previous weeks SWE and add to a new dataframe</span>
+    <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+    
+    <span class="c1">#find unique sites</span>
+    <span class="n">sites</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+ 
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">sites</span><span class="p">):</span>
+        <span class="n">site</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c1">#if only one observation need to fix</span>
+        <span class="k">if</span> <span class="n">site</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">dfcols</span><span class="p">,):</span><span class="c1"># and len(site) &lt; 162:</span>
+            <span class="n">site</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">site</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">][</span><span class="n">cell</span><span class="p">]</span> <span class="o">-</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">][</span><span class="n">cell</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">weekdelta</span><span class="p">:</span>     
+                <span class="n">site</span><span class="p">[</span><span class="s1">&#39;prev_SWE&#39;</span><span class="p">][</span><span class="n">cell</span><span class="p">]</span> <span class="o">=</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;SWE&#39;</span><span class="p">][</span><span class="n">cell</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">dflist</span> <span class="o">=</span> <span class="p">[</span><span class="n">new_df</span><span class="p">,</span> <span class="n">site</span><span class="p">]</span>
+        <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dflist</span><span class="p">)</span>
+    <span class="n">new_df</span> <span class="o">=</span> <span class="n">new_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+    
+    <span class="c1">#Put Prev_SWE next to SWE to confirm operations</span>
+    <span class="n">prev_SWE</span> <span class="o">=</span> <span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;prev_SWE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">del</span> <span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;prev_SWE&#39;</span><span class="p">]</span>
+    <span class="n">new_df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+          <span class="n">column</span> <span class="o">=</span> <span class="s1">&#39;prev_SWE&#39;</span><span class="p">,</span>
+          <span class="n">value</span> <span class="o">=</span> <span class="n">prev_SWE</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">new_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Run the previous SWE function and save the dataframe, you will now be ready to train the model.</span>
+<span class="n">training_df</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">Regions</span><span class="p">:</span>
+    <span class="n">training_df</span><span class="p">[</span><span class="n">region</span><span class="p">]</span> <span class="o">=</span> <span class="n">Prev_SWE</span><span class="p">(</span><span class="n">RegionTrain</span><span class="p">,</span> <span class="n">region</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_df</span><span class="p">[</span><span class="s1">&#39;N_Sierras&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_df</span><span class="p">[</span><span class="s1">&#39;S_Sierras&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next <a class="reference internal" href="training.html"><span class="doc std std-doc">Chapter</span></a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "hackweek"
+        },
+        kernelOptions: {
+            kernelName: "hackweek",
+            path: "./tutorials/snow-extrapolation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'hackweek'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="methods.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Modeling Approach</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="training.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Model Training</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By eScience Institute, University of Washington<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Google Earth Engine Sign-Up &#8212; GeoSMART Hackweek</title>
+    <title>Introduction: GeoSMART Hackweek Snow Extrapolation Project &#8212; GeoSMART Hackweek</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Skills Refresher" href="../skills_refresher_index.html" />
-    <link rel="prev" title="Earthdata Login" href="earthdata.html" />
+    <link rel="next" title="Modeling Approach" href="methods.html" />
+    <link rel="prev" title="Cloud computing" href="../computing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -156,46 +156,46 @@ const thebe_selector_output = ".output, .cell_output"
   Preparation
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../checklist_index.html">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../preliminary/checklist_index.html">
    Checklist
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="github.html">
+    <a class="reference internal" href="../../preliminary/checklist/github.html">
      GitHub
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="jupyterhub.html">
+    <a class="reference internal" href="../../preliminary/checklist/jupyterhub.html">
      JupyterHub
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="git.html">
+    <a class="reference internal" href="../../preliminary/checklist/git.html">
      Git
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="earthdata.html">
+    <a class="reference internal" href="../../preliminary/checklist/earthdata.html">
      Earthdata Login
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/checklist/earthengine.html">
      Google Earth Engine Sign-Up
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../skills_refresher_index.html">
+  <a class="reference internal" href="../../preliminary/skills_refresher_index.html">
    Skills Refresher
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -205,7 +205,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../skills-refresher/swc.html">
+    <a class="reference internal" href="../../preliminary/skills-refresher/swc.html">
      Software Carpentry Training
     </a>
    </li>
@@ -217,34 +217,34 @@ const thebe_selector_output = ".output, .cell_output"
   Tutorials
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../tutorials/index.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
    Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/example/tutorial-notebook.html">
+    <a class="reference internal" href="../example/tutorial-notebook.html">
      Example tutorial notebook
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/cryocloud_demo/CryoCloud_demo.html">
+    <a class="reference internal" href="../cryocloud_demo/CryoCloud_demo.html">
      Demo CryoCloud
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/computing.html">
+    <a class="reference internal" href="../computing.html">
      Cloud computing
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/snow-extrapolation/Introduction.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Introduction: GeoSMART Hackweek Snow Extrapolation Project
     </a>
    </li>
@@ -394,6 +394,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/geo-smart/2023-hackweek-website/main?urlpath=lab/tree/book/tutorials/snow-extrapolation/Introduction.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -433,7 +462,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/geo-smart/2023-hackweek-website/issues/new?title=Issue%20on%20page%20%2Fpreliminary/checklist/earthengine.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/geo-smart/2023-hackweek-website/issues/new?title=Issue%20on%20page%20%2Ftutorials/snow-extrapolation/Introduction.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -450,7 +479,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/geo-smart/2023-hackweek-website/edit/main/book/preliminary/checklist/earthengine.md"
+        <a href="https://github.com/geo-smart/2023-hackweek-website/edit/main/book/tutorials/snow-extrapolation/Introduction.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -478,7 +507,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/preliminary/checklist/earthengine.md"
+        <a href="../../_sources/tutorials/snow-extrapolation/Introduction.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -489,7 +518,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -537,19 +566,40 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introduction: GeoSMART Hackweek Snow Extrapolation Project
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#background">
+     Background
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#research-gap">
+     Research Gap
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#research-motivation">
+     Research Motivation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#national-snow-model">
+     National Snow Model
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tutorial-overview-project-scope">
+     Tutorial Overview/Project Scope
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#do-i-need-to-register-for-a-google-earth-engine-account">
-   Do I need to register for a Google Earth Engine account?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#registering-for-an-earth-engine-account">
-   Registering for an Earth Engine account
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
   </a>
  </li>
 </ul>
@@ -561,7 +611,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Google Earth Engine Sign-Up</h1>
+                <h1>Introduction: GeoSMART Hackweek Snow Extrapolation Project</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -571,19 +621,40 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introduction: GeoSMART Hackweek Snow Extrapolation Project
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#background">
+     Background
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#research-gap">
+     Research Gap
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#research-motivation">
+     Research Motivation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#national-snow-model">
+     National Snow Model
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tutorial-overview-project-scope">
+     Tutorial Overview/Project Scope
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#do-i-need-to-register-for-a-google-earth-engine-account">
-   Do I need to register for a Google Earth Engine account?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#registering-for-an-earth-engine-account">
-   Registering for an Earth Engine account
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
   </a>
  </li>
 </ul>
@@ -596,28 +667,76 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="google-earth-engine-sign-up">
-<h1>Google Earth Engine Sign-Up<a class="headerlink" href="#google-earth-engine-sign-up" title="Permalink to this headline">#</a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://earthengine.google.com/">Google Earth Engine</a> (GEE) combines a multi-petabyte catalog of satellite imagery and geospatial raster datasets with planetary-scale analysis capabilities. It provides an easy, unified way to query for raster data that can help you put GeoSMART data into context. Earth Engine is available for commercial use, but remains free for academic and research use.</p>
+  <p><img alt="ML_SWE-2.jpg" src="../../_images/ML_SWE.jpg" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction-geosmart-hackweek-snow-extrapolation-project">
+<h1>Introduction: GeoSMART Hackweek Snow Extrapolation Project<a class="headerlink" href="#introduction-geosmart-hackweek-snow-extrapolation-project" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://geo-smart.github.io/usecases"><img alt="GeoSMART Use Case" src="../../_images/use_case_badge.svg" /></a></p>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
+<p>Snowpack, measured in the form of snow-water equivalent (SWE) is a critical component of the water supply in mountainous regions and the hydro-connected downstream environments.
+SWE represents the quantity of liquid water within a snowpack and is one of the key parameters in forecasting snowmelt runoff and seasonal water supplies.
+Characterizing seasonal SWE dynamics spanning accumulation, peak SWE, and snowmelt enhances estimates of streamflow flow timing, duration, and intensity that impacts both human and ecological processes.</p>
+<p>The value of the annual snowpack in the western U.S. can approach the order of a trillion U.S. dollars due to the resulting melt water supporting agriculture, residential, and commercial purposes.
+In spite of the economic and environmental forces, accurate estimation of SWE on a broad scale remains a longstanding challenge.</p>
+<p>Recognizing the value of widespread SWE estimates and mountainous basin hydroclimate, the U.S. Department of Agriculture (USDA) Natural Resource Conservation Service (NRCS) has installed over 900 automated snow telemetry (SNOTEL) monitoring stations throughout the western U.S since the 1980s, capturing snow depth driven by accumulation, melting, temperature, precipitation, and directional wind speed at each location.
+Advancements in Light Detection and Ranging (LiDAR) on aircraft and uncrewed aerial vehicles (UAV) complement existing SWE monitoring networks and routine snow course surveys, creating a rich dataset of catchment scale snow dynamics.</p>
 </section>
-<section id="do-i-need-to-register-for-a-google-earth-engine-account">
-<h2>Do I need to register for a Google Earth Engine account?<a class="headerlink" href="#do-i-need-to-register-for-a-google-earth-engine-account" title="Permalink to this headline">#</a></h2>
-<p>Our Google Earth Engine (GEE) tutorial will have an interactive component that uses GEE to query for additional data that can help you put your data into context.
-If you would like to follow this part of the tutorial interactively, you will need to have registered for an account so that you can authenticate GEE.</p>
-</section>
-<section id="registering-for-an-earth-engine-account">
-<h2>Registering for an Earth Engine account<a class="headerlink" href="#registering-for-an-earth-engine-account" title="Permalink to this headline">#</a></h2>
+<section id="research-gap">
+<h2>Research Gap<a class="headerlink" href="#research-gap" title="Permalink to this headline">#</a></h2>
+<p>SNOTEL and LiDAR provide critical snowpack information, however, the sparsity of in situ monitoring stations, the under-representation of SWE measurements at high elevation and rugged terrain, and the expense of snow-on LiDAR observations confound accurate large-scale and temporally continuous snow estimates.</p>
 <ul class="simple">
-<li><p>Go the the <a class="reference external" href="https://signup.earthengine.google.com/">GEE sign up page</a> and enter the email you want to use for your GEE account. A gmail - or an institutional address with an associated google account - is best if you have one.</p></li>
-<li><p>Enter your email, your affiliation and country/region. Where it asks what you want to accomplish, mention you are at ICESat-2 Hackweek at the University of Washington.</p></li>
-<li><p>Review the terms, verify your non-robot identify and click ‘Submit’.</p></li>
-<li><p>Check your email, including your spam folder, for a link from the Google Developer’s Team. The confirmation email will have directions on how to access the Code Editor.</p></li>
-<li><p>Not sure if you have access? Use <a class="reference external" href="https://code.earthengine.google.com/">this link</a> to check. If you didn’t get access you will get an authorization error that says your account isn’t registered. If you do have access, the link will open up the Javascript IDE. This link is your permanent portal to GEE access.</p></li>
+<li><p>Complex terrain controls snow accumulation and ablation process, impacting the accurate scaling of SWE estimates from in situ point measurements to the catchment and greater scales. The installation of snow monitoring stations was to develop statistical relationships between a location in a catchment (e.g., high elevation just below the treeline on north-facing slopes) and streamflow - snow monitoring stations are not intended to be representative of catchment snowpack.</p></li>
+<li><p>Physically-based modeling techniques can demonstrate high accuracy in estimating catchment scale SWE dynamics, capturing the coupled energy-balance interactions between solar radiation, wind, precipitation, albedo, and other inputs.</p></li>
+<li><p>A growing record and availability of remote sensing data products has the potetential reduce catchment SWE error.</p></li>
+<li><p>While physically-based and remote sensing supported models demonstrate the potential for large-scale SWE estimation, limitations with spatial heterogeneity (e.g., highly variable topography and microclimates), climate (e.g., maritime, intermountain, and continental snowpack), and data limitations (e.g., remote sensing snowpack properties below cloud cover or heavy vegetation) create challenging circumstances for a national-scale SWE model.</p></li>
 </ul>
-<p><img alt="gee-signup" src="../../_images/gee-signup.jpg" /></p>
+<p><img alt="SnowEnergy" src="../../_images/snowenergy.jpg" /></p>
 </section>
+<section id="research-motivation">
+<h2>Research Motivation<a class="headerlink" href="#research-motivation" title="Permalink to this headline">#</a></h2>
+<p>Machine learning (ML) demonstrates the potential to complement existing snow modeling methods with broad and cost effective application.
+Improvements in computational power, open-source access, and community modeling present opportunities to model complex hydrological systems, leffectively identifying key topographic and physical feature relationships to snow properties without the need for prior assumption or mechanistic parameterization.</p>
+<p>Examples of machine learning applied to snow estimation include the modeling of large basins at a low resolution, preferential flow from snow runoff, and evaluating the accuracy of ML methods across heterogeneous landscapes and timescales.
+Complementing basin SWE extrapolation, ML techniques demonstrate the ability to function as a regional bias correction tool from daily temporal and national spatial scale products such as the Snow Data Assimilation System (SNODAS).</p>
+</section>
+<section id="national-snow-model">
+<h2>National Snow Model<a class="headerlink" href="#national-snow-model" title="Permalink to this headline">#</a></h2>
+<p>The NSM introduces a novel two-step ML framework which combines Gradient Boosted Decision Trees (GBDT) with feature optimization for the selection of training features to inform regionally optimized Deep Learning artificial neural network (ANN).
+The prototype model estimates 20,000 km2  of SWE at a 1-km spatial resolution over the western U.S., with near-full coverage of the Sierra Nevada mountains ad the Colorado Rockies.
+In its current form, the NSM uses the following data inputs:</p>
+<ul class="simple">
+<li><p>Snow monotoring station data (SNOTEL and California Data Exchange Center (CDEC) snow observations)</p></li>
+<li><p>Lidar-derived terrain features</p></li>
+<li><p>Geospatial information</p></li>
+<li><p>Temporal features</p></li>
+</ul>
+<p>The first year of model development identified a need to improve the prediction capabilities of the model(s) covering the Sierra Nevada mountains, and will be the focus of the GeoSMART Hackweek.</p>
+<p><img alt="Mountains" src="../../_images/Mountains_Small.jpg" /></p>
+</section>
+<section id="tutorial-overview-project-scope">
+<h2>Tutorial Overview/Project Scope<a class="headerlink" href="#tutorial-overview-project-scope" title="Permalink to this headline">#</a></h2>
+<p>The goal of the project to improve the capability of machine learning algorithms ability to extrapolate snow-water-equivalent estimates in the Sierra Nevada mountains in California.
+The project will use three regions of the National Snow Model (NSM):</p>
+<ul class="simple">
+<li><p>Northern Sierras (N_Sierras)</p></li>
+<li><p>Southern Sierras w/elevations &gt; 2,500m (S_Sierras_High)</p></li>
+<li><p>Southern Sierras w/elevations &lt; 2,500m (S_Sierras_Low)</p></li>
+</ul>
+<p>Using these three regions of the NSM, the tutorial will cover the following components</p>
+<ol class="simple">
+<li><p><a class="reference internal" href="methods.html"><span class="doc std std-doc">Machine Learning Approach</span></a></p></li>
+<li><p><a class="reference internal" href="data.html"><span class="doc std std-doc">Data Preparation</span></a></p></li>
+<li><p><a class="reference internal" href="training.html"><span class="doc std std-doc">Model Training</span></a></p></li>
+<li><p><a class="reference internal" href="evaluation.html"><span class="doc std std-doc">Evaluation of Model Performance</span></a></p></li>
+<li><p><a class="reference internal" href="SSM_Hindcast_2019.html"><span class="doc std std-doc">Hindcast</span></a></p></li>
+<li><p><a class="reference internal" href="Hindcast_Evaluation.html"><span class="doc std std-doc">Hindcast Evaluation</span></a></p></li>
+</ol>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -633,7 +752,7 @@ If you would like to follow this part of the tutorial interactively, you will ne
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./preliminary/checklist"
+            path: "./tutorials/snow-extrapolation"
         },
         predefinedOutput: true
     }
@@ -647,17 +766,17 @@ If you would like to follow this part of the tutorial interactively, you will ne
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="earthdata.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../computing.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Earthdata Login</p>
+            <p class="prev-next-title">Cloud computing</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../skills_refresher_index.html" title="next page">
+    <a class='right-next' id="next-link" href="methods.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Skills Refresher</p>
+        <p class="prev-next-title">Modeling Approach</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

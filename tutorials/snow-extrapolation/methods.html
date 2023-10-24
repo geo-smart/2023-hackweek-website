@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Google Earth Engine Sign-Up &#8212; GeoSMART Hackweek</title>
+    <title>Modeling Approach &#8212; GeoSMART Hackweek</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Skills Refresher" href="../skills_refresher_index.html" />
-    <link rel="prev" title="Earthdata Login" href="earthdata.html" />
+    <link rel="next" title="Data Preparation and Feature Engineering" href="data.html" />
+    <link rel="prev" title="Introduction: GeoSMART Hackweek Snow Extrapolation Project" href="Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -156,46 +156,46 @@ const thebe_selector_output = ".output, .cell_output"
   Preparation
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../checklist_index.html">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../preliminary/checklist_index.html">
    Checklist
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="github.html">
+    <a class="reference internal" href="../../preliminary/checklist/github.html">
      GitHub
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="jupyterhub.html">
+    <a class="reference internal" href="../../preliminary/checklist/jupyterhub.html">
      JupyterHub
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="git.html">
+    <a class="reference internal" href="../../preliminary/checklist/git.html">
      Git
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="earthdata.html">
+    <a class="reference internal" href="../../preliminary/checklist/earthdata.html">
      Earthdata Login
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../preliminary/checklist/earthengine.html">
      Google Earth Engine Sign-Up
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../skills_refresher_index.html">
+  <a class="reference internal" href="../../preliminary/skills_refresher_index.html">
    Skills Refresher
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -205,7 +205,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../skills-refresher/swc.html">
+    <a class="reference internal" href="../../preliminary/skills-refresher/swc.html">
      Software Carpentry Training
     </a>
    </li>
@@ -217,34 +217,34 @@ const thebe_selector_output = ".output, .cell_output"
   Tutorials
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../tutorials/index.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
    Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/example/tutorial-notebook.html">
+    <a class="reference internal" href="../example/tutorial-notebook.html">
      Example tutorial notebook
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/cryocloud_demo/CryoCloud_demo.html">
+    <a class="reference internal" href="../cryocloud_demo/CryoCloud_demo.html">
      Demo CryoCloud
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/computing.html">
+    <a class="reference internal" href="../computing.html">
      Cloud computing
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/snow-extrapolation/Introduction.html">
+    <a class="reference internal" href="Introduction.html">
      Introduction: GeoSMART Hackweek Snow Extrapolation Project
     </a>
    </li>
@@ -394,6 +394,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/geo-smart/2023-hackweek-website/main?urlpath=lab/tree/book/tutorials/snow-extrapolation/methods.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -433,7 +462,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/geo-smart/2023-hackweek-website/issues/new?title=Issue%20on%20page%20%2Fpreliminary/checklist/earthengine.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/geo-smart/2023-hackweek-website/issues/new?title=Issue%20on%20page%20%2Ftutorials/snow-extrapolation/methods.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -450,7 +479,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/geo-smart/2023-hackweek-website/edit/main/book/preliminary/checklist/earthengine.md"
+        <a href="https://github.com/geo-smart/2023-hackweek-website/edit/main/book/tutorials/snow-extrapolation/methods.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -478,7 +507,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/preliminary/checklist/earthengine.md"
+        <a href="../../_sources/tutorials/snow-extrapolation/methods.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -489,7 +518,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -538,19 +567,31 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+  <a class="reference internal nav-link" href="#machine-learning-approach">
+   Machine Learning Approach
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#do-i-need-to-register-for-a-google-earth-engine-account">
-   Do I need to register for a Google Earth Engine account?
+  <a class="reference internal nav-link" href="#data">
+   Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#registering-for-an-earth-engine-account">
-   Registering for an Earth Engine account
+  <a class="reference internal nav-link" href="#machine-learning-models">
+   Machine Learning Models
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lightgbm">
+     LightGBM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mlp">
+     MLP
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -561,7 +602,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Google Earth Engine Sign-Up</h1>
+                <h1>Modeling Approach</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -572,19 +613,31 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+  <a class="reference internal nav-link" href="#machine-learning-approach">
+   Machine Learning Approach
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#do-i-need-to-register-for-a-google-earth-engine-account">
-   Do I need to register for a Google Earth Engine account?
+  <a class="reference internal nav-link" href="#data">
+   Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#registering-for-an-earth-engine-account">
-   Registering for an Earth Engine account
+  <a class="reference internal nav-link" href="#machine-learning-models">
+   Machine Learning Models
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lightgbm">
+     LightGBM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mlp">
+     MLP
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -596,27 +649,55 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="google-earth-engine-sign-up">
-<h1>Google Earth Engine Sign-Up<a class="headerlink" href="#google-earth-engine-sign-up" title="Permalink to this headline">#</a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://earthengine.google.com/">Google Earth Engine</a> (GEE) combines a multi-petabyte catalog of satellite imagery and geospatial raster datasets with planetary-scale analysis capabilities. It provides an easy, unified way to query for raster data that can help you put GeoSMART data into context. Earth Engine is available for commercial use, but remains free for academic and research use.</p>
-</section>
-<section id="do-i-need-to-register-for-a-google-earth-engine-account">
-<h2>Do I need to register for a Google Earth Engine account?<a class="headerlink" href="#do-i-need-to-register-for-a-google-earth-engine-account" title="Permalink to this headline">#</a></h2>
-<p>Our Google Earth Engine (GEE) tutorial will have an interactive component that uses GEE to query for additional data that can help you put your data into context.
-If you would like to follow this part of the tutorial interactively, you will need to have registered for an account so that you can authenticate GEE.</p>
-</section>
-<section id="registering-for-an-earth-engine-account">
-<h2>Registering for an Earth Engine account<a class="headerlink" href="#registering-for-an-earth-engine-account" title="Permalink to this headline">#</a></h2>
+  <p><img alt="ML_SWE-2.jpg" src="../../_images/ML_SWE.jpg" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="modeling-approach">
+<h1>Modeling Approach<a class="headerlink" href="#modeling-approach" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
-<li><p>Go the the <a class="reference external" href="https://signup.earthengine.google.com/">GEE sign up page</a> and enter the email you want to use for your GEE account. A gmail - or an institutional address with an associated google account - is best if you have one.</p></li>
-<li><p>Enter your email, your affiliation and country/region. Where it asks what you want to accomplish, mention you are at ICESat-2 Hackweek at the University of Washington.</p></li>
-<li><p>Review the terms, verify your non-robot identify and click ‘Submit’.</p></li>
-<li><p>Check your email, including your spam folder, for a link from the Google Developer’s Team. The confirmation email will have directions on how to access the Code Editor.</p></li>
-<li><p>Not sure if you have access? Use <a class="reference external" href="https://code.earthengine.google.com/">this link</a> to check. If you didn’t get access you will get an authorization error that says your account isn’t registered. If you do have access, the link will open up the Javascript IDE. This link is your permanent portal to GEE access.</p></li>
+<li><p>High-level overview of data-processing</p></li>
+<li><p>Model Training</p></li>
+<li><p>Preliminary Model Evaluation (iterate with model training)</p></li>
+<li><p>Hindcast</p></li>
+<li><p>Hindcast Evaluation (iterate through previous steps)</p></li>
 </ul>
-<p><img alt="gee-signup" src="../../_images/gee-signup.jpg" /></p>
+<section id="machine-learning-approach">
+<h2>Machine Learning Approach<a class="headerlink" href="#machine-learning-approach" title="Permalink to this headline">#</a></h2>
+<p>Snow falls different accross the western US, and thus, was decided upon to develop a distributed ML SWE estimation model addressing the unique hydrometeorological variability observed in the modeling doamain.
+For example, the western U.S. contains snow climate classifications of coastal, coastal transitional, intermountain, and continental.
+The modeling framework addresses the heterogeneity in snow processes through the the division of the study area into 23 regional locations.
+Dividing the model into sub-regions allows for the separation of microclimates to reduce the influence of individual region dynamics on differing regions during model training.</p>
+<a class="reference internal image-reference" href="../../_images/Distribution.jpg"><img alt="drawing" class="align-center" src="../../_images/Distribution.jpg" style="width: 1000px;" /></a>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h2>
+<p>Machine learning models “learn” the relationships between independent and dependent variables through large amounts of data.
+Data sourced for the model consisted of geographic and topographic information from the Copernicus Digital Elevation Model (90-m DEM) and ground measurement data from the NRCS Snow Telemetry and Snow Course program (i.e., SNOTEL), as well as from the California Department of Water Resources California Data Exchange Center (CDEC).
+In total, geographic and weekly SWE observational data from 594 SNOTEL sites and 106 CDEC sites from 2013-2019 are collated.
+Weekly observations of the most recent date available at the same locations support near-real-time model inference.</p>
+<a class="reference internal image-reference" href="../../_images/Distribution_locations_number.jpg"><img alt="drawing" class="align-center" src="../../_images/Distribution_locations_number.jpg" style="width: 1000px;" /></a>
+</section>
+<section id="machine-learning-models">
+<h2>Machine Learning Models<a class="headerlink" href="#machine-learning-models" title="Permalink to this headline">#</a></h2>
+<p>There are many different types of machine learning models for differnt applications, such as classification, regression, and clustering.
+For the application of predicting 1-km gridded SWE, a regression model is the best approach.
+While there are many regression-based machine learning algorithms, we use <a class="reference external" href="https://lightgbm.readthedocs.io/en/v3.3.2/">Light Gradient Boosted Models (LightGBM)</a> and <a class="reference external" href="https://www.tensorflow.org/tutorials/keras/regression">Multi-Layered Perceptron networks (MLP)</a>.
+Below is a brief description of each machine learning modeling methodlogy.</p>
+<section id="lightgbm">
+<h3>LightGBM<a class="headerlink" href="#lightgbm" title="Permalink to this headline">#</a></h3>
+<p>Gradient boosted decision trees (GBDT) are a machine learning algorithm exhibiting impressive performance across various classification and regression applications.
+The algorithm generates a solution based on an ensemble of learning models, where weak learner trees, trained on the residuals of an initial strong learner, are iteratively added to the model to minimize the overall loss function (negative root-mean-squared-error) of the model via gradient descent of the individual weak learners.</p>
+<p>The LightGBM framework is an evolution of GBDT, and introduces Gradient-based One-Side Sampling (GOSS) to the boosting algorithm.
+GOSS focuses the model learning on trees with larger gradients and randomly drops learners with small gradients to provide a more efficient and more accurate gain estimation than with traditional gradient boosting.</p>
+</section>
+<section id="mlp">
+<h3>MLP<a class="headerlink" href="#mlp" title="Permalink to this headline">#</a></h3>
+<p>The MLP is a classical type of feedforward ANN, being successfully and frequently applied in environmental modeling applications.
+The MLP regression model estimates a target variable by learning a non-linear function to describe the target from an input vector of features.
+It performs learning via a back-propagation algorithm over a series of hidden layers containing interconnected nodes (neurons).
+The neurons connect bordering layers by a summation of weights and an activation function transforms model outputs to predicted values.
+The model calculates error and adjusts the weights to minimize the error during model training, supporting the use of
+MLPs to effectively describe a target variable with any function, continuous or discontinuous.</p>
+<p><a class="reference internal" href="training.html"><span class="doc std std-doc">Next Chapter</span></a></p>
+</section>
 </section>
 </section>
 
@@ -633,7 +714,7 @@ If you would like to follow this part of the tutorial interactively, you will ne
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./preliminary/checklist"
+            path: "./tutorials/snow-extrapolation"
         },
         predefinedOutput: true
     }
@@ -647,17 +728,17 @@ If you would like to follow this part of the tutorial interactively, you will ne
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="earthdata.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Introduction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Earthdata Login</p>
+            <p class="prev-next-title">Introduction: GeoSMART Hackweek Snow Extrapolation Project</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../skills_refresher_index.html" title="next page">
+    <a class='right-next' id="next-link" href="data.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Skills Refresher</p>
+        <p class="prev-next-title">Data Preparation and Feature Engineering</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
