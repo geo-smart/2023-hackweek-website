@@ -41,6 +41,7 @@ parts:
             - file: tutorials/snow-extrapolation/SSM_Hindcast_2019
             - file: tutorials/snow-extrapolation/Hindcast_Evaluation
         - file: tutorials/tree_models/Tree_Models_in_ML
+        - file: tutorials/snow_cover_mapping/SCA_Mapping
 - caption: Projects
   chapters:
     - file: projects/index
