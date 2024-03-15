@@ -14,7 +14,7 @@ parse:
     dates: "October 23 to 27, 2023"
     github_org_url: "https://github.com/geo-smart"
     book_repo: "2023-hackweek-website"
-    website_url: "https://geosmart.hackweek.io"
+    website_url: "https://geosmart-2023.hackweek.io"
     jupyterhub_url: "https://hub.cryointhecloud.com"
     slack_workspace_url: "https://geosmartworkspace.slack.com/archives/C05TRB3E2LV"
     docker_image: "https://INSERT_DOCKER_IMAGE_URL"

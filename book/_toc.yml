@@ -8,9 +8,9 @@ parts:
     - file: application
     - file: logistics
     - title: Schedule
-      url: https://geosmart.hackweek.io/index.html?jump_to=schedule
+      url: https://geosmart-2023.hackweek.io/index.html?jump_to=schedule
     - title: Team
-      url: https://geosmart.hackweek.io/index.html?jump_to=team
+      url: https://geosmart-2023.hackweek.io/index.html?jump_to=team
     - file: mission
     - file: CoC
 - caption: Preparation
